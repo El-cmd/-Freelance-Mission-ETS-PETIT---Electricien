@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ets-petit.fr/sitemap.xml
