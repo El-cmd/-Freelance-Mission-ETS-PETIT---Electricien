@@ -31,11 +31,7 @@ export function HeroSection() {
       </div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/42" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_35%,rgba(255,200,0,0.12),transparent_38%),radial-gradient(circle_at_82%_60%,rgba(255,160,0,0.16),transparent_36%)]" />
-      <div className="hero-surface pointer-events-none opacity-70" />
       <div className="container relative">
-        <div className="mb-8 hidden max-w-5xl lg:block">
-          <div className="electric-line" />
-        </div>
         <motion.div
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
           animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
