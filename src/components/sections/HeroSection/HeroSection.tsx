@@ -18,14 +18,14 @@ export function HeroSection() {
     <section id="home" className="relative overflow-hidden pb-16 pt-12 sm:pb-20 sm:pt-16">
       <div className="hero-surface pointer-events-none" />
       <div className="container relative">
-        <div className="mx-auto mb-8 hidden max-w-5xl lg:block">
+        <div className="mx-auto mb-8 hidden max-w-4xl lg:block">
           <div className="electric-line" />
         </div>
         <motion.div
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
           animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: 'easeOut' }}
-          className="mx-auto max-w-5xl text-center"
+          className="mx-auto max-w-4xl text-center"
         >
           <Badge
             variant="secondary"
@@ -35,9 +35,9 @@ export function HeroSection() {
             {copy.heroBadge}
           </Badge>
 
-          <h1 className="font-heading text-balance text-6xl font-semibold leading-[0.88] tracking-[0.04em] text-foreground sm:text-7xl md:text-8xl">
+          <h1 className="font-heading text-balance text-4xl font-bold leading-[1.02] tracking-tight text-foreground sm:text-5xl md:text-6xl">
             {copy.heroTitleStart}
-            <span className="text-primary [text-shadow:0_0_22px_rgba(255,217,0,0.35)]">
+            <span className="text-primary [text-shadow:0_0_12px_rgba(255,217,0,0.22)]">
               {copy.heroTitleHighlight}
             </span>
             {copy.heroTitleEnd}

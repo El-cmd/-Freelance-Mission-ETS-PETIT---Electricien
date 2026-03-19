@@ -34,7 +34,7 @@ export function Section({
       <div className="container">
         <div className="max-w-3xl space-y-4">
           <span className="title-kicker">Expertise électrique</span>
-          <h2 className="font-heading text-4xl font-semibold leading-[0.95] tracking-[0.04em] text-foreground sm:text-5xl">
+          <h2 className="font-heading text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
             {title}
           </h2>
           {subtitle ? (
