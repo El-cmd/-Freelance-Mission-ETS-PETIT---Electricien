@@ -1,4 +1,5 @@
 import { Menu, Phone } from 'lucide-react'
+import { Link, NavLink } from 'react-router-dom'
 
 import logo from '@/assets/logo.png'
 import { getNavItems, getSiteConfig, getUiCopy } from '@/data/siteContent'
@@ -23,19 +24,23 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/95 backdrop-blur">
       <div className="container flex h-20 items-center justify-between">
-        <a href="#home" className="flex items-center" aria-label={copy.homeLinkAria}>
+        <Link to="/" className="flex items-center" aria-label={copy.homeLinkAria}>
           <img src={logo} alt="Logo ETS PETIT" className="h-10 w-auto rounded-md object-contain sm:h-12" />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label={copy.mainNavigationAria}>
           {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors hover:text-foreground ${
+                  isActive ? 'text-primary' : 'text-muted-foreground'
+                }`
+              }
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -99,13 +104,13 @@ export function Header() {
                 </Button>
               </div>
               {navItems.map((item) => (
-                <SheetClose asChild key={item.href}>
-                  <a
-                    href={item.href}
+                <SheetClose asChild key={item.path}>
+                  <NavLink
+                    to={item.path}
                     className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
                   >
                     {item.label}
-                  </a>
+                  </NavLink>
                 </SheetClose>
               ))}
               <SheetClose asChild>

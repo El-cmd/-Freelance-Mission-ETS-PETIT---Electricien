@@ -104,11 +104,12 @@ const localizedBusinessInfo = {
   },
 } satisfies Record<Locale, Pick<SiteConfig, 'addressLine' | 'interventionZone' | 'openingHours'>>
 
-const navItemsRaw: Array<{ href: string; label: LocalizedString }> = [
-  { href: '#services', label: { fr: 'Services', en: 'Services' } },
-  { href: '#projects', label: { fr: 'Réalisations', en: 'Projects' } },
-  { href: '#about', label: { fr: 'À propos', en: 'About' } },
-  { href: '#contact', label: { fr: 'Contact', en: 'Contact' } },
+const navItemsRaw: Array<{ path: string; label: LocalizedString }> = [
+  { path: '/', label: { fr: 'Accueil', en: 'Home' } },
+  { path: '/services', label: { fr: 'Services', en: 'Services' } },
+  { path: '/projects', label: { fr: 'Réalisations', en: 'Projects' } },
+  { path: '/about', label: { fr: 'À propos', en: 'About' } },
+  { path: '/contact', label: { fr: 'Contact', en: 'Contact' } },
 ]
 
 const trustHighlightsRaw = [
@@ -475,7 +476,7 @@ export function getUiCopy(locale: Locale): UiCopy {
 
 export function getNavItems(locale: Locale): NavItem[] {
   return navItemsRaw.map((item) => ({
-    href: item.href,
+    path: item.path,
     label: t(locale, item.label),
   }))
 }

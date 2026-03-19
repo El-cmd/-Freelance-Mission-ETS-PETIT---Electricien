@@ -16,7 +16,7 @@ export type SiteConfig = {
 
 export type NavItem = {
   label: string
-  href: string
+  path: string
 }
 
 export type ServiceItem = {

@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Phone } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import { getSiteConfig, getTrustHighlights, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
@@ -48,10 +49,10 @@ export function HeroSection() {
               </a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href="#contact">
+              <Link to="/contact">
                 {copy.requestQuote}
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
+              </Link>
             </Button>
           </div>
 
