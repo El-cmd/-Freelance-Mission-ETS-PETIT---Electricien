@@ -34,7 +34,7 @@ export function ProjectsSection() {
             <DialogTrigger asChild>
               <motion.button
                 type="button"
-                className="group relative overflow-hidden rounded-xl border border-border/70 bg-card text-left"
+                className="group electric-panel relative overflow-hidden rounded-xl border border-primary/20 bg-card text-left"
                 onClick={() => setSelected(project)}
                 initial={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.96 }}
                 whileInView={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}

@@ -24,7 +24,7 @@ export function AboutSection() {
       className="bg-background"
     >
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-        <Card className="border-border/70 bg-card/95">
+        <Card className="electric-panel border-primary/20 bg-card/95">
           <CardContent className="p-6 sm:p-8">
             <div className="mb-5 flex items-center gap-4">
               <img
@@ -40,6 +40,7 @@ export function AboutSection() {
             <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
               {copy.aboutDescription}
             </p>
+            <div className="electric-line mt-5 max-w-[180px]" />
             <ul className="mt-6 space-y-3">
               {aboutPoints.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm sm:text-base">
@@ -53,7 +54,7 @@ export function AboutSection() {
 
         <div className="grid gap-4">
           {aboutStats.map((stat) => (
-            <Card key={stat.label} className="border-border/70 bg-card/95">
+            <Card key={stat.label} className="electric-panel border-primary/20 bg-card/95">
               <CardContent className="p-6">
                 <p className="font-heading text-3xl font-semibold text-foreground">{stat.value}</p>
                 <p className="mt-2 text-sm text-muted-foreground">{stat.label}</p>

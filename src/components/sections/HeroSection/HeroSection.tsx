@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, Phone } from 'lucide-react'
+import { ArrowRight, Phone, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { getSiteConfig, getTrustHighlights, getUiCopy } from '@/data/siteContent'
@@ -15,40 +15,46 @@ export function HeroSection() {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section id="home" className="relative overflow-hidden pb-16 pt-10 sm:pb-20 sm:pt-16">
+    <section id="home" className="relative overflow-hidden pb-16 pt-12 sm:pb-20 sm:pt-16">
       <div className="hero-surface pointer-events-none" />
       <div className="container relative">
+        <div className="mx-auto mb-8 hidden max-w-5xl lg:block">
+          <div className="electric-line" />
+        </div>
         <motion.div
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
           animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: 'easeOut' }}
-          className="mx-auto max-w-4xl text-center"
+          className="mx-auto max-w-5xl text-center"
         >
           <Badge
             variant="secondary"
-            className="mb-6 border-border bg-card/90 text-xs font-semibold text-primary"
+            className="mb-6 border-primary/45 bg-background/85 px-4 py-1 text-xs font-semibold tracking-[0.1em] text-primary"
           >
+            <Zap className="mr-1.5 h-3.5 w-3.5" />
             {copy.heroBadge}
           </Badge>
 
-          <h1 className="font-heading text-balance text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl">
+          <h1 className="font-heading text-balance text-6xl font-semibold leading-[0.88] tracking-[0.04em] text-foreground sm:text-7xl md:text-8xl">
             {copy.heroTitleStart}
-            <span className="text-primary">{copy.heroTitleHighlight}</span>
+            <span className="text-primary [text-shadow:0_0_22px_rgba(255,217,0,0.35)]">
+              {copy.heroTitleHighlight}
+            </span>
             {copy.heroTitleEnd}
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-6 max-w-3xl text-pretty text-base text-muted-foreground sm:text-lg">
             {copy.heroDescription}
           </p>
 
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button asChild size="lg" className="shadow-soft">
+          <div className="electric-panel mx-auto mt-8 flex max-w-xl flex-col justify-center gap-3 rounded-xl p-4 sm:flex-row sm:rounded-2xl sm:p-5">
+            <Button asChild size="lg" className="shadow-soft sm:flex-1">
               <a href={siteConfig.phoneHref}>
                 <Phone className="mr-2 h-4 w-4" />
                 {copy.callNow}
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="lg" className="sm:flex-1">
               <Link to="/contact">
                 {copy.requestQuote}
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -60,9 +66,11 @@ export function HeroSection() {
             {trustHighlights.map(({ icon: Icon, text }) => (
               <div
                 key={text}
-                className="rounded-xl border border-border/70 bg-card/90 p-4 text-left shadow-[0_12px_24px_rgba(0,0,0,0.4)]"
+                className="electric-panel rounded-xl p-4 text-left"
               >
-                <Icon className="mb-3 h-5 w-5 text-primary" />
+                <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md border border-primary/50 bg-primary/10">
+                  <Icon className="h-4 w-4 text-primary" />
+                </div>
                 <p className="text-sm font-medium text-foreground">{text}</p>
               </div>
             ))}

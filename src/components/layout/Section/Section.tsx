@@ -32,13 +32,15 @@ export function Section({
       transition={{ duration: 0.45, ease: 'easeOut' }}
     >
       <div className="container">
-        <div className="max-w-3xl space-y-3">
-          <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <div className="max-w-3xl space-y-4">
+          <span className="title-kicker">Expertise électrique</span>
+          <h2 className="font-heading text-4xl font-semibold leading-[0.95] tracking-[0.04em] text-foreground sm:text-5xl">
             {title}
           </h2>
           {subtitle ? (
             <p className="text-base text-muted-foreground sm:text-lg">{subtitle}</p>
           ) : null}
+          <div className="electric-line max-w-sm" />
         </div>
         <div className={cn('mt-10', bodyClassName)}>{children}</div>
       </div>
