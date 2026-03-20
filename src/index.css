@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,29 +6,29 @@
 
 @layer base {
   :root {
-    --background: 0 0% 6%;
-    --foreground: 48 40% 96%;
+    --background: 220 23% 97%;
+    --foreground: 214 17% 8%;
 
-    --card: 0 0% 10%;
-    --card-foreground: 48 35% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 214 17% 8%;
 
-    --primary: 49 97% 52%;
+    --primary: 48 100% 48%;
     --primary-foreground: 0 0% 8%;
 
-    --secondary: 0 0% 16%;
-    --secondary-foreground: 48 30% 92%;
+    --secondary: 214 26% 95%;
+    --secondary-foreground: 215 17% 14%;
 
-    --muted: 0 0% 14%;
-    --muted-foreground: 48 14% 70%;
+    --muted: 216 26% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 0 0% 14%;
-    --accent-foreground: 48 30% 92%;
+    --accent: 47 100% 90%;
+    --accent-foreground: 45 100% 18%;
 
-    --border: 0 0% 22%;
-    --input: 0 0% 22%;
-    --ring: 49 97% 52%;
+    --border: 213 19% 89%;
+    --input: 213 19% 89%;
+    --ring: 48 100% 48%;
 
-    --radius: 0.85rem;
+    --radius: 1rem;
   }
 
   * {
@@ -43,9 +43,9 @@
     @apply bg-background text-foreground antialiased;
     font-family: 'Manrope', ui-sans-serif, sans-serif;
     background-image:
-      radial-gradient(circle at 15% -5%, rgba(255, 217, 0, 0.22), transparent 44%),
-      radial-gradient(circle at 100% 100%, rgba(255, 217, 0, 0.12), transparent 34%),
-      linear-gradient(180deg, #0f0f0f 0%, #090909 100%);
+      radial-gradient(circle at 12% 0%, rgba(247, 198, 0, 0.12), transparent 34%),
+      radial-gradient(circle at 100% 12%, rgba(247, 198, 0, 0.08), transparent 30%),
+      linear-gradient(180deg, #f9fafc 0%, #f3f6fb 100%);
     min-height: 100vh;
   }
 
@@ -53,43 +53,25 @@
   h2,
   h3,
   h4 {
-    font-family: 'Manrope', ui-sans-serif, sans-serif;
-    letter-spacing: -0.015em;
+    font-family: 'Space Grotesk', 'Manrope', ui-sans-serif, sans-serif;
+    letter-spacing: -0.02em;
     text-transform: none;
   }
 }
 
 @layer components {
-  .hero-surface {
-    position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(
-        110deg,
-        rgba(255, 217, 0, 0.025) 0px,
-        rgba(255, 217, 0, 0.025) 1px,
-        transparent 1px,
-        transparent 110px
-      ),
-      linear-gradient(180deg, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.46) 100%),
-      radial-gradient(circle at 50% -5%, rgba(255, 217, 0, 0.14), transparent 50%);
-  }
-
-  .electric-panel {
+  .surface-soft {
     border: 1px solid hsl(var(--border));
-    background:
-      linear-gradient(180deg, rgba(255, 217, 0, 0.025), rgba(255, 217, 0, 0)),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.04),
-      0 12px 30px rgba(0, 0, 0, 0.4);
+      0 8px 24px rgba(17, 20, 24, 0.06),
+      0 2px 8px rgba(17, 20, 24, 0.04);
   }
 
-  .electric-line {
-    height: 2px;
+  .hairline {
+    height: 1px;
     width: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 217, 0, 0.65), transparent);
-    box-shadow: 0 0 8px rgba(255, 217, 0, 0.3);
+    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
   }
 
   .title-kicker {
@@ -97,17 +79,18 @@
     align-items: center;
     gap: 0.5rem;
     border: 1px solid hsl(var(--border));
-    background: rgba(255, 217, 0, 0.08);
-    padding: 0.25rem 0.65rem;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.3rem 0.72rem;
     font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: hsl(var(--primary));
+    color: hsl(var(--secondary-foreground));
+    border-radius: 999px;
   }
 
   .font-heading {
-    font-family: 'Manrope', ui-sans-serif, sans-serif;
-    letter-spacing: -0.02em;
+    font-family: 'Space Grotesk', 'Manrope', ui-sans-serif, sans-serif;
+    letter-spacing: -0.025em;
   }
 }

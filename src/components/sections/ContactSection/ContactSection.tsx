@@ -55,7 +55,7 @@ export function ContactSection() {
       subtitle={copy.sectionContactSubtitle}
     >
       <div className="grid gap-6 lg:grid-cols-[1fr_1.15fr]">
-        <Card className="electric-panel h-fit border-primary/20 bg-card/95">
+        <Card className="h-fit">
           <CardHeader>
             <CardTitle>{copy.contactDetailsTitle}</CardTitle>
           </CardHeader>
@@ -91,7 +91,7 @@ export function ContactSection() {
           </CardContent>
         </Card>
 
-        <Card className="electric-panel border-primary/20 bg-card/95">
+        <Card>
           <CardHeader>
             <CardTitle>{copy.contactQuickTitle}</CardTitle>
           </CardHeader>

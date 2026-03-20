@@ -46,7 +46,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       boxShadow: {
-        soft: '0 18px 40px rgba(19, 31, 46, 0.08)',
+        soft: '0 12px 28px rgba(17, 20, 24, 0.08), 0 2px 8px rgba(17, 20, 24, 0.05)',
       },
       keyframes: {
         'accordion-down': {

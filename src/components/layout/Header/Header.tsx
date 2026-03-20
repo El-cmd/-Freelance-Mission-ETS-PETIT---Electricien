@@ -22,7 +22,7 @@ export function Header() {
   const copy = getUiCopy(locale)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-primary/20 bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/80 backdrop-blur-md">
       <div className="container flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center" aria-label={copy.homeLinkAria}>
           <img src={logo} alt="Logo ETS PETIT" className="h-10 w-auto rounded-md object-contain sm:h-12" />
@@ -34,10 +34,10 @@ export function Header() {
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `rounded-md border px-3 py-1.5 text-sm font-medium transition-colors ${
+                `rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
                   isActive
-                    ? 'border-primary/50 bg-primary/10 text-primary'
-                    : 'border-transparent text-muted-foreground hover:border-primary/25 hover:text-foreground'
+                    ? 'border-border bg-muted text-foreground'
+                    : 'border-transparent text-muted-foreground hover:border-border hover:text-foreground'
                 }`
               }
             >

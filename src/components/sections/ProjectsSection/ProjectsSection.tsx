@@ -34,12 +34,12 @@ export function ProjectsSection() {
             <DialogTrigger asChild>
               <motion.button
                 type="button"
-                className="group electric-panel relative overflow-hidden rounded-xl border border-primary/20 bg-card text-left"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card text-left shadow-[0_10px_24px_rgba(17,20,24,0.06),0_2px_8px_rgba(17,20,24,0.04)]"
                 onClick={() => setSelected(project)}
-                initial={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.96 }}
-                whileInView={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
+                initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
+                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.3, delay: index * 0.04 }}
+                transition={{ duration: 0.24, delay: index * 0.035 }}
               >
                 <img
                   src={project.image}
@@ -47,9 +47,9 @@ export function ProjectsSection() {
                   loading="lazy"
                   className="aspect-[3/4] h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/65 via-black/5 to-transparent p-3">
+                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/55 via-black/10 to-transparent p-3">
                   <div>
-                    <p className="text-xs uppercase tracking-wide text-white/75">{project.category}</p>
+                    <p className="text-xs uppercase tracking-wide text-white/80">{project.category}</p>
                     <p className="text-sm font-semibold text-white">{project.title}</p>
                   </div>
                   <Search className="ml-auto h-4 w-4 text-white/90" />
