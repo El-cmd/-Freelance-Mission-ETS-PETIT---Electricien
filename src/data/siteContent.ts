@@ -381,10 +381,10 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionContactTitle: 'Contact',
     sectionContactSubtitle:
       'Besoin d une intervention ou d un devis ? Réponse rapide par téléphone ou email.',
-    heroBadge: 'Quentin Petit - Votre électricien de confiance à Roubaix et dans la métropole lilloise',
-    heroTitleStart: 'Installations électriques fiables,',
-    heroTitleHighlight: ' interventions rapides',
-    heroTitleEnd: ', résultats propres.',
+    heroBadge: 'Électricien local à Roubaix et métropole lilloise',
+    heroTitleStart: 'Quentin Petit -',
+    heroTitleHighlight: ' votre électricien de confiance',
+    heroTitleEnd: ' à Roubaix et dans la métropole lilloise.',
     heroDescription:
       'ETS PETIT accompagne particuliers et professionnels pour le dépannage, la rénovation, les tableaux électriques et la mise en sécurité.',
     aboutCardSubtitle: 'Électricien à Roubaix',
@@ -432,10 +432,10 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionContactTitle: 'Contact',
     sectionContactSubtitle:
       'Need an intervention or a quote? Fast response by phone or email.',
-    heroBadge: 'Quentin Petit - Your trusted electrician in Roubaix and the Lille metropolitan area',
-    heroTitleStart: 'Reliable electrical installations,',
-    heroTitleHighlight: ' fast response',
-    heroTitleEnd: ', clean results.',
+    heroBadge: 'Local electrician in Roubaix and Lille metropolitan area',
+    heroTitleStart: 'Quentin Petit -',
+    heroTitleHighlight: ' your trusted electrician',
+    heroTitleEnd: ' in Roubaix and the Lille metropolitan area.',
     heroDescription:
       'ETS PETIT supports homeowners and professionals for troubleshooting, renovation, electrical panels, and safety upgrades.',
     aboutCardSubtitle: 'Electrician in Roubaix',
