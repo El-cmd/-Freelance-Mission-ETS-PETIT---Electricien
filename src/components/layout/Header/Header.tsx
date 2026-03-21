@@ -22,7 +22,7 @@ export function Header() {
   const copy = getUiCopy(locale)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/12 bg-slate-950/88 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950 backdrop-blur-md">
       <div className="container flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center" aria-label={copy.homeLinkAria}>
           <img src={logo} alt="Logo ETS PETIT" className="h-10 w-auto rounded-md object-contain sm:h-12" />
@@ -36,8 +36,8 @@ export function Header() {
               className={({ isActive }) =>
                 `rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
                   isActive
-                    ? 'border-white/20 bg-white/12 text-white'
-                    : 'border-transparent text-white/78 hover:border-white/20 hover:text-white'
+                    ? 'border-white/20 bg-white/10 text-white'
+                    : 'border-transparent text-white/80 hover:border-white/20 hover:text-white'
                 }`
               }
             >
@@ -52,7 +52,7 @@ export function Header() {
             variant={locale === 'fr' ? 'default' : 'outline'}
             onClick={() => setLocale('fr')}
             aria-label="Basculer en français"
-            className={`h-8 w-8 p-0 text-sm ${locale === 'fr' ? '' : 'border-white/30 bg-white/10 text-white hover:bg-white/16 hover:text-white'}`}
+            className={`h-8 w-8 p-0 text-sm ${locale === 'fr' ? '' : 'border-white/30 bg-white/10 text-white hover:bg-white/15 hover:text-white'}`}
           >
             🇫🇷
           </Button>
@@ -61,7 +61,7 @@ export function Header() {
             variant={locale === 'en' ? 'default' : 'outline'}
             onClick={() => setLocale('en')}
             aria-label="Switch to English"
-            className={`h-8 w-8 p-0 text-sm ${locale === 'en' ? '' : 'border-white/30 bg-white/10 text-white hover:bg-white/16 hover:text-white'}`}
+            className={`h-8 w-8 p-0 text-sm ${locale === 'en' ? '' : 'border-white/30 bg-white/10 text-white hover:bg-white/15 hover:text-white'}`}
           >
             🇬🇧
           </Button>
@@ -79,7 +79,7 @@ export function Header() {
               variant="outline"
               size="icon"
               aria-label={copy.menuAriaLabel}
-              className="border-white/30 bg-white/10 text-white hover:bg-white/16 hover:text-white"
+              className="border-white/30 bg-white/10 text-white hover:bg-white/15 hover:text-white"
             >
               <Menu className="h-5 w-5" />
             </Button>
