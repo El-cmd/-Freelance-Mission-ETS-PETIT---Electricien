@@ -27,7 +27,7 @@ function SiteLayout() {
         {copy.skipToContent}
       </a>
       <Header />
-      <main id="main-content" className="pb-24 md:pb-0">
+      <main id="main-content">
         <Outlet />
       </main>
       <Footer />
