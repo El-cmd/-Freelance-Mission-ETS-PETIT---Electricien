@@ -23,12 +23,12 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950 backdrop-blur-md">
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center" aria-label={copy.homeLinkAria}>
-          <img src={logo} alt="Logo ETS PETIT" className="h-10 w-auto rounded-md object-contain sm:h-12" />
+          <img src={logo} alt="Logo ETS PETIT" className="h-8 w-auto rounded-md object-contain sm:h-10" />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label={copy.mainNavigationAria}>
+        <nav className="hidden items-center gap-6 md:flex" aria-label={copy.mainNavigationAria}>
           {navItems.map((item) => (
             <NavLink
               key={item.path}
