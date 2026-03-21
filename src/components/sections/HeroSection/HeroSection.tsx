@@ -24,7 +24,7 @@ export function HeroSection() {
         src={electricianPanelBg}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[72%_center] md:object-right"
       />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.76)_0%,rgba(255,255,255,0.62)_46%,rgba(255,255,255,0.34)_100%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(8,17,29,0.28)_0%,rgba(8,17,29,0.12)_38%,rgba(8,17,29,0)_70%),radial-gradient(circle_at_14%_18%,rgba(247,198,0,0.18),transparent_30%)]" />
