@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Phone, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-import electricianPanelBg from '@/assets/electrician-panel-bg.png'
+import electricianPanelBg from '@/assets/electrician-panel-bg.webp'
 import { getSiteConfig, getTrustHighlights, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
 import { Badge } from '@/components/ui/badge'
