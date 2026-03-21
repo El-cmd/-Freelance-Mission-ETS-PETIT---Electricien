@@ -381,7 +381,7 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionContactTitle: 'Contact',
     sectionContactSubtitle:
       'Besoin d une intervention ou d un devis ? Réponse rapide par téléphone ou email.',
-    heroBadge: 'Électricien local à Roubaix et métropole lilloise',
+    heroBadge: 'Quentin Petit - Votre électricien de confiance à Roubaix et dans la métropole lilloise',
     heroTitleStart: 'Installations électriques fiables,',
     heroTitleHighlight: ' interventions rapides',
     heroTitleEnd: ', résultats propres.',
@@ -432,7 +432,7 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionContactTitle: 'Contact',
     sectionContactSubtitle:
       'Need an intervention or a quote? Fast response by phone or email.',
-    heroBadge: 'Local electrician in Roubaix and Lille metropolitan area',
+    heroBadge: 'Quentin Petit - Your trusted electrician in Roubaix and the Lille metropolitan area',
     heroTitleStart: 'Reliable electrical installations,',
     heroTitleHighlight: ' fast response',
     heroTitleEnd: ', clean results.',

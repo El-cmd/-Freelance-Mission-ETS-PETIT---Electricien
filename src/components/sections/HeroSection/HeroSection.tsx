@@ -46,7 +46,7 @@ export function HeroSection() {
 
             <h1 className="font-heading text-balance text-3xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               {copy.heroTitleStart}
-              <span className="text-primary">
+              <span className="text-amber-700">
                 {copy.heroTitleHighlight}
               </span>
               {copy.heroTitleEnd}
