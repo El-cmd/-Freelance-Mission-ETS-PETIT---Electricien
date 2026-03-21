@@ -93,4 +93,24 @@
     font-family: 'Space Grotesk', 'Manrope', ui-sans-serif, sans-serif;
     letter-spacing: -0.025em;
   }
+
+  .partner-marquee-track {
+    animation: partner-marquee 15s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes partner-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .partner-marquee-track {
+      animation: none;
+    }
+  }
 }

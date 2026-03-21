@@ -3,7 +3,10 @@ import { ArrowRight, Phone, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import electricianPanelBg from '@/assets/electrician-panel-bg.webp'
-import { getSiteConfig, getTrustHighlights, getUiCopy } from '@/data/siteContent'
+import partnerHager from '@/assets/partner-hager.png'
+import partnerLegrand from '@/assets/partner-legrand.png'
+import partnerSchneider from '@/assets/partner-schneider.png'
+import { getSiteConfig, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -11,9 +14,14 @@ import { Button } from '@/components/ui/button'
 export function HeroSection() {
   const { locale } = useLocale()
   const siteConfig = getSiteConfig(locale)
-  const trustHighlights = getTrustHighlights(locale)
   const copy = getUiCopy(locale)
   const shouldReduceMotion = useReducedMotion()
+  const partnersLabel = locale === 'fr' ? 'Nos partenaires' : 'Our partners'
+  const partnerLogos = [
+    { name: 'Hager', image: partnerHager },
+    { name: 'Schneider Electric', image: partnerSchneider },
+    { name: 'Legrand', image: partnerLegrand },
+  ]
 
   return (
     <section
@@ -75,18 +83,29 @@ export function HeroSection() {
               </Button>
             </div>
 
-            <div className="mt-7 grid gap-2.5 sm:grid-cols-3">
-              {trustHighlights.map(({ icon: Icon, text }) => (
-                <div
-                  key={text}
-                  className="surface-soft rounded-2xl p-3 text-left"
-                >
-                  <div className="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-lg bg-accent">
-                    <Icon className="h-3.5 w-3.5 text-primary" />
-                  </div>
-                  <p className="text-[15px] font-medium leading-snug text-foreground">{text}</p>
+            <div className="mt-7">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-foreground/75">
+                {partnersLabel}
+              </p>
+              <div className="relative overflow-hidden rounded-2xl border border-border bg-white/75 py-3 backdrop-blur-sm">
+                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-white to-transparent" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-white to-transparent" />
+                <div className="partner-marquee-track flex w-max items-center gap-10 px-5">
+                  {[...partnerLogos, ...partnerLogos].map((partner, index) => (
+                    <div
+                      key={`${partner.name}-${index}`}
+                      className="flex h-10 w-[138px] items-center justify-center"
+                    >
+                      <img
+                        src={partner.image}
+                        alt={`Logo ${partner.name}`}
+                        loading="lazy"
+                        className="max-h-8 w-auto object-contain grayscale-[0.05]"
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </motion.div>
