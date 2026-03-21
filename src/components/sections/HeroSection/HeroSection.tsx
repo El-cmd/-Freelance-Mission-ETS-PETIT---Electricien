@@ -87,9 +87,7 @@ export function HeroSection() {
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-foreground/75">
                 {partnersLabel}
               </p>
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-white/75 py-3 backdrop-blur-sm">
-                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-white to-transparent" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-white to-transparent" />
+              <div className="relative overflow-hidden rounded-2xl bg-transparent py-3">
                 <div className="partner-marquee-track flex w-max items-center gap-10 px-5">
                   {[...partnerLogos, ...partnerLogos].map((partner, index) => (
                     <div
