@@ -105,11 +105,11 @@ const localizedBusinessInfo = {
 } satisfies Record<Locale, Pick<SiteConfig, 'addressLine' | 'interventionZone' | 'openingHours'>>
 
 const navItemsRaw: Array<{ path: string; label: LocalizedString }> = [
-  { path: '/', label: { fr: 'Accueil', en: 'Home' } },
-  { path: '/services', label: { fr: 'Services', en: 'Services' } },
-  { path: '/projects', label: { fr: 'Réalisations', en: 'Projects' } },
-  { path: '/about', label: { fr: 'À propos', en: 'About' } },
-  { path: '/contact', label: { fr: 'Contact', en: 'Contact' } },
+  { path: '/', label: { fr: 'Nos accueil', en: 'Our home' } },
+  { path: '/services', label: { fr: 'Nos services', en: 'Our services' } },
+  { path: '/projects', label: { fr: 'Nos tarifs', en: 'Our pricing' } },
+  { path: '/about', label: { fr: 'Nos à propos', en: 'Our about' } },
+  { path: '/contact', label: { fr: 'Nos contact', en: 'Our contact' } },
 ]
 
 const trustHighlightsRaw = [
