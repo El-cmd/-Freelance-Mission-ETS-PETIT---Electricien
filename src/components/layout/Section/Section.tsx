@@ -25,7 +25,7 @@ export function Section({
   return (
     <motion.section
       id={id}
-      className={cn('scroll-mt-28 py-16 sm:py-20', className)}
+      className={cn('scroll-mt-28 pb-16 pt-8 sm:pb-20 sm:pt-10', className)}
       initial={shouldReduceMotion ? undefined : { opacity: 0, y: 10 }}
       whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
