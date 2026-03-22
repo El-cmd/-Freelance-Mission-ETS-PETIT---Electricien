@@ -1,26 +1,109 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Search } from 'lucide-react'
-import { useState } from 'react'
+import { Check } from 'lucide-react'
 
-import { getProjects, getUiCopy } from '@/data/siteContent'
+import { getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
-import type { ProjectItem } from '@/types/site'
 import { Section } from '@/components/layout/Section'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export function ProjectsSection() {
   const { locale } = useLocale()
-  const projects = getProjects(locale)
   const copy = getUiCopy(locale)
-  const [selected, setSelected] = useState<ProjectItem | null>(null)
   const shouldReduceMotion = useReducedMotion()
+  const tariffs =
+    locale === 'fr'
+      ? [
+          {
+            id: 'diagnostic',
+            title: 'Déplacement + diagnostic',
+            price: 'À partir de 45 €',
+            details: [
+              'Analyse de la panne sur place',
+              'Conseils de mise en sécurité immédiats',
+              'Devis validé avant toute intervention',
+            ],
+            note: 'Roubaix et métropole lilloise',
+          },
+          {
+            id: 'depannage',
+            title: 'Dépannage rapide (1ère heure)',
+            price: 'À partir de 90 €',
+            details: [
+              'Recherche de panne électrique',
+              'Remise en service si possible immédiatement',
+              'Explication claire des travaux réalisés',
+            ],
+            note: 'Pièces non incluses',
+          },
+          {
+            id: 'tableau',
+            title: 'Tableau électrique',
+            price: 'À partir de 690 €',
+            details: [
+              'Remplacement du tableau existant',
+              'Mise aux normes des protections',
+              'Repérage des circuits pour maintenance',
+            ],
+            note: 'Tarif ajusté selon installation',
+          },
+          {
+            id: 'renovation',
+            title: 'Rénovation installation',
+            price: 'Sur devis',
+            details: [
+              'Visite technique préalable',
+              'Chiffrage poste par poste',
+              'Planning d intervention clair',
+            ],
+            note: 'Devis gratuit',
+          },
+        ]
+      : [
+          {
+            id: 'diagnostic',
+            title: 'Travel + diagnostic',
+            price: 'From €45',
+            details: [
+              'On-site fault assessment',
+              'Immediate safety guidance',
+              'Quote confirmed before any work',
+            ],
+            note: 'Roubaix and Lille metro area',
+          },
+          {
+            id: 'depannage',
+            title: 'Rapid troubleshooting (first hour)',
+            price: 'From €90',
+            details: [
+              'Electrical fault finding',
+              'Power restoration when possible',
+              'Clear explanation of completed work',
+            ],
+            note: 'Parts not included',
+          },
+          {
+            id: 'tableau',
+            title: 'Electrical panel replacement',
+            price: 'From €690',
+            details: [
+              'Replacement of existing panel',
+              'Safety/compliance protection setup',
+              'Circuit labeling for easier maintenance',
+            ],
+            note: 'Final price depends on setup',
+          },
+          {
+            id: 'renovation',
+            title: 'Electrical renovation',
+            price: 'On quote',
+            details: [
+              'Technical visit first',
+              'Detailed itemized quotation',
+              'Clear intervention schedule',
+            ],
+            note: 'Free quotation',
+          },
+        ]
 
   return (
     <Section
@@ -28,48 +111,38 @@ export function ProjectsSection() {
       title={copy.sectionProjectsTitle}
       subtitle={copy.sectionProjectsSubtitle}
     >
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-        {projects.map((project, index) => (
-          <Dialog key={project.id}>
-            <DialogTrigger asChild>
-              <motion.button
-                type="button"
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card text-left shadow-[0_10px_24px_rgba(17,20,24,0.06),0_2px_8px_rgba(17,20,24,0.04)]"
-                onClick={() => setSelected(project)}
-                initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
-                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.24, delay: index * 0.035 }}
-              >
-                <img
-                  src={project.image}
-                  alt={project.alt}
-                  loading="lazy"
-                  className="aspect-[3/4] h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/55 via-black/10 to-transparent p-3">
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-white/80">{project.category}</p>
-                    <p className="text-sm font-semibold text-white">{project.title}</p>
-                  </div>
-                  <Search className="ml-auto h-4 w-4 text-white/90" />
-                </div>
-              </motion.button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>{selected?.title}</DialogTitle>
-                <DialogDescription>{selected?.category}</DialogDescription>
-              </DialogHeader>
-              {selected ? (
-                <img
-                  src={selected.image}
-                  alt={selected.alt}
-                  className="max-h-[72vh] w-full rounded-lg object-contain"
-                />
-              ) : null}
-            </DialogContent>
-          </Dialog>
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {tariffs.map((tariff, index) => (
+          <motion.div
+            key={tariff.id}
+            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.24, delay: index * 0.04 }}
+          >
+            <Card className="h-full">
+              <CardHeader className="p-5 pb-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+                  {locale === 'fr' ? 'Tarif indicatif' : 'Indicative price'}
+                </p>
+                <CardTitle className="text-xl">{tariff.title}</CardTitle>
+                <p className="font-heading text-2xl font-semibold text-foreground">{tariff.price}</p>
+              </CardHeader>
+              <CardContent className="p-5 pt-0">
+                <ul className="space-y-2.5">
+                  {tariff.details.map((detail) => (
+                    <li key={detail} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-xs font-medium uppercase tracking-[0.06em] text-foreground/70">
+                  {tariff.note}
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </Section>

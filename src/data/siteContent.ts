@@ -105,11 +105,11 @@ const localizedBusinessInfo = {
 } satisfies Record<Locale, Pick<SiteConfig, 'addressLine' | 'interventionZone' | 'openingHours'>>
 
 const navItemsRaw: Array<{ path: string; label: LocalizedString }> = [
-  { path: '/', label: { fr: 'Nos accueil', en: 'Our home' } },
+  { path: '/', label: { fr: 'Accueil', en: 'Home' } },
   { path: '/services', label: { fr: 'Nos services', en: 'Our services' } },
   { path: '/projects', label: { fr: 'Nos tarifs', en: 'Our pricing' } },
-  { path: '/about', label: { fr: 'Nos à propos', en: 'Our about' } },
-  { path: '/contact', label: { fr: 'Nos contact', en: 'Our contact' } },
+  { path: '/about', label: { fr: 'À propos', en: 'About' } },
+  { path: '/contact', label: { fr: 'Contact', en: 'Contact' } },
 ]
 
 const trustHighlightsRaw = [
@@ -372,9 +372,9 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionServicesTitle: 'Services électriques',
     sectionServicesSubtitle:
       'Des interventions claires, adaptées à votre besoin et réalisées dans les règles de sécurité.',
-    sectionProjectsTitle: 'Réalisations',
+    sectionProjectsTitle: 'Nos tarifs',
     sectionProjectsSubtitle:
-      'Un aperçu de chantiers récents: rénovation, mise en sécurité, dépannage et éclairage.',
+      'Des prix clairs pour les interventions courantes. Un devis précis est confirmé avant travaux.',
     sectionAboutTitle: 'À propos d ETS PETIT',
     sectionAboutSubtitle:
       'Entreprise de proximité à Roubaix, orientée qualité d exécution, sécurité et transparence.',
@@ -423,9 +423,9 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionServicesTitle: 'Electrical services',
     sectionServicesSubtitle:
       'Clear interventions tailored to your needs and carried out with strict safety standards.',
-    sectionProjectsTitle: 'Projects',
+    sectionProjectsTitle: 'Our pricing',
     sectionProjectsSubtitle:
-      'A selection of recent jobs: renovation, safety upgrades, troubleshooting, and lighting.',
+      'Clear pricing for common interventions. A precise quote is always confirmed before work starts.',
     sectionAboutTitle: 'About ETS PETIT',
     sectionAboutSubtitle:
       'A local business in Roubaix focused on quality execution, safety, and transparency.',
