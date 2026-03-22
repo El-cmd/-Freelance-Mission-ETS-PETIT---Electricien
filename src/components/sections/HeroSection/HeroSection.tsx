@@ -26,7 +26,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100svh-4rem-5.5rem-env(safe-area-inset-bottom))] overflow-hidden border-y border-border/40 pb-8 pt-6 sm:pb-10 sm:pt-8 md:min-h-0 lg:pb-10 lg:pt-8"
+      className="relative min-h-[calc(100svh-4rem-5.5rem-env(safe-area-inset-bottom))] overflow-hidden border-y border-border/40 pb-8 pt-8 sm:pb-10 sm:pt-8 md:min-h-0 lg:pb-10 lg:pt-8"
     >
       <img
         src={electricianPanelBg}
@@ -57,7 +57,7 @@ export function HeroSection() {
               {copy.heroBadge}
             </Badge>
 
-            <h1 className="font-heading text-balance text-3xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <h1 className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               {copy.heroTitleStart}
               <span className="text-foreground">
                 {copy.heroTitleHighlight}
@@ -65,7 +65,7 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <p className="mt-4 max-w-2xl text-pretty text-[15px] text-foreground/80 sm:text-base">
+            <p className="mt-5 max-w-2xl text-pretty text-[15px] text-foreground/80 sm:text-base">
               {copy.heroDescription}
             </p>
 
