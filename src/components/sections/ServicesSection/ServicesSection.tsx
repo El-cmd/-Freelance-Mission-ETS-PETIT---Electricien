@@ -34,10 +34,7 @@ export function ServicesSection() {
             className="group"
           >
             <Card className="h-full transition-transform duration-300 ease-out group-hover:-translate-y-1">
-              <CardHeader className="p-5 pb-3">
-                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-accent">
-                  <service.icon className="h-4 w-4 text-primary" />
-                </div>
+              <CardHeader className="p-5 pb-3 pt-4">
                 <CardTitle>{service.title}</CardTitle>
                 <div className="hairline mt-2 max-w-[140px]" />
               </CardHeader>
