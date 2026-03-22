@@ -1,6 +1,6 @@
 import { CheckCircle2 } from 'lucide-react'
 
-import logo from '@/assets/logo.png'
+import logo from '@/assets/logo.webp'
 import {
   getAboutPoints,
   getAboutStats,
@@ -30,6 +30,10 @@ export function AboutSection() {
               <img
                 src={logo}
                 alt="Logo ETS PETIT"
+                width={371}
+                height={122}
+                loading="lazy"
+                decoding="async"
                 className="h-10 w-auto rounded-lg object-contain sm:h-12"
               />
               <div>

@@ -1,12 +1,12 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 
-import cuisineAfterImage from '@/assets/cuisine-apres.jpg'
-import cuisineBeforeImage from '@/assets/cuisine-avant.jpg'
-import priseAfterImage from '@/assets/prise-apres.jpg'
-import priseBeforeImage from '@/assets/prise-avant.jpg'
-import tableauAfterImage from '@/assets/tableau-apres.jpg'
-import tableauBeforeImage from '@/assets/tableau-avant.jpg'
+import cuisineAfterImage from '@/assets/cuisine-apres.webp'
+import cuisineBeforeImage from '@/assets/cuisine-avant.webp'
+import priseAfterImage from '@/assets/prise-apres.webp'
+import priseBeforeImage from '@/assets/prise-avant.webp'
+import tableauAfterImage from '@/assets/tableau-apres.webp'
+import tableauBeforeImage from '@/assets/tableau-avant.webp'
 import { getServices, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -78,11 +78,15 @@ export function ServicesSection() {
                     <img
                       src={compareConfig.after}
                       alt={compareConfig.afterAlt}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                     <img
                       src={compareConfig.before}
                       alt={compareConfig.beforeAlt}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 h-full w-full object-cover"
                       style={{
                         clipPath: `inset(0 ${100 - split}% 0 0)`,

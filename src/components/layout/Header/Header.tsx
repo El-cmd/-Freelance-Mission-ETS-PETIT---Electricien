@@ -1,7 +1,7 @@
 import { Menu, Phone } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 
-import logo from '@/assets/logo.png'
+import logo from '@/assets/logo.webp'
 import { getNavItems, getSiteConfig, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
 import { Button } from '@/components/ui/button'
@@ -25,7 +25,16 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950 backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center" aria-label={copy.homeLinkAria}>
-          <img src={logo} alt="Logo ETS PETIT" className="h-8 w-auto rounded-md object-contain sm:h-10" />
+          <img
+            src={logo}
+            alt="Logo ETS PETIT"
+            width={371}
+            height={122}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            className="h-8 w-auto rounded-md object-contain sm:h-10"
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label={copy.mainNavigationAria}>

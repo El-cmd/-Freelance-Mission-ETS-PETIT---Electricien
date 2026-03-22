@@ -3,9 +3,9 @@ import { ArrowRight, Phone, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import electricianPanelBg from '@/assets/electrician-panel-bg.webp'
-import partnerHager from '@/assets/partner-hager.png'
-import partnerLegrand from '@/assets/partner-legrand.png'
-import partnerSchneider from '@/assets/partner-schneider.png'
+import partnerHager from '@/assets/partner-hager.webp'
+import partnerLegrand from '@/assets/partner-legrand.webp'
+import partnerSchneider from '@/assets/partner-schneider.webp'
 import { getSiteConfig, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
 import { Badge } from '@/components/ui/badge'
@@ -18,9 +18,9 @@ export function HeroSection() {
   const shouldReduceMotion = useReducedMotion()
   const partnersLabel = locale === 'fr' ? 'Nos partenaires' : 'Our partners'
   const partnerLogos = [
-    { name: 'Hager', image: partnerHager },
-    { name: 'Schneider Electric', image: partnerSchneider },
-    { name: 'Legrand', image: partnerLegrand },
+    { name: 'Hager', image: partnerHager, width: 533, height: 178 },
+    { name: 'Schneider Electric', image: partnerSchneider, width: 250, height: 76 },
+    { name: 'Legrand', image: partnerLegrand, width: 1200, height: 300 },
   ]
 
   return (
@@ -32,6 +32,11 @@ export function HeroSection() {
         src={electricianPanelBg}
         alt=""
         aria-hidden="true"
+        width={1507}
+        height={1024}
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[72%_center] md:object-right"
       />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.76)_0%,rgba(255,255,255,0.62)_46%,rgba(255,255,255,0.34)_100%)]" />
@@ -97,7 +102,10 @@ export function HeroSection() {
                       <img
                         src={partner.image}
                         alt={`Logo ${partner.name}`}
+                        width={partner.width}
+                        height={partner.height}
                         loading="lazy"
+                        decoding="async"
                         className="max-h-8 w-auto object-contain grayscale-[0.05]"
                       />
                     </div>
