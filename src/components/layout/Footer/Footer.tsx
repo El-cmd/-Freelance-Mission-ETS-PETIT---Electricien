@@ -7,7 +7,7 @@ export function Footer() {
   const copy = getUiCopy(locale)
 
   return (
-    <footer className="border-t border-white/12 bg-slate-950 pt-10 pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:py-10">
+    <footer className="border-t border-white/12 bg-[#0b1f4d] pt-10 pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:py-10">
       <div className="container flex flex-col gap-3 text-sm text-white/80 sm:flex-row sm:items-center sm:justify-between">
         <p>
           © {new Date().getFullYear()} {siteConfig.name} · {copy.footerSubtitle}

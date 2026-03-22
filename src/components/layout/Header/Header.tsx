@@ -22,7 +22,7 @@ export function Header() {
   const copy = getUiCopy(locale)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0b1f4d]/95 backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center" aria-label={copy.homeLinkAria}>
           <img
