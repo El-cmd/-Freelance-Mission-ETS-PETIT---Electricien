@@ -51,9 +51,9 @@ export function HeroSection() {
           <div className="text-left lg:max-w-[740px]">
             <Badge
               variant="secondary"
-              className="mb-4 border-border bg-white/78 px-3 py-1 text-[11px] font-semibold tracking-[0.08em] text-secondary-foreground backdrop-blur-sm"
+              className="mb-4 border-border bg-white/78 px-4 py-1.5 text-[12px] font-semibold tracking-[0.08em] text-secondary-foreground backdrop-blur-sm sm:px-3 sm:py-1 sm:text-[11px]"
             >
-              <Zap className="mr-1.5 h-3.5 w-3.5 text-primary" />
+              <Zap className="mr-2 h-4 w-4 text-primary sm:mr-1.5 sm:h-3.5 sm:w-3.5" />
               {copy.heroBadge}
             </Badge>
 
