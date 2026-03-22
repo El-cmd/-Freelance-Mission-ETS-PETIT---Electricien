@@ -51,21 +51,21 @@ export function HeroSection() {
           <div className="text-left lg:max-w-[740px]">
             <Badge
               variant="secondary"
-              className="mb-4 border-border bg-white/78 px-4 py-1.5 text-[12px] font-semibold tracking-[0.08em] text-secondary-foreground backdrop-blur-sm sm:px-3 sm:py-1 sm:text-[11px]"
+              className="mb-4 border-border bg-white/78 px-4 py-1.5 text-[12px] font-semibold tracking-[0.08em] text-[#081a42] backdrop-blur-sm sm:px-3 sm:py-1 sm:text-[11px]"
             >
               <Zap className="mr-2 h-4 w-4 text-primary sm:mr-1.5 sm:h-3.5 sm:w-3.5" />
               {copy.heroBadge}
             </Badge>
 
-            <h1 className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#d6e9ff] sm:text-4xl lg:text-5xl">
+            <h1 className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#081a42] sm:text-4xl lg:text-5xl">
               {copy.heroTitleStart}
-              <span className="text-[#d6e9ff]">
+              <span className="text-[#081a42]">
                 {copy.heroTitleHighlight}
               </span>
               {copy.heroTitleEnd}
             </h1>
 
-            <p className="mt-5 max-w-2xl text-pretty text-[15px] text-foreground/80 sm:text-base">
+            <p className="mt-5 max-w-2xl text-pretty text-[15px] text-[#081a42] sm:text-base">
               {copy.heroDescription}
             </p>
 
@@ -89,7 +89,7 @@ export function HeroSection() {
             </div>
 
             <div className="mt-7">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-foreground/75">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#081a42]">
                 {partnersLabel}
               </p>
               <div className="relative overflow-hidden rounded-2xl bg-transparent py-3">
