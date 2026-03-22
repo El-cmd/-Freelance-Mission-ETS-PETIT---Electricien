@@ -39,8 +39,6 @@ export function HeroSection() {
         fetchPriority="high"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[72%_center] md:object-right"
       />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.76)_0%,rgba(255,255,255,0.62)_46%,rgba(255,255,255,0.34)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(8,17,29,0.28)_0%,rgba(8,17,29,0.12)_38%,rgba(8,17,29,0)_70%),radial-gradient(circle_at_14%_18%,rgba(247,198,0,0.18),transparent_30%)]" />
       <div className="container relative">
         <motion.div
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
@@ -57,7 +55,10 @@ export function HeroSection() {
               {copy.heroBadge}
             </Badge>
 
-            <h1 className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#081a42] sm:text-4xl lg:text-5xl">
+            <h1
+              className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#081a42] sm:text-4xl lg:text-5xl"
+              style={{ textShadow: '0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(8,26,66,0.18)' }}
+            >
               {copy.heroTitleStart}
               <span className="text-[#081a42]">
                 {copy.heroTitleHighlight}
