@@ -57,9 +57,9 @@ export function HeroSection() {
               {copy.heroBadge}
             </Badge>
 
-            <h1 className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#081a42] sm:text-4xl lg:text-5xl">
+            <h1 className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#c7e5ff] sm:text-4xl lg:text-5xl">
               {copy.heroTitleStart}
-              <span className="text-[#081a42]">
+              <span className="text-[#c7e5ff]">
                 {copy.heroTitleHighlight}
               </span>
               {copy.heroTitleEnd}
