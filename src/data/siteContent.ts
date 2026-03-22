@@ -83,7 +83,7 @@ const t = (locale: Locale, value: LocalizedString): string => value[locale]
 const baseSiteConfig: Omit<SiteConfig, 'addressLine' | 'interventionZone' | 'openingHours'> = {
   name: 'ETS PETIT',
   legalName: 'ETS PETIT',
-  city: 'Roubaix',
+  city: 'Hem',
   phoneDisplay: '07 60 02 87 23',
   phoneHref: 'tel:+33760028723',
   email: 'contact@ets-petit.fr',
@@ -93,13 +93,13 @@ const baseSiteConfig: Omit<SiteConfig, 'addressLine' | 'interventionZone' | 'ope
 
 const localizedBusinessInfo = {
   fr: {
-    addressLine: 'Roubaix et environs',
-    interventionZone: 'Roubaix, Tourcoing, Croix, Wasquehal, Lille Métropole',
+    addressLine: 'Hem et environs',
+    interventionZone: 'Hem, Tourcoing, Croix, Wasquehal, Lille Métropole',
     openingHours: 'Lundi au samedi, 8h00 - 19h00',
   },
   en: {
-    addressLine: 'Roubaix and surrounding area',
-    interventionZone: 'Roubaix, Tourcoing, Croix, Wasquehal, Lille metropolitan area',
+    addressLine: 'Hem and surrounding area',
+    interventionZone: 'Hem, Tourcoing, Croix, Wasquehal, Lille metropolitan area',
     openingHours: 'Monday to Saturday, 8:00 AM - 7:00 PM',
   },
 } satisfies Record<Locale, Pick<SiteConfig, 'addressLine' | 'interventionZone' | 'openingHours'>>
@@ -123,8 +123,8 @@ const trustHighlightsRaw = [
   {
     icon: Timer,
     text: {
-      fr: 'Réponse rapide sur Roubaix et alentours',
-      en: 'Fast response in Roubaix and nearby areas',
+      fr: 'Réponse rapide sur Hem et alentours',
+      en: 'Fast response in Hem and nearby areas',
     },
   },
   {
@@ -202,8 +202,8 @@ const projectsRaw = [
       en: 'Apartment compliance upgrade',
     },
     alt: {
-      fr: 'Tableau électrique modernisé dans un appartement à Roubaix',
-      en: 'Modernized electrical panel in an apartment in Roubaix',
+      fr: 'Tableau électrique modernisé dans un appartement à Hem',
+      en: 'Modernized electrical panel in an apartment in Hem',
     },
     category: { fr: 'Mise en conformité', en: 'Compliance' },
   },
@@ -337,8 +337,8 @@ const aboutStatsRaw = [
   {
     value: 'Local',
     label: {
-      fr: 'ancrage Roubaix et métropole lilloise',
-      en: 'strong local presence in Roubaix area',
+      fr: 'ancrage Hem et métropole lilloise',
+      en: 'strong local presence in Hem area',
     },
   },
 ]
@@ -377,17 +377,17 @@ const uiCopy: Record<Locale, UiCopy> = {
       'Des prix clairs pour les interventions courantes. Un devis précis est confirmé avant travaux.',
     sectionAboutTitle: 'À propos d ETS PETIT',
     sectionAboutSubtitle:
-      'Entreprise de proximité à Roubaix, orientée qualité d exécution, sécurité et transparence.',
+      'Entreprise de proximité à Hem, orientée qualité d exécution, sécurité et transparence.',
     sectionContactTitle: 'Contact',
     sectionContactSubtitle:
       'Besoin d une intervention ou d un devis ? Réponse rapide par téléphone ou email.',
-    heroBadge: 'Électricien local à Roubaix et métropole lilloise',
+    heroBadge: 'Électricien local à Hem et métropole lilloise',
     heroTitleStart: 'Quentin Petit -',
     heroTitleHighlight: ' votre électricien de confiance',
-    heroTitleEnd: ' à Roubaix et dans la métropole lilloise.',
+    heroTitleEnd: ' à Hem et dans la métropole lilloise.',
     heroDescription:
       'ETS PETIT accompagne particuliers et professionnels pour le dépannage, la rénovation, les tableaux électriques et la mise en sécurité.',
-    aboutCardSubtitle: 'Électricien à Roubaix',
+    aboutCardSubtitle: 'Électricien à Hem',
     aboutDescription:
       'Nous intervenons sur les installations électriques résidentielles et petits locaux professionnels avec une approche simple: écouter le besoin, poser un diagnostic propre, proposer une solution fiable et livrer un chantier net.',
     contactDetailsTitle: 'Coordonnées',
@@ -408,7 +408,7 @@ const uiCopy: Record<Locale, UiCopy> = {
     mailtoSubjectPrefix: 'Demande de devis',
     mailtoMessageLabel: 'Message',
     directCallLabel: 'Appel direct',
-    footerSubtitle: 'Électricien à Roubaix',
+    footerSubtitle: 'Électricien à Hem',
   },
   en: {
     skipToContent: 'Skip to main content',
@@ -428,17 +428,17 @@ const uiCopy: Record<Locale, UiCopy> = {
       'Clear pricing for common interventions. A precise quote is always confirmed before work starts.',
     sectionAboutTitle: 'About ETS PETIT',
     sectionAboutSubtitle:
-      'A local business in Roubaix focused on quality execution, safety, and transparency.',
+      'A local business in Hem focused on quality execution, safety, and transparency.',
     sectionContactTitle: 'Contact',
     sectionContactSubtitle:
       'Need an intervention or a quote? Fast response by phone or email.',
-    heroBadge: 'Local electrician in Roubaix and Lille metropolitan area',
+    heroBadge: 'Local electrician in Hem and Lille metropolitan area',
     heroTitleStart: 'Quentin Petit -',
     heroTitleHighlight: ' your trusted electrician',
-    heroTitleEnd: ' in Roubaix and the Lille metropolitan area.',
+    heroTitleEnd: ' in Hem and the Lille metropolitan area.',
     heroDescription:
       'ETS PETIT supports homeowners and professionals for troubleshooting, renovation, electrical panels, and safety upgrades.',
-    aboutCardSubtitle: 'Electrician in Roubaix',
+    aboutCardSubtitle: 'Electrician in Hem',
     aboutDescription:
       'We work on residential and small professional electrical installations with a simple approach: understand your need, diagnose clearly, propose a reliable solution, and deliver a clean job site.',
     contactDetailsTitle: 'Contact details',
@@ -459,7 +459,7 @@ const uiCopy: Record<Locale, UiCopy> = {
     mailtoSubjectPrefix: 'Quote request',
     mailtoMessageLabel: 'Message',
     directCallLabel: 'Direct call',
-    footerSubtitle: 'Electrician in Roubaix',
+    footerSubtitle: 'Electrician in Hem',
   },
 }
 

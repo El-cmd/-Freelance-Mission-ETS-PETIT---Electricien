@@ -7,7 +7,7 @@ export function buildLocalBusinessJsonLd(site: SiteConfig) {
     name: site.name,
     legalName: site.legalName,
     description:
-      'Électricien à Roubaix: dépannage, rénovation, tableau électrique, mise en sécurité et éclairage.',
+      'Électricien à Hem: dépannage, rénovation, tableau électrique, mise en sécurité et éclairage.',
     telephone: site.phoneHref.replace('tel:', ''),
     email: site.email,
     areaServed: site.interventionZone,

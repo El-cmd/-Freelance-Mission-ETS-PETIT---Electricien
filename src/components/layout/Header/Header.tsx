@@ -88,7 +88,7 @@ export function Header() {
               variant="outline"
               size="icon"
               aria-label={copy.menuAriaLabel}
-              className="border-white/30 bg-white/10 text-white hover:bg-white/15 hover:text-white"
+              className="border-[#f7c600]/45 bg-[#20263a]/70 text-[#f7c600] hover:bg-[#252d45]/80 hover:text-[#ffd84a]"
             >
               <Menu className="h-5 w-5" />
             </Button>

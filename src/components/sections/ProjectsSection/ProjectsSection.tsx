@@ -22,7 +22,7 @@ export function ProjectsSection() {
               'Conseils de mise en sécurité immédiats',
               'Devis validé avant toute intervention',
             ],
-            note: 'Roubaix et métropole lilloise',
+            note: 'Hem et métropole lilloise',
           },
           {
             id: 'depannage',
@@ -68,7 +68,7 @@ export function ProjectsSection() {
               'Immediate safety guidance',
               'Quote confirmed before any work',
             ],
-            note: 'Roubaix and Lille metro area',
+            note: 'Hem and Lille metro area',
           },
           {
             id: 'depannage',
