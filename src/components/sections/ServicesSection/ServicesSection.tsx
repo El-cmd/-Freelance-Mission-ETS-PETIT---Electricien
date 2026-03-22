@@ -34,25 +34,25 @@ export function ServicesSection() {
             className="group"
           >
             <Card className="h-full transition-transform duration-300 ease-out group-hover:-translate-y-1">
-              <CardHeader>
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-accent">
-                  <service.icon className="h-5 w-5 text-primary" />
+              <CardHeader className="p-5 pb-3">
+                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-accent">
+                  <service.icon className="h-4 w-4 text-primary" />
                 </div>
                 <CardTitle>{service.title}</CardTitle>
                 <div className="hairline mt-2 max-w-[140px]" />
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-5 pt-0">
                 {service.id === 'tableau' ? (
-                  <div className="relative mb-3 h-52 overflow-hidden rounded-xl border border-border/80 bg-slate-100 sm:h-56">
+                  <div className="relative mb-3 aspect-[16/11] overflow-hidden rounded-xl border border-border/80">
                     <img
                       src={tableauAfterImage}
                       alt={locale === 'fr' ? 'Tableau électrique après intervention' : 'Electrical panel after intervention'}
-                      className="absolute inset-0 h-full w-full object-contain object-center"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
                     <img
                       src={tableauBeforeImage}
                       alt={locale === 'fr' ? 'Tableau électrique avant intervention' : 'Electrical panel before intervention'}
-                      className="absolute inset-0 h-full w-full object-contain object-center"
+                      className="absolute inset-0 h-full w-full object-cover"
                       style={{
                         clipPath: `inset(0 ${100 - tableauSplit}% 0 0)`,
                         WebkitClipPath: `inset(0 ${100 - tableauSplit}% 0 0)`,
