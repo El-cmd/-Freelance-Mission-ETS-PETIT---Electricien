@@ -47,31 +47,33 @@ export function HeroSection() {
           className="mx-auto max-w-5xl"
         >
           <div className="text-left lg:max-w-[740px]">
-            <Badge
-              variant="secondary"
-              className="mb-4 border-border bg-white/78 px-4 py-1.5 text-[12px] font-semibold tracking-[0.08em] text-[#081a42] backdrop-blur-sm sm:px-3 sm:py-1 sm:text-[11px]"
-            >
-              <Zap className="mr-2 h-4 w-4 text-primary sm:mr-1.5 sm:h-3.5 sm:w-3.5" />
-              {copy.heroBadge}
-            </Badge>
+            <div className="rounded-2xl bg-white/52 p-3 shadow-[0_10px_28px_rgba(8,26,66,0.16)] backdrop-blur-[1.5px] sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-0">
+              <Badge
+                variant="secondary"
+                className="mb-4 border-border bg-white/78 px-4 py-1.5 text-[12px] font-semibold tracking-[0.08em] text-[#081a42] backdrop-blur-sm sm:px-3 sm:py-1 sm:text-[11px]"
+              >
+                <Zap className="mr-2 h-4 w-4 text-primary sm:mr-1.5 sm:h-3.5 sm:w-3.5" />
+                {copy.heroBadge}
+              </Badge>
 
-            <h1
-              className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#081a42] sm:text-4xl lg:text-5xl"
-              style={{ textShadow: '0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(8,26,66,0.18)' }}
-            >
-              {copy.heroTitleStart}
-              <span className="text-[#081a42]">
-                {copy.heroTitleHighlight}
-              </span>
-              {copy.heroTitleEnd}
-            </h1>
+              <h1
+                className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#081a42] sm:text-4xl lg:text-5xl"
+                style={{ textShadow: '0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(8,26,66,0.18)' }}
+              >
+                {copy.heroTitleStart}
+                <span className="text-[#081a42]">
+                  {copy.heroTitleHighlight}
+                </span>
+                {copy.heroTitleEnd}
+              </h1>
 
-            <p
-              className="mt-5 max-w-2xl text-pretty text-[15px] font-semibold text-black sm:text-base"
-              style={{ textShadow: '0 1px 0 rgba(255,255,255,0.55), 0 6px 18px rgba(255,255,255,0.25)' }}
-            >
-              {copy.heroDescription}
-            </p>
+              <p
+                className="mt-5 max-w-2xl text-pretty text-[15px] font-semibold text-black sm:text-base"
+                style={{ textShadow: '0 1px 0 rgba(255,255,255,0.55), 0 6px 18px rgba(255,255,255,0.25)' }}
+              >
+                {copy.heroDescription}
+              </p>
+            </div>
 
             <div className="mt-6 flex max-w-xl flex-col gap-2.5 sm:flex-row">
               <Button asChild className="sm:flex-1">
