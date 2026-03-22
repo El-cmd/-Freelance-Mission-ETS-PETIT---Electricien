@@ -43,16 +43,16 @@ export function ServicesSection() {
               </CardHeader>
               <CardContent>
                 {service.id === 'tableau' ? (
-                  <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-xl border border-border/80">
+                  <div className="relative mb-3 h-52 overflow-hidden rounded-xl border border-border/80 bg-slate-100 sm:h-56">
                     <img
                       src={tableauAfterImage}
                       alt={locale === 'fr' ? 'Tableau électrique après intervention' : 'Electrical panel after intervention'}
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="absolute inset-0 h-full w-full object-contain object-center"
                     />
                     <img
                       src={tableauBeforeImage}
                       alt={locale === 'fr' ? 'Tableau électrique avant intervention' : 'Electrical panel before intervention'}
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="absolute inset-0 h-full w-full object-contain object-center"
                       style={{
                         clipPath: `inset(0 ${100 - tableauSplit}% 0 0)`,
                         WebkitClipPath: `inset(0 ${100 - tableauSplit}% 0 0)`,
