@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 
+import cuisineAfterImage from '@/assets/cuisine-apres.jpg'
+import cuisineBeforeImage from '@/assets/cuisine-avant.jpg'
 import priseAfterImage from '@/assets/prise-apres.jpg'
 import priseBeforeImage from '@/assets/prise-avant.jpg'
 import tableauAfterImage from '@/assets/tableau-apres.jpg'
@@ -17,6 +19,7 @@ export function ServicesSection() {
   const shouldReduceMotion = useReducedMotion()
   const [compareSplits, setCompareSplits] = useState<Record<string, number>>({
     tableau: 50,
+    renovation: 50,
     'prises-cablage': 50,
   })
   const beforeLabel = locale === 'fr' ? 'Avant' : 'Before'
@@ -27,6 +30,12 @@ export function ServicesSection() {
       after: tableauAfterImage,
       beforeAlt: locale === 'fr' ? 'Tableau électrique avant intervention' : 'Electrical panel before intervention',
       afterAlt: locale === 'fr' ? 'Tableau électrique après intervention' : 'Electrical panel after intervention',
+    },
+    renovation: {
+      before: cuisineBeforeImage,
+      after: cuisineAfterImage,
+      beforeAlt: locale === 'fr' ? 'Cuisine avant rénovation électrique' : 'Kitchen before electrical renovation',
+      afterAlt: locale === 'fr' ? 'Cuisine après rénovation électrique' : 'Kitchen after electrical renovation',
     },
     'prises-cablage': {
       before: priseBeforeImage,
