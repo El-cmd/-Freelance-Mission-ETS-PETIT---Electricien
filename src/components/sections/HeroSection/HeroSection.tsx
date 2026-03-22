@@ -66,7 +66,10 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <p className="mt-5 max-w-2xl text-pretty text-[15px] text-black sm:text-base">
+            <p
+              className="mt-5 max-w-2xl text-pretty text-[15px] font-semibold text-black sm:text-base"
+              style={{ textShadow: '0 1px 0 rgba(255,255,255,0.55), 0 6px 18px rgba(255,255,255,0.25)' }}
+            >
               {copy.heroDescription}
             </p>
 
