@@ -47,15 +47,17 @@ export function ServicesSection() {
                     <img
                       src={tableauAfterImage}
                       alt={locale === 'fr' ? 'Tableau électrique après intervention' : 'Electrical panel after intervention'}
-                      className="h-full w-full object-cover"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
-                    <div className="absolute inset-y-0 left-0 overflow-hidden" style={{ width: `${tableauSplit}%` }}>
-                      <img
-                        src={tableauBeforeImage}
-                        alt={locale === 'fr' ? 'Tableau électrique avant intervention' : 'Electrical panel before intervention'}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
+                    <img
+                      src={tableauBeforeImage}
+                      alt={locale === 'fr' ? 'Tableau électrique avant intervention' : 'Electrical panel before intervention'}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      style={{
+                        clipPath: `inset(0 ${100 - tableauSplit}% 0 0)`,
+                        WebkitClipPath: `inset(0 ${100 - tableauSplit}% 0 0)`,
+                      }}
+                    />
 
                     <div className="pointer-events-none absolute inset-y-0" style={{ left: `calc(${tableauSplit}% - 1px)` }}>
                       <div className="h-full w-0.5 bg-white/95 shadow-[0_0_0_1px_rgba(0,0,0,0.12)]" />
