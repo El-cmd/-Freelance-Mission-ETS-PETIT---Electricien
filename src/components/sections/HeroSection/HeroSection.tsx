@@ -26,7 +26,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100svh-4rem-5.5rem-env(safe-area-inset-bottom))] overflow-hidden border-y border-border/40 pb-9 pt-8 sm:pb-11 sm:pt-9 md:flex-1 md:min-h-0 lg:pb-12 lg:pt-11"
+      className="relative min-h-[calc(100svh-4rem-5.5rem-env(safe-area-inset-bottom))] overflow-hidden border-y border-border/40 pb-9 pt-8 sm:pb-11 sm:pt-9 md:min-h-[calc(100svh-4rem)] md:pb-12 md:pt-10 lg:pb-14 lg:pt-12"
     >
       <img
         src={electricianPanelBg}
