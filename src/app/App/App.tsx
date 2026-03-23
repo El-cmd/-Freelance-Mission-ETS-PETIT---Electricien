@@ -19,7 +19,7 @@ function SiteLayout() {
   const localBusinessJson = buildLocalBusinessJsonLd(siteConfig)
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <>
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-3 focus:py-2"
@@ -27,7 +27,7 @@ function SiteLayout() {
         {copy.skipToContent}
       </a>
       <Header />
-      <main id="main-content" className="flex-1">
+      <main id="main-content">
         <Outlet />
       </main>
       <Footer />
@@ -36,7 +36,7 @@ function SiteLayout() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJson) }}
       />
-    </div>
+    </>
   )
 }
 
