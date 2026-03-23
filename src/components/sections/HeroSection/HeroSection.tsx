@@ -26,7 +26,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100svh-4rem-5.5rem-env(safe-area-inset-bottom))] overflow-hidden border-y border-border/40 pb-8 pt-8 sm:pb-10 sm:pt-8 md:flex-1 md:min-h-0 lg:pb-10 lg:pt-8"
+      className="relative min-h-[calc(100svh-4rem-5.5rem-env(safe-area-inset-bottom))] overflow-hidden border-y border-border/40 pb-9 pt-8 sm:pb-11 sm:pt-9 md:flex-1 md:min-h-0 lg:pb-12 lg:pt-11"
     >
       <img
         src={electricianPanelBg}
@@ -44,9 +44,9 @@ export function HeroSection() {
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
           animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
-          className="mx-auto max-w-5xl"
+          className="mx-auto max-w-6xl"
         >
-          <div className="text-left lg:max-w-[740px]">
+          <div className="text-left lg:max-w-[920px]">
             <Badge
               variant="secondary"
               className="mb-4 border-border bg-white/78 px-4 py-1.5 text-[12px] font-semibold tracking-[0.08em] text-[#081a42] backdrop-blur-sm sm:px-3 sm:py-1 sm:text-[11px]"
@@ -56,7 +56,7 @@ export function HeroSection() {
             </Badge>
 
             <h1
-              className="font-heading text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#081a42] sm:text-4xl lg:text-5xl"
+              className="font-heading text-balance text-4xl font-bold leading-[1.02] tracking-tight text-[#081a42] sm:text-5xl lg:text-6xl"
               style={{ textShadow: '0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(8,26,66,0.18)' }}
             >
               {copy.heroTitleStart}
@@ -66,11 +66,11 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <p className="mt-5 max-w-2xl text-pretty text-[15px] font-semibold text-black sm:text-base">
+            <p className="mt-6 max-w-3xl text-pretty text-base font-semibold text-black sm:text-lg">
               {copy.heroDescription}
             </p>
 
-            <div className="mt-6 flex max-w-xl flex-col gap-2.5 sm:flex-row">
+            <div className="mt-7 flex max-w-2xl flex-col gap-3 sm:flex-row">
               <Button asChild className="sm:flex-1">
                 <a href={siteConfig.phoneHref}>
                   <Phone className="mr-2 h-4 w-4" />
@@ -89,7 +89,7 @@ export function HeroSection() {
               </Button>
             </div>
 
-            <div className="mt-7">
+            <div className="mt-9">
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#081a42]">
                 {partnersLabel}
               </p>
@@ -98,7 +98,7 @@ export function HeroSection() {
                   {[...partnerLogos, ...partnerLogos].map((partner, index) => (
                     <div
                       key={`${partner.name}-${index}`}
-                      className="flex h-10 w-[138px] items-center justify-center"
+                      className="flex h-12 w-[160px] items-center justify-center"
                     >
                       <img
                         src={partner.image}
