@@ -23,7 +23,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#081a42]/95 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="flex h-16 items-center px-3 sm:px-5 lg:px-7">
         <Link to="/" className="flex items-center" aria-label={copy.homeLinkAria}>
           <img
             src={logo}
@@ -37,7 +37,7 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label={copy.mainNavigationAria}>
+        <nav className="hidden flex-1 items-center justify-center gap-6 md:flex" aria-label={copy.mainNavigationAria}>
           {navItems.map((item) => (
             <NavLink
               key={item.path}
@@ -55,7 +55,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-2 md:ml-4 md:flex md:shrink-0">
           <Button
             size="sm"
             variant={locale === 'fr' ? 'default' : 'outline'}
@@ -83,7 +83,7 @@ export function Header() {
         </div>
 
         <Sheet>
-          <SheetTrigger asChild className="md:hidden">
+          <SheetTrigger asChild className="ml-auto md:hidden">
             <Button
               variant="outline"
               size="icon"
