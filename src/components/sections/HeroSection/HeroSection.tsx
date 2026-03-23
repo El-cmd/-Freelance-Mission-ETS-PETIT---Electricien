@@ -39,24 +39,24 @@ export function HeroSection() {
         fetchPriority="high"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[72%_center] md:object-right"
       />
-      <div className="container relative">
+      <div className="relative w-full px-3 sm:px-5 lg:px-8">
         <motion.div
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
           animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
-          className="mx-auto max-w-6xl"
+          className="max-w-none"
         >
-          <div className="text-left lg:max-w-[920px]">
+          <div className="text-left lg:max-w-[1180px]">
             <Badge
               variant="secondary"
-              className="mb-4 border-border bg-white/78 px-4 py-1.5 text-[12px] font-semibold tracking-[0.08em] text-[#081a42] backdrop-blur-sm sm:px-3 sm:py-1 sm:text-[11px]"
+              className="mb-5 border-border bg-white/78 px-4 py-1.5 text-[13px] font-semibold tracking-[0.08em] text-[#081a42] backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-[12px]"
             >
-              <Zap className="mr-2 h-4 w-4 text-primary sm:mr-1.5 sm:h-3.5 sm:w-3.5" />
+              <Zap className="mr-2 h-4 w-4 text-primary sm:h-4 sm:w-4" />
               {copy.heroBadge}
             </Badge>
 
             <h1
-              className="font-heading text-balance text-4xl font-bold leading-[1.02] tracking-tight text-[#081a42] sm:text-5xl lg:text-6xl"
+              className="font-heading text-balance text-5xl font-bold leading-[0.98] tracking-tight text-[#081a42] sm:text-6xl lg:text-[4.75rem]"
               style={{ textShadow: '0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(8,26,66,0.18)' }}
             >
               {copy.heroTitleStart}
@@ -66,11 +66,11 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <p className="mt-6 max-w-3xl text-pretty text-base font-semibold text-black sm:text-lg">
+            <p className="mt-7 max-w-4xl text-pretty text-lg font-semibold text-black sm:text-xl">
               {copy.heroDescription}
             </p>
 
-            <div className="mt-7 flex max-w-2xl flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex max-w-3xl flex-col gap-3 sm:flex-row">
               <Button asChild className="sm:flex-1">
                 <a href={siteConfig.phoneHref}>
                   <Phone className="mr-2 h-4 w-4" />
@@ -89,7 +89,7 @@ export function HeroSection() {
               </Button>
             </div>
 
-            <div className="mt-9">
+            <div className="mt-10">
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#081a42]">
                 {partnersLabel}
               </p>
