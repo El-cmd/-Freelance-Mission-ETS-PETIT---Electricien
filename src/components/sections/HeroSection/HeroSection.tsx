@@ -89,16 +89,16 @@ export function HeroSection() {
               </Button>
             </div>
 
-            <div className="mt-10">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#081a42]">
+            <div className="mt-14 lg:mt-16">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.08em] text-[#081a42]">
                 {partnersLabel}
               </p>
-              <div className="relative overflow-hidden rounded-2xl bg-transparent py-3">
-                <div className="partner-marquee-track flex w-max items-center gap-10 px-5">
+              <div className="relative overflow-hidden rounded-3xl bg-white/25 py-4 backdrop-blur-[1px] sm:py-5">
+                <div className="partner-marquee-track flex w-max items-center gap-14 px-8">
                   {[...partnerLogos, ...partnerLogos].map((partner, index) => (
                     <div
                       key={`${partner.name}-${index}`}
-                      className="flex h-12 w-[160px] items-center justify-center"
+                      className="flex h-16 w-[210px] items-center justify-center"
                     >
                       <img
                         src={partner.image}
@@ -107,7 +107,7 @@ export function HeroSection() {
                         height={partner.height}
                         loading="lazy"
                         decoding="async"
-                        className="max-h-8 w-auto object-contain grayscale-[0.05]"
+                        className="max-h-11 w-auto object-contain grayscale-[0.05]"
                       />
                     </div>
                   ))}
