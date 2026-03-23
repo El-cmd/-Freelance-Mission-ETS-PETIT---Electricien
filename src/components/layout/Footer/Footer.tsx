@@ -1,7 +1,9 @@
 import { Clock3, Mail, MapPin, Phone, ShieldCheck, Zap } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import { getSiteConfig, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
+import logo from '@/assets/logo.webp'
 
 export function Footer() {
   const { locale } = useLocale()
@@ -34,14 +36,35 @@ export function Footer() {
   const zonesTitle = locale === 'fr' ? "Zones d'intervention" : 'Service areas'
   const openingHours = locale === 'fr' ? 'Lun-Ven 08h-18h' : 'Mon-Fri 08:00-18:00'
   const insuranceLabel = locale === 'fr' ? 'Assurance garantie décennale' : '10-year liability insurance'
+  const legalTitle = locale === 'fr' ? 'Informations légales' : 'Legal information'
+  const legalLinks =
+    locale === 'fr'
+      ? [
+          { to: '/mentions-legales', label: 'Mentions légales' },
+          { to: '/politique-confidentialite', label: 'Politique de confidentialité (RGPD)' },
+          { to: '/conditions-utilisation', label: "Conditions d'utilisation" },
+        ]
+      : [
+          { to: '/mentions-legales', label: 'Legal notice' },
+          { to: '/politique-confidentialite', label: 'Privacy policy (GDPR)' },
+          { to: '/conditions-utilisation', label: 'Terms of use' },
+        ]
+  const rightsLabel = locale === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'
 
   return (
     <footer className="border-t border-white/12 bg-[#081a42] pt-10 pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:py-10">
       <div className="w-full px-3 sm:px-5 lg:px-8">
-        <div className="grid gap-8 border-b border-white/12 pb-8 md:grid-cols-3">
+        <div className="mb-6 flex items-center gap-3">
+          <img src={logo} alt={`Logo ${siteConfig.name}`} className="h-10 w-auto object-contain" loading="lazy" />
+          <p className="text-xs font-medium text-white/75">
+            {locale === 'fr' ? 'Électricité générale · Installation · Rénovation' : 'General electrical work · Installation · Renovation'}
+          </p>
+        </div>
+
+        <div className="grid gap-8 border-b border-white/12 pb-8 md:grid-cols-4">
           <div>
-            <h3 className="mb-3 font-heading text-2xl font-semibold text-white">{contactTitle}</h3>
-            <ul className="space-y-2.5 text-sm text-white/85">
+            <h3 className="mb-3 font-heading text-lg font-semibold text-white">{contactTitle}</h3>
+            <ul className="space-y-2.5 text-xs text-white/85">
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />
                 <a href={siteConfig.phoneHref} className="hover:text-primary">
@@ -70,8 +93,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 font-heading text-2xl font-semibold text-white">{servicesTitle}</h3>
-            <ul className="space-y-2 text-sm text-white/85">
+            <h3 className="mb-3 font-heading text-lg font-semibold text-white">{servicesTitle}</h3>
+            <ul className="space-y-2 text-xs text-white/85">
               {services.map((service) => (
                 <li key={service} className="flex items-center gap-2.5">
                   <Zap className="h-4 w-4 shrink-0 text-primary" />
@@ -82,8 +105,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 font-heading text-2xl font-semibold text-white">{zonesTitle}</h3>
-            <ul className="space-y-2 text-sm text-white/85">
+            <h3 className="mb-3 font-heading text-lg font-semibold text-white">{zonesTitle}</h3>
+            <ul className="space-y-2 text-xs text-white/85">
               {areas.map((area) => (
                 <li key={area} className="flex items-center gap-2.5">
                   <MapPin className="h-4 w-4 shrink-0 text-primary" />
@@ -92,11 +115,24 @@ export function Footer() {
               ))}
             </ul>
           </div>
+
+          <div>
+            <h3 className="mb-3 font-heading text-lg font-semibold text-white">{legalTitle}</h3>
+            <ul className="space-y-2 text-xs text-white/85">
+              {legalLinks.map((item) => (
+                <li key={item.to}>
+                  <Link to={item.to} className="hover:text-primary">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-3 pt-5 text-sm text-white/80 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 pt-5 text-xs text-white/80 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name} · {copy.footerSubtitle}
+            © {new Date().getFullYear()} {siteConfig.name} · {copy.footerSubtitle} · {rightsLabel}
           </p>
           <div className="flex items-center gap-4">
             <a href={siteConfig.phoneHref} className="text-white/90 hover:text-primary">

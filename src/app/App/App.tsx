@@ -9,8 +9,11 @@ import { buildLocalBusinessJsonLd } from '@/lib/seo'
 import { AboutPage } from '@/pages/AboutPage'
 import { ContactPage } from '@/pages/ContactPage'
 import { HomePage } from '@/pages/HomePage'
+import { LegalNoticePage } from '@/pages/LegalNoticePage'
+import { PrivacyPolicyPage } from '@/pages/PrivacyPolicyPage'
 import { ProjectsPage } from '@/pages/ProjectsPage'
 import { ServicesPage } from '@/pages/ServicesPage'
+import { TermsPage } from '@/pages/TermsPage'
 
 function SiteLayout() {
   const { locale } = useLocale()
@@ -49,6 +52,9 @@ function App() {
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/mentions-legales" element={<LegalNoticePage />} />
+        <Route path="/politique-confidentialite" element={<PrivacyPolicyPage />} />
+        <Route path="/conditions-utilisation" element={<TermsPage />} />
       </Route>
     </Routes>
   )
