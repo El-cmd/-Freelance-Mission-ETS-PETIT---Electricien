@@ -94,11 +94,11 @@ export function HeroSection() {
                 {partnersLabel}
               </p>
               <div className="relative overflow-hidden rounded-2xl bg-transparent py-3">
-                <div className="partner-marquee-track flex w-max items-center gap-10 px-5">
-                  {[...partnerLogos, ...partnerLogos].map((partner, index) => (
+                <div className="flex items-center justify-between gap-5 px-1 sm:gap-8">
+                  {partnerLogos.map((partner) => (
                     <div
-                      key={`${partner.name}-${index}`}
-                      className="flex h-10 w-[138px] items-center justify-center"
+                      key={partner.name}
+                      className="flex h-10 w-[96px] items-center justify-center sm:w-[128px]"
                     >
                       <img
                         src={partner.image}
