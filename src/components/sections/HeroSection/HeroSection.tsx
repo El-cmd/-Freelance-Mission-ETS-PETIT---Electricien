@@ -56,7 +56,7 @@ export function HeroSection() {
             </Badge>
 
             <h1
-              className="font-heading text-balance text-5xl font-bold leading-[0.98] tracking-tight text-[#081a42] sm:text-6xl lg:text-[4.75rem]"
+              className="font-heading text-balance text-[2.75rem] font-bold leading-[1.02] tracking-tight text-[#081a42] sm:text-6xl lg:text-[4.75rem]"
               style={{ textShadow: '0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(8,26,66,0.18)' }}
             >
               {copy.heroTitleStart}
@@ -66,9 +66,11 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <p className="mt-7 max-w-4xl text-pretty text-lg font-semibold text-black sm:text-xl">
-              {copy.heroDescription}
-            </p>
+            <div className="mt-5 max-w-4xl rounded-2xl border border-[#0f2b66]/70 bg-[#0b2458]/92 p-4 shadow-[0_10px_24px_rgba(8,26,66,0.22)] sm:mt-7 sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none">
+              <p className="text-pretty text-base font-semibold leading-relaxed text-primary sm:text-xl sm:text-black">
+                {copy.heroDescription}
+              </p>
+            </div>
 
             <div className="mt-8 flex max-w-3xl flex-col gap-3 sm:flex-row">
               <Button asChild className="sm:flex-1">
