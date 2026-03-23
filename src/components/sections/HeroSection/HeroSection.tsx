@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, Clock3, MapPin, Phone, ShieldCheck, Zap } from 'lucide-react'
+import { ArrowRight, Phone, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import electricianPanelBg from '@/assets/electrician-panel-bg.webp'
@@ -22,36 +22,6 @@ export function HeroSection() {
     { name: 'Schneider Electric', image: partnerSchneider, width: 250, height: 76 },
     { name: 'Legrand', image: partnerLegrand, width: 1200, height: 300 },
   ]
-  const infoCards =
-    locale === 'fr'
-      ? [
-          {
-            title: 'Hem - Métropole lilloise',
-            icon: MapPin,
-          },
-          {
-            title: 'Lun-Ven 08h-18h',
-            icon: Clock3,
-          },
-          {
-            title: 'Assurance garantie décennale',
-            icon: ShieldCheck,
-          },
-        ]
-      : [
-          {
-            title: 'Hem - Lille metropolitan area',
-            icon: MapPin,
-          },
-          {
-            title: 'Mon-Fri 08:00-18:00',
-            icon: Clock3,
-          },
-          {
-            title: '10-year liability insurance',
-            icon: ShieldCheck,
-          },
-        ]
 
   return (
     <section
@@ -145,19 +115,6 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {infoCards.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-2xl border border-white/35 bg-white/35 px-4 py-3 backdrop-blur-[1px]"
-                >
-                  <p className="flex items-center gap-2.5 text-sm font-semibold text-[#081a42] lg:text-base">
-                    <item.icon className="h-4 w-4 shrink-0 text-primary" />
-                    {item.title}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </motion.div>
       </div>
