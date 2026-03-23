@@ -93,7 +93,7 @@ export function HeroSection() {
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.08em] text-[#081a42]">
                 {partnersLabel}
               </p>
-              <div className="relative overflow-hidden rounded-3xl bg-white/25 py-4 backdrop-blur-[1px] sm:py-5">
+              <div className="relative overflow-hidden rounded-3xl bg-transparent py-4 sm:py-5">
                 <div className="partner-marquee-track flex w-max items-center gap-14 px-8">
                   {[...partnerLogos, ...partnerLogos].map((partner, index) => (
                     <div
