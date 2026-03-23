@@ -1,175 +1,413 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { Check, Clock3, RefreshCcw } from 'lucide-react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { getSiteConfig, getUiCopy } from '@/data/siteContent'
+import { getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
+import { cn } from '@/lib/utils'
 import { Section } from '@/components/layout/Section'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
+
+type PricingOffer = {
+  id: string
+  tier: string
+  title: string
+  price: string
+  summary: string
+  details: string[]
+  delivery: string
+  revisions: string
+}
+
+type PricingCategory = {
+  id: string
+  title: string
+  subtitle?: string
+  footerNote?: string
+  offers: PricingOffer[]
+}
+
+type PricingCategoryCardProps = {
+  category: PricingCategory
+  continueLabel: string
+  locale: 'fr' | 'en'
+  shouldReduceMotion: boolean
+}
+
+function PricingCategoryCard({
+  category,
+  continueLabel,
+  locale,
+  shouldReduceMotion,
+}: PricingCategoryCardProps) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const activeOffer = category.offers[activeIndex]
+  const hasTabs = category.offers.length > 1
+
+  return (
+    <motion.div
+      initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
+      whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.24 }}
+    >
+      <Card className="h-full overflow-hidden rounded-xl border-border/80 shadow-none">
+        <div className="border-b border-border bg-muted/20 px-5 py-4">
+          <h3 className="font-heading text-xl font-semibold text-foreground">{category.title}</h3>
+          {category.subtitle ? (
+            <p className="mt-1 text-sm text-muted-foreground">{category.subtitle}</p>
+          ) : null}
+        </div>
+
+        {hasTabs ? (
+          <div
+            className={cn(
+              'grid border-b border-border bg-muted/30',
+              category.offers.length === 2 ? 'grid-cols-2' : 'grid-cols-3',
+            )}
+          >
+            {category.offers.map((offer, index) => {
+              const isActive = index === activeIndex
+              return (
+                <button
+                  key={offer.id}
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    'border-r border-border px-4 py-3 text-center text-base font-semibold transition-colors last:border-r-0',
+                    isActive
+                      ? 'bg-card text-foreground shadow-[inset_0_-2px_0_0_hsl(var(--foreground))]'
+                      : 'text-muted-foreground hover:bg-muted/50',
+                  )}
+                  aria-label={`${locale === 'fr' ? 'Offre' : 'Offer'} ${offer.tier}`}
+                >
+                  {offer.tier}
+                </button>
+              )
+            })}
+          </div>
+        ) : null}
+
+        <CardContent className="p-5">
+          {!hasTabs ? (
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+              {activeOffer.tier}
+            </p>
+          ) : null}
+
+          <h4 className="mt-1 font-heading text-xl font-semibold uppercase tracking-tight text-foreground">
+            {activeOffer.title}
+          </h4>
+          <p className="mt-1 font-heading text-3xl font-semibold text-foreground">{activeOffer.price}</p>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{activeOffer.summary}</p>
+
+          <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold text-foreground/80">
+            <span className="inline-flex items-center gap-1.5">
+              <Clock3 className="h-4 w-4" />
+              {activeOffer.delivery}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <RefreshCcw className="h-4 w-4" />
+              {activeOffer.revisions}
+            </span>
+          </div>
+
+          <ul className="mt-4 space-y-2.5">
+            {activeOffer.details.map((detail) => (
+              <li
+                key={`${activeOffer.id}-${detail}`}
+                className="flex items-start gap-2.5 text-sm text-muted-foreground"
+              >
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-foreground" />
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
+
+          {category.footerNote ? (
+            <p className="mt-4 text-xs font-medium uppercase tracking-[0.06em] text-foreground/70">
+              {category.footerNote}
+            </p>
+          ) : null}
+
+          <Button
+            asChild
+            className="mt-6 h-11 w-full rounded-lg bg-foreground text-background shadow-none hover:bg-foreground/90"
+          >
+            <Link to="/contact">{continueLabel}</Link>
+          </Button>
+        </CardContent>
+      </Card>
+    </motion.div>
+  )
+}
 
 export function ProjectsSection() {
   const { locale } = useLocale()
   const copy = getUiCopy(locale)
-  const siteConfig = getSiteConfig(locale)
   const shouldReduceMotion = useReducedMotion()
 
-  const troubleshootingCard =
-    locale === 'fr'
-      ? {
-          title: 'Dépannage - recherche de panne',
-          price: '80 € + 40 € déplacement',
-          details: [
-            'Diagnostic de panne sur place',
-            'Mise en sécurité immédiate si nécessaire',
-            'Explication claire avant intervention complémentaire',
-          ],
-          note: 'Hem et métropole lilloise',
-        }
-      : {
-          title: 'Troubleshooting - fault diagnosis',
-          price: '€80 + €40 travel fee',
-          details: [
-            'On-site fault diagnosis',
-            'Immediate safety actions if needed',
-            'Clear explanation before additional work',
-          ],
-          note: 'Hem and Lille metropolitan area',
-        }
-
-  const chargingPacks =
+  const categories: PricingCategory[] =
     locale === 'fr'
       ? [
           {
-            id: 'pack-eco',
-            tier: 'Basique',
-            title: "Pack Éco : La Prise Renforcée (Green'up)",
-            price: 'À partir de 450 € TTC',
-            details: [
-              'Idéal pour les petits rouleurs ou hybrides rechargeables',
-              "Inclus : prise Legrand Green'up, disjoncteur différentiel dédié, pose et mise en service",
-              'Puissance : 3,7 kW (recharge lente mais sécurisée)',
+            id: 'depannage',
+            title: 'Dépannage / Recherche de panne',
+            subtitle: 'Intervention ponctuelle',
+            offers: [
+              {
+                id: 'depannage-unique',
+                tier: 'Offre unique',
+                title: 'Formule unique',
+                price: '80 € + 40 € déplacement',
+                summary:
+                  'Diagnostic de panne sur place avec mise en sécurité immédiate si nécessaire.',
+                delivery: 'Intervention rapide',
+                revisions: 'Devis avant suite',
+                details: [
+                  'Recherche de panne électrique',
+                  'Explication claire avant travaux complémentaires',
+                  'Intervention sur Hem et métropole lilloise',
+                ],
+              },
             ],
           },
           {
-            id: 'pack-confort',
-            tier: 'Standard',
-            title: 'Pack Confort : La Borne Wallbox (7,4 kW)',
-            price: 'À partir de 1 290 € TTC',
-            details: [
-              'Le standard pour les véhicules 100% électriques',
-              'Inclus : borne Wallbox, Hager ou Schneider, protections au tableau, pose par technicien certifié IRVE',
-              "Avantage : recharge 3 fois plus rapide qu'une prise standard",
+            id: 'borne',
+            title: 'Installation borne de recharge',
+            subtitle: 'Hauts-de-France',
+            offers: [
+              {
+                id: 'pack-eco',
+                tier: 'Basique',
+                title: 'Pack Éco',
+                price: 'À partir de 450 € TTC',
+                summary: "Prise renforcée Green'up pour petits rouleurs et hybrides rechargeables.",
+                delivery: 'Pose planifiée',
+                revisions: 'Réglages inclus',
+                details: [
+                  "Prise Legrand Green'up",
+                  'Disjoncteur différentiel dédié',
+                  'Pose et mise en service',
+                  'Puissance 3,7 kW (lente et sécurisée)',
+                ],
+              },
+              {
+                id: 'pack-confort',
+                tier: 'Standard',
+                title: 'Pack Confort',
+                price: 'À partir de 1 290 € TTC',
+                summary: 'Borne Wallbox 7,4 kW, la solution standard pour véhicule 100% électrique.',
+                delivery: 'Pose certifiée IRVE',
+                revisions: 'Paramétrage inclus',
+                details: [
+                  'Borne Wallbox, Hager ou Schneider',
+                  'Protections électriques au tableau',
+                  'Pose par technicien certifié IRVE',
+                  "Recharge environ 3x plus rapide qu'une prise standard",
+                ],
+              },
+              {
+                id: 'pack-performance',
+                tier: 'Premium',
+                title: 'Pack Performance',
+                price: 'À partir de 1 650 € TTC',
+                summary:
+                  'Borne triphasée 11 kW / 22 kW pour entreprises ou besoins de recharge rapide.',
+                delivery: 'Installation renforcée',
+                revisions: 'Équilibrage inclus',
+                details: [
+                  'Borne haute puissance',
+                  'Câblage spécifique',
+                  "Paramétrage de l'équilibrage de charge",
+                  'Configuration adaptée au site',
+                ],
+              },
             ],
           },
           {
-            id: 'pack-performance',
-            tier: 'Premium',
-            title: 'Pack Performance : Borne Triphasée (11 kW / 22 kW)',
-            price: 'À partir de 1 650 € TTC',
-            details: [
-              'Pour les entreprises ou les besoins de recharge ultra-rapide à domicile',
-              'Inclus : borne haute puissance, câblage spécifique',
-              "Paramétrage de l'équilibrage de charge inclus",
+            id: 'tableau',
+            title: 'Remplacement tableau électrique',
+            subtitle: 'Nord / Hauts-de-France',
+            footerNote: 'Norme NF C 15-100 sur chaque offre',
+            offers: [
+              {
+                id: 'panel-basic',
+                tier: 'Basique',
+                title: 'Studio / T1',
+                price: '700 € - 1 100 €',
+                summary: '1 à 2 rangées (6-12 circuits).',
+                delivery: 'Pose planifiée',
+                revisions: 'Validation avant travaux',
+                details: [
+                  "Dépose de l'ancien matériel",
+                  'Nouveau coffret Schneider, Legrand ou Hager',
+                  'Mise en service et contrôles',
+                  'Conformité NF C 15-100',
+                ],
+              },
+              {
+                id: 'panel-standard',
+                tier: 'Standard',
+                title: 'Appartement / Maison T2-T3',
+                price: '1 100 € - 1 600 €',
+                summary: '2 à 3 rangées (12-24 circuits).',
+                delivery: 'Pose planifiée',
+                revisions: 'Validation avant travaux',
+                details: [
+                  "Dépose de l'ancien matériel",
+                  'Nouveau coffret Schneider, Legrand ou Hager',
+                  'Mise en service et contrôles',
+                  'Conformité NF C 15-100',
+                ],
+              },
+              {
+                id: 'panel-premium',
+                tier: 'Premium',
+                title: 'Maison familiale (T4+)',
+                price: '1 600 € - 2 300 €+',
+                summary: '3 à 4 rangées (24-36+ circuits).',
+                delivery: 'Pose planifiée',
+                revisions: 'Validation avant travaux',
+                details: [
+                  "Dépose de l'ancien matériel",
+                  'Nouveau coffret Schneider, Legrand ou Hager',
+                  'Mise en service et contrôles',
+                  'Conformité NF C 15-100',
+                ],
+              },
             ],
           },
         ]
       : [
           {
-            id: 'pack-eco',
-            tier: 'Basic',
-            title: "Eco Pack: Reinforced socket (Green'up)",
-            price: 'From €450 VAT included',
-            details: [
-              'Best for low-mileage and plug-in hybrid usage',
-              "Legrand Green'up socket, dedicated RCD/MCB, installation and commissioning",
-              '3.7 kW power (slow and safe charging)',
+            id: 'troubleshooting',
+            title: 'Troubleshooting / Fault diagnosis',
+            subtitle: 'One-time intervention',
+            offers: [
+              {
+                id: 'troubleshooting-unique',
+                tier: 'Single offer',
+                title: 'Single formula',
+                price: '€80 + €40 travel fee',
+                summary: 'On-site fault diagnosis with immediate safety actions when needed.',
+                delivery: 'Fast intervention',
+                revisions: 'Quote before extra work',
+                details: [
+                  'Electrical fault finding',
+                  'Clear explanation before additional work',
+                  'Intervention in Hem and Lille metropolitan area',
+                ],
+              },
             ],
           },
           {
-            id: 'pack-confort',
-            tier: 'Standard',
-            title: 'Comfort Pack: Wallbox charger (7.4 kW)',
-            price: 'From €1,290 VAT included',
-            details: [
-              'Standard setup for full electric vehicles',
-              'Wallbox, Hager or Schneider charger + panel protections + IRVE-certified installation',
-              'Around 3x faster charging than a standard outlet',
+            id: 'charging',
+            title: 'EV charging station installation',
+            subtitle: 'Hauts-de-France',
+            offers: [
+              {
+                id: 'eco-pack',
+                tier: 'Basic',
+                title: 'Eco pack',
+                price: 'From €450 VAT incl.',
+                summary: "Green'up reinforced socket for low-mileage drivers and plug-in hybrids.",
+                delivery: 'Scheduled install',
+                revisions: 'Setup included',
+                details: [
+                  "Legrand Green'up socket",
+                  'Dedicated differential breaker',
+                  'Installation and commissioning',
+                  '3.7 kW power (slow and safe)',
+                ],
+              },
+              {
+                id: 'comfort-pack',
+                tier: 'Standard',
+                title: 'Comfort pack',
+                price: 'From €1,290 VAT incl.',
+                summary: '7.4 kW Wallbox, standard setup for full electric vehicles.',
+                delivery: 'IRVE-certified install',
+                revisions: 'Setup included',
+                details: [
+                  'Wallbox, Hager or Schneider charger',
+                  'Panel protections included',
+                  'Installed by IRVE-certified technician',
+                  'Around 3x faster than a standard outlet',
+                ],
+              },
+              {
+                id: 'performance-pack',
+                tier: 'Premium',
+                title: 'Performance pack',
+                price: 'From €1,650 VAT incl.',
+                summary: 'Three-phase 11 kW / 22 kW charger for fast charging needs.',
+                delivery: 'Reinforced install',
+                revisions: 'Load balancing included',
+                details: [
+                  'High power charging station',
+                  'Dedicated cabling',
+                  'Load balancing setup',
+                  'Site-adapted configuration',
+                ],
+              },
             ],
           },
           {
-            id: 'pack-performance',
-            tier: 'Premium',
-            title: 'Performance Pack: Three-phase charger (11 kW / 22 kW)',
-            price: 'From €1,650 VAT included',
-            details: [
-              'For businesses or high-speed home charging needs',
-              'High-power charger with dedicated cabling',
-              'Load balancing setup included',
+            id: 'panel',
+            title: 'Electrical panel replacement',
+            subtitle: 'North / Hauts-de-France',
+            footerNote: 'NF C 15-100 compliance on every offer',
+            offers: [
+              {
+                id: 'panel-basic',
+                tier: 'Basic',
+                title: 'Studio / T1',
+                price: '€700 - €1,100',
+                summary: '1 to 2 rows (6-12 circuits).',
+                delivery: 'Scheduled install',
+                revisions: 'Validation before work',
+                details: [
+                  'Removal of existing hardware',
+                  'New Schneider, Legrand or Hager panel',
+                  'Commissioning and checks',
+                  'NF C 15-100 compliance',
+                ],
+              },
+              {
+                id: 'panel-standard',
+                tier: 'Standard',
+                title: 'Apartment / House T2-T3',
+                price: '€1,100 - €1,600',
+                summary: '2 to 3 rows (12-24 circuits).',
+                delivery: 'Scheduled install',
+                revisions: 'Validation before work',
+                details: [
+                  'Removal of existing hardware',
+                  'New Schneider, Legrand or Hager panel',
+                  'Commissioning and checks',
+                  'NF C 15-100 compliance',
+                ],
+              },
+              {
+                id: 'panel-premium',
+                tier: 'Premium',
+                title: 'Family house (T4+)',
+                price: '€1,600 - €2,300+',
+                summary: '3 to 4 rows (24-36+ circuits).',
+                delivery: 'Scheduled install',
+                revisions: 'Validation before work',
+                details: [
+                  'Removal of existing hardware',
+                  'New Schneider, Legrand or Hager panel',
+                  'Commissioning and checks',
+                  'NF C 15-100 compliance',
+                ],
+              },
             ],
           },
-        ]
-
-  const panelCards =
-    locale === 'fr'
-      ? [
-          {
-            id: 'panel-basic',
-            tier: 'Basique',
-            housing: 'Studio / T1',
-            config: '1 à 2 rangées (6-12 circuits)',
-            price: '700 € - 1 100 €',
-          },
-          {
-            id: 'panel-standard',
-            tier: 'Standard',
-            housing: 'Appartement / Maison T2-T3',
-            config: '2 à 3 rangées (12-24 circuits)',
-            price: '1 100 € - 1 600 €',
-          },
-          {
-            id: 'panel-premium',
-            tier: 'Premium',
-            housing: 'Maison familiale (T4+)',
-            config: '3 à 4 rangées (24-36+ circuits)',
-            price: '1 600 € - 2 300 €+',
-          },
-        ]
-      : [
-          {
-            id: 'panel-basic',
-            tier: 'Basic',
-            housing: 'Studio / T1',
-            config: '1 to 2 rows (6-12 circuits)',
-            price: '€700 - €1,100',
-          },
-          {
-            id: 'panel-standard',
-            tier: 'Standard',
-            housing: 'Apartment / House T2-T3',
-            config: '2 to 3 rows (12-24 circuits)',
-            price: '€1,100 - €1,600',
-          },
-          {
-            id: 'panel-premium',
-            tier: 'Premium',
-            housing: 'Family house (T4+)',
-            config: '3 to 4 rows (24-36+ circuits)',
-            price: '€1,600 - €2,300+',
-          },
-        ]
-
-  const panelInclusions =
-    locale === 'fr'
-      ? [
-          "Dépose de l'ancien tableau",
-          'Coffret Schneider, Legrand ou Hager',
-          'Mise en service norme NF C 15-100',
-        ]
-      : [
-          'Removal of existing panel',
-          'Schneider, Legrand or Hager equipment',
-          'Commissioning according to NF C 15-100',
         ]
 
   const continueLabel = locale === 'fr' ? 'Continuer' : 'Continue'
@@ -180,149 +418,16 @@ export function ProjectsSection() {
       title={copy.sectionProjectsTitle}
       subtitle={copy.sectionProjectsSubtitle}
     >
-      <motion.div
-        initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
-        whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.24 }}
-      >
-        <Card className="surface-soft border-border/70">
-          <CardHeader className="p-5 pb-3 sm:p-6 sm:pb-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-              {locale === 'fr' ? 'Dépannage' : 'Troubleshooting'}
-            </p>
-            <CardTitle className="text-xl">{troubleshootingCard.title}</CardTitle>
-            <p className="font-heading text-2xl font-semibold text-foreground">{troubleshootingCard.price}</p>
-          </CardHeader>
-          <CardContent className="p-5 pt-0 sm:p-6 sm:pt-0">
-            <ul className="space-y-2.5">
-              {troubleshootingCard.details.map((detail) => (
-                <li key={detail} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  <span>{detail}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-xs font-medium uppercase tracking-[0.06em] text-foreground/70">
-              {troubleshootingCard.note}
-            </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <Button asChild size="sm" className="h-10 px-5">
-                <a href={siteConfig.phoneHref}>{copy.callNow}</a>
-              </Button>
-              <Button asChild variant="outline" size="sm" className="h-10 px-5">
-                <Link to="/contact">{copy.requestQuote}</Link>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </motion.div>
-
-      <div className="mt-10">
-        <h3 className="font-heading text-2xl font-semibold text-foreground">
-          {locale === 'fr'
-            ? 'Nos forfaits installation borne de recharge (Hauts-de-France)'
-            : 'EV charging station installation packages (Hauts-de-France)'}
-        </h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {locale === 'fr'
-            ? '3 niveaux d’offre pour choisir la puissance et le confort adaptés à votre usage.'
-            : '3 offer levels to match charging power and comfort to your needs.'}
-        </p>
-
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
-          {chargingPacks.map((pack, index) => (
-            <motion.div
-              key={pack.id}
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
-              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.24, delay: index * 0.04 }}
-            >
-              <Card className="h-full overflow-hidden rounded-xl border-border/80 shadow-none">
-                <div className="border-b border-border bg-muted/35 px-4 py-3 text-center">
-                  <p className="font-heading text-lg font-semibold text-foreground">{pack.tier}</p>
-                </div>
-                <CardHeader className="p-5 pb-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-                    {locale === 'fr' ? 'Forfait' : 'Package'}
-                  </p>
-                  <CardTitle className="text-xl">{pack.title}</CardTitle>
-                  <p className="font-heading text-3xl font-semibold text-foreground">{pack.price}</p>
-                </CardHeader>
-                <CardContent className="flex h-[calc(100%-152px)] flex-col p-5 pt-0">
-                  <ul className="space-y-2.5">
-                    {pack.details.map((detail) => (
-                      <li key={detail} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                        <span>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    asChild
-                    className="mt-6 h-11 w-full rounded-lg bg-foreground text-background shadow-none hover:bg-foreground/90"
-                  >
-                    <Link to="/contact">{continueLabel}</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-10">
-        <h3 className="font-heading text-2xl font-semibold text-foreground">
-          {locale === 'fr'
-            ? 'Nos tarifs de remplacement de tableau électrique (Nord / Hauts-de-France)'
-            : 'Electrical panel replacement pricing (North / Hauts-de-France)'}
-        </h3>
-        <p className="mt-3 max-w-4xl text-sm text-muted-foreground sm:text-base">
-          {locale === 'fr'
-            ? "Le tableau électrique est le cœur de votre sécurité. Nos tarifs incluent la dépose de l'ancien matériel, la fourniture du nouveau coffret et la mise en service selon la norme "
-            : 'Your electrical panel is the core of your safety. Pricing includes removal of existing hardware, supply of the new panel and commissioning according to standard '}
-          <span className="font-semibold text-foreground">NF C 15-100</span>.
-        </p>
-
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
-          {panelCards.map((panel, index) => (
-            <motion.div
-              key={panel.id}
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
-              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.24, delay: index * 0.04 }}
-            >
-              <Card className="h-full overflow-hidden rounded-xl border-border/80 shadow-none">
-                <div className="border-b border-border bg-muted/35 px-4 py-3 text-center">
-                  <p className="font-heading text-lg font-semibold text-foreground">{panel.tier}</p>
-                </div>
-                <CardHeader className="p-5 pb-3">
-                  <CardTitle className="text-xl">{panel.housing}</CardTitle>
-                  <p className="font-heading text-3xl font-semibold text-foreground">{panel.price}</p>
-                </CardHeader>
-                <CardContent className="flex h-[calc(100%-146px)] flex-col p-5 pt-0">
-                  <p className="mb-3 text-sm font-medium text-foreground">{panel.config}</p>
-                  <ul className="space-y-2.5">
-                    {panelInclusions.map((detail) => (
-                      <li key={`${panel.id}-${detail}`} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                        <span>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    asChild
-                    className="mt-6 h-11 w-full rounded-lg bg-foreground text-background shadow-none hover:bg-foreground/90"
-                  >
-                    <Link to="/contact">{continueLabel}</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+      <div className="grid gap-5 lg:grid-cols-3">
+        {categories.map((category) => (
+          <PricingCategoryCard
+            key={category.id}
+            category={category}
+            continueLabel={continueLabel}
+            locale={locale}
+            shouldReduceMotion={Boolean(shouldReduceMotion)}
+          />
+        ))}
       </div>
     </Section>
   )
