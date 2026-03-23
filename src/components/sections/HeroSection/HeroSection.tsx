@@ -66,8 +66,8 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <div className="mt-5 max-w-4xl rounded-2xl border border-[#0f2b66]/70 bg-[#0b2458]/92 p-4 shadow-[0_10px_24px_rgba(8,26,66,0.22)] sm:mt-7 sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none">
-              <p className="text-pretty text-base font-semibold leading-relaxed text-primary sm:text-xl sm:text-black">
+            <div className="mt-5 max-w-4xl rounded-2xl border border-[#0f2b66]/70 bg-[#0b2458]/92 p-4 shadow-[0_10px_24px_rgba(8,26,66,0.22)] sm:mt-7 sm:p-5">
+              <p className="text-pretty text-base font-semibold leading-relaxed text-primary sm:text-lg lg:text-xl">
                 {copy.heroDescription}
               </p>
             </div>
