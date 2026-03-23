@@ -1,5 +1,8 @@
 import { CheckCircle2 } from 'lucide-react'
 
+import labelProfessionnelGaz from '@/assets/label-professionnel-du-gaz.webp'
+import labelRgeQualibat from '@/assets/label-rge-qualibat.webp'
+import labelRgeQualipac from '@/assets/label-rge-qualipac.webp'
 import logo from '@/assets/logo.webp'
 import {
   getAboutPoints,
@@ -15,6 +18,19 @@ export function AboutSection() {
   const aboutPoints = getAboutPoints(locale)
   const aboutStats = getAboutStats(locale)
   const copy = getUiCopy(locale)
+  const labels =
+    locale === 'fr'
+      ? [
+          { src: labelRgeQualibat, alt: 'Label RGE Qualibat' },
+          { src: labelRgeQualipac, alt: 'Label RGE QualiPAC' },
+          { src: labelProfessionnelGaz, alt: 'Label Professionnel du Gaz' },
+        ]
+      : [
+          { src: labelRgeQualibat, alt: 'RGE Qualibat label' },
+          { src: labelRgeQualipac, alt: 'RGE QualiPAC label' },
+          { src: labelProfessionnelGaz, alt: 'Gas professional label' },
+        ]
+  const labelsTitle = locale === 'fr' ? 'Nos labels' : 'Our labels'
 
   return (
     <Section
@@ -67,6 +83,28 @@ export function AboutSection() {
           ))}
         </div>
       </div>
+
+      <Card className="mt-6">
+        <CardContent className="p-6 sm:p-8">
+          <h3 className="font-heading text-xl font-semibold text-foreground sm:text-2xl">{labelsTitle}</h3>
+          <div className="mt-5 grid gap-4 sm:grid-cols-3">
+            {labels.map((item) => (
+              <div
+                key={item.alt}
+                className="rounded-xl border border-border/80 bg-white/65 p-4"
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-20 w-full object-contain sm:h-24"
+                />
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </Section>
   )
 }
