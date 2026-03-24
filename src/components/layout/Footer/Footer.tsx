@@ -52,7 +52,7 @@ export function Footer() {
   const rightsLabel = locale === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'
 
   return (
-    <footer className="border-t border-white/12 bg-[#081a42] pt-10 pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:py-10">
+    <footer className="bg-[#081a42] pt-10 pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:py-10">
       <div className="w-full px-3 sm:px-5 lg:px-8">
         <div className="mb-6 flex items-center gap-3">
           <img src={logo} alt={`Logo ${siteConfig.name}`} className="h-10 w-auto object-contain" loading="lazy" />
