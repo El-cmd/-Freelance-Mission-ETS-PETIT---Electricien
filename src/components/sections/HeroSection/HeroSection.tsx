@@ -18,6 +18,19 @@ export function HeroSection() {
   const copy = getUiCopy(locale)
   const shouldReduceMotion = useReducedMotion()
   const partnersLabel = locale === 'fr' ? 'Nos partenaires' : 'Our partners'
+  const heroTitleNode =
+    locale === 'fr' ? (
+      <>
+        Quentin <span className="text-primary">Petit</span> - votre{' '}
+        <span className="text-primary">électricien</span> de confiance.
+      </>
+    ) : (
+      <>
+        {copy.heroTitleStart}
+        <span className="text-[#081a42]">{copy.heroTitleHighlight}</span>
+        {copy.heroTitleEnd}
+      </>
+    )
   const heroDescriptionNode: ReactNode =
     locale === 'fr' ? (
       <>
@@ -71,11 +84,7 @@ export function HeroSection() {
               className="font-heading text-balance text-[2.75rem] font-bold leading-[1.02] tracking-tight text-[#081a42] sm:text-6xl lg:text-[4.75rem]"
               style={{ textShadow: '0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(8,26,66,0.18)' }}
             >
-              {copy.heroTitleStart}
-              <span className="text-[#081a42]">
-                {copy.heroTitleHighlight}
-              </span>
-              {copy.heroTitleEnd}
+              {heroTitleNode}
             </h1>
 
             <div className="relative mt-5 max-w-4xl overflow-hidden rounded-[1.35rem] border border-white/25 bg-[#081a42] p-3 shadow-[0_14px_26px_rgba(8,26,66,0.3)] sm:mt-6 sm:rounded-[1.6rem] sm:p-6 sm:shadow-[0_18px_34px_rgba(8,26,66,0.34)]">

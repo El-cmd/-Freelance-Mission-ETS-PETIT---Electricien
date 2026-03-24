@@ -384,7 +384,7 @@ const uiCopy: Record<Locale, UiCopy> = {
     heroBadge: 'Électricien local à Hem et métropole lilloise',
     heroTitleStart: 'Quentin Petit -',
     heroTitleHighlight: ' votre électricien de confiance',
-    heroTitleEnd: ' à Hem et dans la métropole lilloise.',
+    heroTitleEnd: '.',
     heroDescription:
       'ETS PETIT accompagne particuliers et professionnels pour le dépannage, la rénovation, les tableaux électriques et la mise en sécurité.',
     aboutCardSubtitle: 'Électricien à Hem',
