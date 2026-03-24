@@ -18,11 +18,22 @@ export function HeroSection() {
   const copy = getUiCopy(locale)
   const shouldReduceMotion = useReducedMotion()
   const partnersLabel = locale === 'fr' ? 'Nos partenaires' : 'Our partners'
+  const titleBlueStroke =
+    '1px 0 0 #f7c600, -1px 0 0 #f7c600, 0 1px 0 #f7c600, 0 -1px 0 #f7c600, 0 8px 24px rgba(8,26,66,0.18)'
+  const titleYellowStroke =
+    '1px 0 0 #081a42, -1px 0 0 #081a42, 0 1px 0 #081a42, 0 -1px 0 #081a42, 0 8px 18px rgba(8,26,66,0.22)'
   const heroTitleNode =
     locale === 'fr' ? (
       <>
-        Quentin <span className="text-primary">Petit</span> - votre{' '}
-        <span className="text-primary">électricien</span> de confiance.
+        Quentin{' '}
+        <span className="text-primary" style={{ textShadow: titleYellowStroke }}>
+          Petit
+        </span>{' '}
+        - votre{' '}
+        <span className="text-primary" style={{ textShadow: titleYellowStroke }}>
+          électricien
+        </span>{' '}
+        de confiance.
       </>
     ) : (
       <>
@@ -82,7 +93,7 @@ export function HeroSection() {
 
             <h1
               className="font-heading text-balance text-[2.75rem] font-bold leading-[1.02] tracking-tight text-[#081a42] sm:text-6xl lg:text-[4.75rem]"
-              style={{ textShadow: '0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(8,26,66,0.18)' }}
+              style={{ textShadow: titleBlueStroke }}
             >
               {heroTitleNode}
             </h1>
