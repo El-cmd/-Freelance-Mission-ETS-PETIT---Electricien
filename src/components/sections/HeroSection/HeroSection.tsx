@@ -66,11 +66,10 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <div
-              className="mt-5 max-w-4xl rounded-2xl border border-[#244f9b] bg-[#0b2458] p-4 shadow-[0_10px_24px_rgba(8,26,66,0.28)] sm:mt-7 sm:p-5"
-              style={{ backgroundColor: '#0b2458' }}
-            >
-              <p className="text-pretty text-base font-semibold leading-relaxed text-primary sm:text-lg lg:text-xl">
+            <div className="relative mt-5 max-w-4xl overflow-hidden rounded-2xl border border-[#274b90] bg-gradient-to-br from-[#0a2152] via-[#0b2a63] to-[#081c45] p-4 shadow-[0_14px_36px_rgba(8,26,66,0.34)] sm:mt-7 sm:p-5">
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-primary/20" />
+              <div className="pointer-events-none absolute left-6 right-6 top-0 h-px bg-gradient-to-r from-transparent via-primary/90 to-transparent" />
+              <p className="relative text-pretty text-base font-semibold leading-relaxed text-[#ffd648] sm:text-lg lg:text-xl">
                 {copy.heroDescription}
               </p>
             </div>
