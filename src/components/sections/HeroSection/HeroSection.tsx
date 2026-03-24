@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Phone, Zap } from 'lucide-react'
+import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
 import electricianPanelBg from '@/assets/electrician-panel-bg.webp'
@@ -17,6 +18,17 @@ export function HeroSection() {
   const copy = getUiCopy(locale)
   const shouldReduceMotion = useReducedMotion()
   const partnersLabel = locale === 'fr' ? 'Nos partenaires' : 'Our partners'
+  const heroDescriptionNode: ReactNode =
+    locale === 'fr' ? (
+      <>
+        ETS PETIT accompagne particuliers et professionnels pour le{' '}
+        <span className="font-bold text-primary">dépannage</span>, la{' '}
+        <span className="font-bold text-primary">rénovation</span>, les tableaux électriques et la
+        mise en sécurité.
+      </>
+    ) : (
+      copy.heroDescription
+    )
   const partnerLogos = [
     { name: 'Hager', image: partnerHager, width: 533, height: 178 },
     { name: 'Schneider Electric', image: partnerSchneider, width: 250, height: 76 },
@@ -66,31 +78,40 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <div className="relative mt-5 max-w-4xl overflow-hidden rounded-2xl border border-[#274b90] bg-gradient-to-br from-[#0a2152] via-[#0b2a63] to-[#081c45] p-4 shadow-[0_14px_36px_rgba(8,26,66,0.34)] sm:mt-7 sm:p-5">
-              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-primary/20" />
-              <div className="pointer-events-none absolute left-6 right-6 top-0 h-px bg-gradient-to-r from-transparent via-primary/90 to-transparent" />
-              <p className="relative text-pretty text-base font-semibold leading-relaxed text-[#ffd648] sm:text-lg lg:text-xl">
-                {copy.heroDescription}
-              </p>
-            </div>
+            <div className="relative mt-6 max-w-4xl overflow-hidden rounded-[1.6rem] border border-white/30 bg-[radial-gradient(circle_at_82%_95%,rgba(247,198,0,0.38),transparent_26%),radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.14),transparent_32%),linear-gradient(140deg,#0a214f_0%,#0d2c67_52%,#071a44_100%)] p-4 shadow-[0_18px_34px_rgba(8,26,66,0.38)] sm:p-6">
+              <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] ring-1 ring-primary/25" />
+              <div className="pointer-events-none absolute left-10 right-10 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
 
-            <div className="mt-8 flex max-w-3xl flex-col gap-3 sm:flex-row">
-              <Button asChild className="sm:flex-1">
-                <a href={siteConfig.phoneHref}>
-                  <Phone className="mr-2 h-4 w-4" />
-                  {copy.callNow}
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="sm:flex-1"
-              >
-                <Link to="/contact">
-                  {copy.requestQuote}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <div className="relative flex items-start gap-3 sm:gap-4">
+                <div className="mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/60 bg-[#081a42]/70 shadow-[0_0_22px_rgba(247,198,0,0.42)] sm:h-14 sm:w-14">
+                  <Zap className="h-6 w-6 text-primary sm:h-7 sm:w-7" />
+                </div>
+                <p className="text-pretty text-xl font-semibold leading-relaxed text-white sm:text-[2rem]">
+                  {heroDescriptionNode}
+                </p>
+              </div>
+
+              <div className="relative mt-4 grid gap-3 sm:mt-5 sm:grid-cols-2">
+                <Button
+                  asChild
+                  className="h-11 rounded-full bg-primary text-primary-foreground shadow-[0_10px_24px_rgba(247,198,0,0.35)] hover:brightness-[1.02]"
+                >
+                  <a href={siteConfig.phoneHref}>
+                    <Phone className="mr-2 h-4 w-4" />
+                    {copy.callNow}
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="h-11 rounded-full border-white/55 bg-white text-[#0b2458] shadow-[0_10px_20px_rgba(255,255,255,0.22)] hover:bg-white/90"
+                >
+                  <Link to="/contact">
+                    {copy.requestQuote}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
 
             <div className="mt-14 lg:mt-16">
