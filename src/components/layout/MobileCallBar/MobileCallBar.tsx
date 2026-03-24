@@ -18,7 +18,7 @@ export function MobileCallBar() {
       : `Contact on WhatsApp ${siteConfig.phoneDisplay}`
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border/80 bg-background/90 p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[#081a42] p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden">
       <div className="grid grid-cols-2 gap-2">
         <Button asChild size="lg" className="h-12 w-full text-base">
           <a href={siteConfig.phoneHref} aria-label={`${copy.callNowAriaPrefix} ${siteConfig.phoneDisplay}`}>
