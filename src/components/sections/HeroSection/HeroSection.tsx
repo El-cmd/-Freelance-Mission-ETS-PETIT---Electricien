@@ -78,22 +78,22 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <div className="relative mt-6 max-w-4xl overflow-hidden rounded-[1.6rem] border border-white/25 bg-[#081a42] p-4 shadow-[0_18px_34px_rgba(8,26,66,0.34)] sm:p-6">
-              <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] ring-1 ring-white/12" />
+            <div className="relative mt-5 max-w-4xl overflow-hidden rounded-[1.35rem] border border-white/25 bg-[#081a42] p-3 shadow-[0_14px_26px_rgba(8,26,66,0.3)] sm:mt-6 sm:rounded-[1.6rem] sm:p-6 sm:shadow-[0_18px_34px_rgba(8,26,66,0.34)]">
+              <div className="pointer-events-none absolute inset-0 rounded-[1.35rem] ring-1 ring-white/12 sm:rounded-[1.6rem]" />
 
-              <div className="relative flex items-start gap-3 sm:gap-4">
-                <div className="mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/60 bg-[#081a42] sm:h-14 sm:w-14">
-                  <Zap className="h-6 w-6 text-primary sm:h-7 sm:w-7" />
+              <div className="relative flex items-start gap-2.5 sm:gap-4">
+                <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary/60 bg-[#081a42] sm:h-14 sm:w-14">
+                  <Zap className="h-5 w-5 text-primary sm:h-7 sm:w-7" />
                 </div>
-                <p className="text-pretty text-xl font-semibold leading-relaxed text-white sm:text-[2rem]">
+                <p className="text-pretty text-[0.9rem] font-semibold leading-relaxed text-white sm:text-[2rem]">
                   {heroDescriptionNode}
                 </p>
               </div>
 
-              <div className="relative mt-4 grid gap-3 sm:mt-5 sm:grid-cols-2">
+              <div className="relative mt-3 grid gap-2.5 sm:mt-5 sm:grid-cols-2 sm:gap-3">
                 <Button
                   asChild
-                  className="h-11 rounded-full bg-primary text-primary-foreground shadow-[0_10px_24px_rgba(247,198,0,0.35)] hover:brightness-[1.02]"
+                  className="h-10 rounded-full bg-primary text-primary-foreground shadow-[0_8px_16px_rgba(247,198,0,0.25)] hover:brightness-[1.02] sm:h-11"
                 >
                   <a href={siteConfig.phoneHref}>
                     <Phone className="mr-2 h-4 w-4" />
@@ -103,7 +103,7 @@ export function HeroSection() {
                 <Button
                   asChild
                   variant="outline"
-                  className="h-11 rounded-full border-white/55 bg-white text-[#081a42] shadow-[0_10px_20px_rgba(255,255,255,0.22)] hover:bg-white/90"
+                  className="h-10 rounded-full border-white/55 bg-white text-[#081a42] shadow-[0_8px_16px_rgba(255,255,255,0.2)] hover:bg-white/90 sm:h-11"
                 >
                   <Link to="/contact">
                     {copy.requestQuote}
