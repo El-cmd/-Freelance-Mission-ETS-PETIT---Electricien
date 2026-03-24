@@ -78,12 +78,11 @@ export function HeroSection() {
               {copy.heroTitleEnd}
             </h1>
 
-            <div className="relative mt-6 max-w-4xl overflow-hidden rounded-[1.6rem] border border-white/30 bg-[radial-gradient(circle_at_82%_95%,rgba(247,198,0,0.38),transparent_26%),radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.14),transparent_32%),linear-gradient(140deg,#0a214f_0%,#0d2c67_52%,#071a44_100%)] p-4 shadow-[0_18px_34px_rgba(8,26,66,0.38)] sm:p-6">
-              <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] ring-1 ring-primary/25" />
-              <div className="pointer-events-none absolute left-10 right-10 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+            <div className="relative mt-6 max-w-4xl overflow-hidden rounded-[1.6rem] border border-white/25 bg-[#081a42] p-4 shadow-[0_18px_34px_rgba(8,26,66,0.34)] sm:p-6">
+              <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] ring-1 ring-white/12" />
 
               <div className="relative flex items-start gap-3 sm:gap-4">
-                <div className="mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/60 bg-[#081a42]/70 shadow-[0_0_22px_rgba(247,198,0,0.42)] sm:h-14 sm:w-14">
+                <div className="mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/60 bg-[#081a42] sm:h-14 sm:w-14">
                   <Zap className="h-6 w-6 text-primary sm:h-7 sm:w-7" />
                 </div>
                 <p className="text-pretty text-xl font-semibold leading-relaxed text-white sm:text-[2rem]">
@@ -104,7 +103,7 @@ export function HeroSection() {
                 <Button
                   asChild
                   variant="outline"
-                  className="h-11 rounded-full border-white/55 bg-white text-[#0b2458] shadow-[0_10px_20px_rgba(255,255,255,0.22)] hover:bg-white/90"
+                  className="h-11 rounded-full border-white/55 bg-white text-[#081a42] shadow-[0_10px_20px_rgba(255,255,255,0.22)] hover:bg-white/90"
                 >
                   <Link to="/contact">
                     {copy.requestQuote}
