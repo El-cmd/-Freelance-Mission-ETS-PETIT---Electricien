@@ -86,7 +86,7 @@ const baseSiteConfig: Omit<SiteConfig, 'addressLine' | 'interventionZone' | 'ope
   city: 'Hem',
   phoneDisplay: '07 60 02 87 23',
   phoneHref: 'tel:+33760028723',
-  email: 'contact@ets-petit.fr',
+  email: 'etspetitelec@gmail.com',
   websiteUrl: 'https://ets-petit.fr',
   ctaChannel: 'call',
 }
