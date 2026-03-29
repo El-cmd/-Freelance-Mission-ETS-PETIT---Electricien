@@ -45,3 +45,12 @@ export type ContactPayload = {
   email: string
   message: string
 }
+
+export type TestimonialItem = {
+  name: string
+  date: string
+  category: string
+  quote: string
+  highlight?: string
+  reply?: string
+}

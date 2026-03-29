@@ -99,6 +99,14 @@
     will-change: transform;
   }
 
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   @keyframes partner-marquee {
     from {
       transform: translateX(0);
