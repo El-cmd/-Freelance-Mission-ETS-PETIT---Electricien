@@ -1,13 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import {
-  ArrowRight,
-  BadgeCheck,
-  Clock3,
-  MessageCircleHeart,
-  Quote,
-  Sparkles,
-  Star,
-} from 'lucide-react'
+import { ArrowRight, Quote, Sparkles, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { testimonials } from '@/data/testimonials'
@@ -113,7 +105,7 @@ export function TestimonialsSection() {
     >
       <div className="absolute inset-x-0 top-0 -z-10 h-56 bg-[radial-gradient(circle_at_top_left,rgba(247,198,0,0.18),transparent_38%),radial-gradient(circle_at_top_right,rgba(8,26,66,0.08),transparent_32%)]" />
 
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+      <div className="grid gap-5">
         <motion.div
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 10 }}
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -204,59 +196,6 @@ export function TestimonialsSection() {
             </CardContent>
           </Card>
         </motion.div>
-
-        <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-          {[
-            {
-              icon: Clock3,
-              title: locale === 'fr' ? 'Reactivite citee' : 'Fast response',
-              text:
-                locale === 'fr'
-                  ? "Urgences, depannages et reprises rapides reviennent dans plusieurs avis."
-                  : 'Urgent call-outs and quick electrical fixes are mentioned repeatedly.',
-            },
-            {
-              icon: BadgeCheck,
-              title: locale === 'fr' ? 'Prix juges justes' : 'Fair pricing',
-              text:
-                locale === 'fr'
-                  ? 'Les clients insistent sur la transparence, le devis clair et labsence de surprise.'
-                  : 'Clients highlight transparency, clear quotes, and no unpleasant surprises.',
-            },
-            {
-              icon: MessageCircleHeart,
-              title: locale === 'fr' ? 'Relation rassurante' : 'Reassuring communication',
-              text:
-                locale === 'fr'
-                  ? 'Pedagogie, gentillesse et explications detaillees sont citees tres souvent.'
-                  : 'Clear explanations and a reassuring client relationship are recurring strengths.',
-            },
-          ].map((item, index) => {
-            const Icon = item.icon
-
-            return (
-              <motion.div
-                key={item.title}
-                initial={shouldReduceMotion ? undefined : { opacity: 0, y: 10 }}
-                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.26, delay: index * 0.05 }}
-              >
-                <Card className="h-full border-[#081a42]/8 bg-white/80 backdrop-blur-sm">
-                  <CardContent className="p-5">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#081a42] text-primary shadow-[0_10px_22px_rgba(8,26,66,0.14)]">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h3 className="mt-4 font-heading text-xl font-semibold text-[#081a42]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.text}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            )
-          })}
-        </div>
       </div>
 
       <div className="mt-10">
