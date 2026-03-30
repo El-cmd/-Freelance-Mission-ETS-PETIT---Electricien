@@ -143,8 +143,12 @@ export function TestimonialsSection() {
               transition={{ duration: 0.24, delay: index * 0.03 }}
               className="w-[82vw] max-w-[19rem] shrink-0 snap-start sm:w-[19rem] lg:w-[16.5rem] lg:max-w-[16.5rem]"
             >
-              <Card className="h-[23.5rem] border-[#081a42]/8 bg-white/88 backdrop-blur-sm">
-                <CardContent className="flex h-full flex-col p-4 sm:p-4 lg:p-3.5">
+              <Card
+                className={`border-[#081a42]/8 bg-white/88 backdrop-blur-sm ${
+                  isExpanded ? 'min-h-[23.5rem]' : 'h-[23.5rem]'
+                }`}
+              >
+                <CardContent className={`flex flex-col p-4 sm:p-4 lg:p-3.5 ${isExpanded ? '' : 'h-full'}`}>
                   <div className="flex items-start gap-3">
                     <div
                       className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-[13px] font-bold shadow-[inset_0_0_0_1px_rgba(8,26,66,0.08)] ${avatarTone}`}
@@ -173,7 +177,7 @@ export function TestimonialsSection() {
 
                   <div className="mt-3 flex min-h-0 flex-1 flex-col">
                     <blockquote
-                      className={`min-h-0 overflow-hidden text-pretty text-[15px] leading-7 text-slate-700 ${!isExpanded ? quotePreviewClamp : ''}`}
+                      className={`min-h-0 text-pretty text-[15px] leading-7 text-slate-700 ${!isExpanded ? `overflow-hidden ${quotePreviewClamp}` : ''}`}
                     >
                       "{testimonial.quote}"
                     </blockquote>
