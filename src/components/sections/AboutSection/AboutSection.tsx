@@ -11,6 +11,7 @@ import {
 } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
 import { Section } from '@/components/layout/Section'
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { Card, CardContent } from '@/components/ui/card'
 
 export function AboutSection() {
@@ -31,6 +32,7 @@ export function AboutSection() {
           { src: labelProfessionnelGaz, alt: 'Gas professional label' },
         ]
   const labelsTitle = locale === 'fr' ? 'Nos labels' : 'Our labels'
+  const testimonialsTitle = locale === 'fr' ? 'Avis clients' : 'Client reviews'
 
   return (
     <Section
@@ -105,6 +107,13 @@ export function AboutSection() {
           </div>
         </CardContent>
       </Card>
+
+      <div className="mt-6">
+        <h3 className="font-heading text-xl font-semibold text-foreground sm:text-2xl">
+          {testimonialsTitle}
+        </h3>
+        <TestimonialsSection />
+      </div>
     </Section>
   )
 }
