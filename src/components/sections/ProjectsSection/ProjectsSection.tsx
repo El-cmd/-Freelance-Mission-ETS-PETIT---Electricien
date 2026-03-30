@@ -48,12 +48,13 @@ function PricingCategoryCard({
 
   return (
     <motion.div
+      className="h-full"
       initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
       whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.24 }}
     >
-      <Card className="h-full overflow-hidden rounded-xl border-border/80 shadow-none">
+      <Card className="flex h-full flex-col overflow-hidden rounded-xl border-border/80 shadow-none">
         <div className="border-b border-border bg-muted/20 px-5 py-4">
           <h3 className="font-heading text-xl font-semibold text-foreground">{category.title}</h3>
           {category.subtitle ? (
@@ -90,47 +91,49 @@ function PricingCategoryCard({
           </div>
         ) : null}
 
-        <CardContent className="p-5">
-          {!hasTabs ? (
-            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-              {activeOffer.tier}
-            </p>
-          ) : null}
+        <CardContent className="flex h-full flex-col p-5">
+          <div className="flex-1">
+            {!hasTabs ? (
+              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+                {activeOffer.tier}
+              </p>
+            ) : null}
 
-          <h4 className="mt-1 font-heading text-xl font-semibold uppercase tracking-tight text-foreground">
-            {activeOffer.title}
-          </h4>
-          <p className="mt-1 font-heading text-3xl font-semibold text-foreground">{activeOffer.price}</p>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{activeOffer.summary}</p>
+            <h4 className="mt-1 font-heading text-xl font-semibold uppercase tracking-tight text-foreground">
+              {activeOffer.title}
+            </h4>
+            <p className="mt-1 font-heading text-3xl font-semibold text-foreground">{activeOffer.price}</p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">{activeOffer.summary}</p>
 
-          <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold text-foreground/80">
-            <span className="inline-flex items-center gap-1.5">
-              <Clock3 className="h-4 w-4" />
-              {activeOffer.delivery}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <RefreshCcw className="h-4 w-4" />
-              {activeOffer.revisions}
-            </span>
+            <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold text-foreground/80">
+              <span className="inline-flex items-center gap-1.5">
+                <Clock3 className="h-4 w-4" />
+                {activeOffer.delivery}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <RefreshCcw className="h-4 w-4" />
+                {activeOffer.revisions}
+              </span>
+            </div>
+
+            <ul className="mt-4 space-y-2.5">
+              {activeOffer.details.map((detail) => (
+                <li
+                  key={`${activeOffer.id}-${detail}`}
+                  className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                >
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-foreground" />
+                  <span>{detail}</span>
+                </li>
+              ))}
+            </ul>
+
+            {category.footerNote ? (
+              <p className="mt-4 text-xs font-medium uppercase tracking-[0.06em] text-foreground/70">
+                {category.footerNote}
+              </p>
+            ) : null}
           </div>
-
-          <ul className="mt-4 space-y-2.5">
-            {activeOffer.details.map((detail) => (
-              <li
-                key={`${activeOffer.id}-${detail}`}
-                className="flex items-start gap-2.5 text-sm text-muted-foreground"
-              >
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-foreground" />
-                <span>{detail}</span>
-              </li>
-            ))}
-          </ul>
-
-          {category.footerNote ? (
-            <p className="mt-4 text-xs font-medium uppercase tracking-[0.06em] text-foreground/70">
-              {category.footerNote}
-            </p>
-          ) : null}
 
           <Button
             asChild
@@ -451,7 +454,7 @@ export function ProjectsSection() {
       title={copy.sectionProjectsTitle}
       subtitle={copy.sectionProjectsSubtitle}
     >
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid gap-5 lg:auto-rows-fr lg:grid-cols-3">
         {categories.map((category) => (
           <PricingCategoryCard
             key={category.id}
