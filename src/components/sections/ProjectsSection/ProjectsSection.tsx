@@ -54,7 +54,7 @@ function PricingCategoryCard({
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.24 }}
     >
-      <Card className="flex h-full flex-col overflow-hidden rounded-xl border-border/80 shadow-none">
+      <Card className="flex h-auto flex-col overflow-hidden rounded-xl border-border/80 shadow-none lg:h-[39rem]">
         <div className="border-b border-border bg-muted/20 px-5 py-4">
           <h3 className="font-heading text-xl font-semibold text-foreground">{category.title}</h3>
           {category.subtitle ? (
@@ -454,7 +454,7 @@ export function ProjectsSection() {
       title={copy.sectionProjectsTitle}
       subtitle={copy.sectionProjectsSubtitle}
     >
-      <div className="grid gap-5 lg:auto-rows-fr lg:grid-cols-3">
+      <div className="grid gap-5 lg:grid-cols-3">
         {categories.map((category) => (
           <PricingCategoryCard
             key={category.id}
