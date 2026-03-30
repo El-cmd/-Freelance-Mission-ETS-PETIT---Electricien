@@ -142,23 +142,26 @@ export function TestimonialsSection() {
               transition={{ duration: 0.24, delay: index * 0.03 }}
               className="w-[82vw] max-w-[19rem] shrink-0 snap-start sm:w-[19rem] lg:w-[16.5rem] lg:max-w-[16.5rem]"
             >
-              <Card className="h-full min-h-[25.5rem] border-[#081a42]/8 bg-white/88 backdrop-blur-sm lg:min-h-[26.75rem]">
-                <CardContent className="flex h-full flex-col p-4 sm:p-4 lg:p-3.5">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-[13px] font-bold shadow-[inset_0_0_0_1px_rgba(8,26,66,0.08)] ${avatarTone}`}
-                      >
-                        {getInitials(testimonial.name)}
-                      </div>
-                      <div>
-                        <p className="font-heading text-base font-semibold text-[#081a42]">
-                          {testimonial.name}
-                        </p>
-                        <p className="text-[13px] text-slate-500">{testimonial.date}</p>
-                      </div>
+              <Card className="border-[#081a42]/8 bg-white/88 backdrop-blur-sm">
+                <CardContent className="flex flex-col p-4 sm:p-4 lg:p-3.5">
+                  <div className="flex items-start gap-3">
+                    <div
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-[13px] font-bold shadow-[inset_0_0_0_1px_rgba(8,26,66,0.08)] ${avatarTone}`}
+                    >
+                      {getInitials(testimonial.name)}
                     </div>
-                    <Stars />
+                    <div className="min-w-0 flex-1">
+                      <p
+                        className="truncate whitespace-nowrap font-heading text-base font-semibold text-[#081a42]"
+                        title={testimonial.name}
+                      >
+                        {testimonial.name}
+                      </p>
+                      <div className="mt-1">
+                        <Stars />
+                      </div>
+                      <p className="mt-1 text-[13px] text-slate-500">{testimonial.date}</p>
+                    </div>
                   </div>
 
                   <div className="mt-4">
@@ -173,7 +176,7 @@ export function TestimonialsSection() {
                     "{testimonial.quote}"
                   </blockquote>
 
-                  <div className="mt-auto pt-4">
+                  <div className="pt-2">
                     {isLongQuote ? (
                       <button
                         type="button"
@@ -185,7 +188,7 @@ export function TestimonialsSection() {
                     ) : null}
 
                     {testimonial.reply ? (
-                      <div className={`${isLongQuote ? 'mt-4' : ''} rounded-[1.15rem] border border-[#081a42]/8 bg-slate-50 px-3.5 py-3`}>
+                      <div className={`${isLongQuote ? 'mt-3' : 'mt-2'} rounded-[1.15rem] border border-[#081a42]/8 bg-slate-50 px-3.5 py-3`}>
                         <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
                           {replyLabel}
                         </p>
