@@ -44,7 +44,7 @@ export function AboutSection() {
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <Card>
           <CardContent className="p-6 sm:p-8">
-            <div className="mb-5 flex items-center gap-4">
+            <div className="mb-5 flex items-center">
               <img
                 src={logo}
                 alt="Logo ETS PETIT"
@@ -54,10 +54,6 @@ export function AboutSection() {
                 decoding="async"
                 className="h-10 w-auto rounded-lg object-contain sm:h-12"
               />
-              <div>
-                <p className="font-heading text-xl font-semibold text-foreground">ETS PETIT</p>
-                <p className="text-sm text-muted-foreground">{copy.aboutCardSubtitle}</p>
-              </div>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
               {copy.aboutDescription}
@@ -93,14 +89,14 @@ export function AboutSection() {
             {labels.map((item) => (
               <div
                 key={item.alt}
-                className="rounded-xl border border-border/80 bg-white/65 p-4"
+                className="rounded-xl bg-white/65 p-2 sm:p-3"
               >
                 <img
                   src={item.src}
                   alt={item.alt}
                   loading="lazy"
                   decoding="async"
-                  className="h-20 w-full object-contain sm:h-24"
+                  className="h-14 w-full object-contain sm:h-16"
                 />
               </div>
             ))}
