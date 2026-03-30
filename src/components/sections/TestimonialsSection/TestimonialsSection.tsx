@@ -140,7 +140,7 @@ export function TestimonialsSection() {
               whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.24, delay: index * 0.03 }}
-              className="w-[84vw] max-w-[20.5rem] shrink-0 snap-start sm:w-[21rem] lg:w-[18.75rem] lg:max-w-[18.75rem]"
+              className="w-[82vw] max-w-[19rem] shrink-0 snap-start sm:w-[19rem] lg:w-[16.5rem] lg:max-w-[16.5rem]"
             >
               <Card className="h-full min-h-[25.5rem] border-[#081a42]/8 bg-white/88 backdrop-blur-sm lg:min-h-[26.75rem]">
                 <CardContent className="flex h-full flex-col p-4 sm:p-4 lg:p-3.5">
