@@ -131,6 +131,7 @@ export function TestimonialsSection() {
           const itemKey = `${testimonial.name}-${testimonial.date}`
           const isExpanded = expandedTestimonials[itemKey] ?? false
           const isLongQuote = testimonial.quote.length > 320
+          const quotePreviewClamp = testimonial.reply ? 'line-clamp-5' : 'line-clamp-7'
 
           return (
             <motion.div
@@ -142,8 +143,8 @@ export function TestimonialsSection() {
               transition={{ duration: 0.24, delay: index * 0.03 }}
               className="w-[82vw] max-w-[19rem] shrink-0 snap-start sm:w-[19rem] lg:w-[16.5rem] lg:max-w-[16.5rem]"
             >
-              <Card className="border-[#081a42]/8 bg-white/88 backdrop-blur-sm">
-                <CardContent className="flex flex-col p-4 sm:p-4 lg:p-3.5">
+              <Card className="h-[23.5rem] border-[#081a42]/8 bg-white/88 backdrop-blur-sm">
+                <CardContent className="flex h-full flex-col p-4 sm:p-4 lg:p-3.5">
                   <div className="flex items-start gap-3">
                     <div
                       className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-[13px] font-bold shadow-[inset_0_0_0_1px_rgba(8,26,66,0.08)] ${avatarTone}`}
@@ -170,31 +171,33 @@ export function TestimonialsSection() {
                     </span>
                   </div>
 
-                  <blockquote
-                    className={`mt-3 text-pretty text-[15px] leading-7 text-slate-700 ${!isExpanded && isLongQuote ? 'line-clamp-6' : ''}`}
-                  >
-                    "{testimonial.quote}"
-                  </blockquote>
+                  <div className="mt-3 flex min-h-0 flex-1 flex-col">
+                    <blockquote
+                      className={`min-h-0 overflow-hidden text-pretty text-[15px] leading-7 text-slate-700 ${!isExpanded ? quotePreviewClamp : ''}`}
+                    >
+                      "{testimonial.quote}"
+                    </blockquote>
 
-                  <div className="pt-2">
                     {isLongQuote ? (
                       <button
                         type="button"
                         onClick={() => toggleExpanded(itemKey)}
-                        className="text-[13px] font-semibold text-[#081a42] underline underline-offset-4 hover:text-[#10275f]"
+                        className="mt-2 self-start text-[13px] font-semibold text-[#081a42] underline underline-offset-4 hover:text-[#10275f]"
                       >
                         {isExpanded ? showLessLabel : showMoreLabel}
                       </button>
                     ) : null}
 
                     {testimonial.reply ? (
-                      <div className={`${isLongQuote ? 'mt-3' : 'mt-2'} rounded-[1.15rem] border border-[#081a42]/8 bg-slate-50 px-3.5 py-3`}>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
-                          {replyLabel}
-                        </p>
-                        <p className="mt-2 text-[14px] leading-relaxed text-slate-700">
-                          {testimonial.reply}
-                        </p>
+                      <div className="mt-auto pt-2">
+                        <div className="rounded-[1.15rem] border border-[#081a42]/8 bg-slate-50 px-3.5 py-3">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                            {replyLabel}
+                          </p>
+                          <p className="mt-2 text-[14px] leading-relaxed text-slate-700">
+                            {testimonial.reply}
+                          </p>
+                        </div>
                       </div>
                     ) : null}
                   </div>
