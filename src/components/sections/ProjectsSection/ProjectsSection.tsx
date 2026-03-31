@@ -78,16 +78,23 @@ function PricingCategoryCard({
               src={categoryBackgroundImage}
               alt=""
               aria-hidden="true"
-              className="h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full scale-110 object-cover blur-[2px] brightness-75"
             />
-            <div className="absolute inset-0 bg-slate-950/20" />
+            <img
+              src={categoryBackgroundImage}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full scale-[0.9] object-contain"
+            />
+            <div className="absolute inset-0 bg-slate-950/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/45 to-slate-950/65" />
           </div>
         ) : null}
 
         <div
           className={cn(
             'relative z-10 border-b px-5 py-4',
-            hasBackgroundImage ? 'border-white/15 bg-slate-900/35 backdrop-blur-[1px]' : 'border-border bg-muted/20',
+            hasBackgroundImage ? 'border-white/15 bg-slate-950/50 backdrop-blur-[1px]' : 'border-border bg-muted/20',
           )}
         >
           <h3
@@ -109,7 +116,7 @@ function PricingCategoryCard({
           <div
             className={cn(
               'relative z-10 grid border-b',
-              hasBackgroundImage ? 'border-white/15 bg-white/10 backdrop-blur-sm' : 'border-border bg-muted/30',
+              hasBackgroundImage ? 'border-white/15 bg-slate-900/45 backdrop-blur-sm' : 'border-border bg-muted/30',
               category.offers.length === 2 ? 'grid-cols-2' : 'grid-cols-3',
             )}
           >
@@ -125,10 +132,10 @@ function PricingCategoryCard({
                     hasBackgroundImage ? 'border-white/15' : 'border-border',
                     isActive
                       ? hasBackgroundImage
-                        ? 'bg-white/12 text-white shadow-[inset_0_-2px_0_0_rgba(255,255,255,0.9)]'
+                        ? 'bg-white/18 text-white shadow-[inset_0_-2px_0_0_rgba(255,255,255,0.95)]'
                         : 'bg-card text-foreground shadow-[inset_0_-2px_0_0_hsl(var(--foreground))]'
                       : hasBackgroundImage
-                        ? 'text-white/75 hover:bg-white/10'
+                        ? 'text-white/80 hover:bg-white/12'
                         : 'text-muted-foreground hover:bg-muted/50',
                   )}
                   aria-label={`${locale === 'fr' ? 'Offre' : 'Offer'} ${offer.tier}`}
@@ -172,7 +179,7 @@ function PricingCategoryCard({
             <p
               className={cn(
                 'mt-4 text-base leading-relaxed',
-                hasBackgroundImage ? 'text-slate-100' : 'text-muted-foreground',
+                hasBackgroundImage ? 'text-white/95' : 'text-muted-foreground',
               )}
             >
               {activeOffer.summary}
@@ -200,7 +207,7 @@ function PricingCategoryCard({
                   key={`${activeOffer.id}-${detail}`}
                   className={cn(
                     'flex items-start gap-2.5 text-sm',
-                    hasBackgroundImage ? 'text-slate-100' : 'text-muted-foreground',
+                    hasBackgroundImage ? 'text-white/95' : 'text-muted-foreground',
                   )}
                 >
                   <Check className={cn('mt-0.5 h-4 w-4 shrink-0', hasBackgroundImage ? 'text-white' : 'text-foreground')} />
