@@ -70,8 +70,6 @@ function PricingCategoryCard({
               aria-hidden="true"
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-slate-950/50" />
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-950/70 via-slate-950/45 to-slate-900/60" />
           </div>
         ) : null}
 
