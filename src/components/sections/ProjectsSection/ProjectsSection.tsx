@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import fondCardBorne from '@/assets/fond-card-borne.webp'
+import fondCardDepannageElectrique from '@/assets/fond-card-depannage-electrique.webp'
 import fondCardTableauElectrique from '@/assets/fond-card-tableau-electrique.webp'
 import { getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
@@ -47,10 +48,15 @@ function PricingCategoryCard({
   const [activeIndex, setActiveIndex] = useState(0)
   const activeOffer = category.offers[activeIndex]
   const hasTabs = category.offers.length > 1
+  const isTroubleshootingCategory = category.id === 'depannage' || category.id === 'troubleshooting'
   const isChargingCategory = category.id === 'borne' || category.id === 'charging'
   const isPanelCategory = category.id === 'tableau' || category.id === 'panel'
-  const hasBackgroundImage = isChargingCategory || isPanelCategory
-  const categoryBackgroundImage = isPanelCategory ? fondCardTableauElectrique : fondCardBorne
+  const hasBackgroundImage = isTroubleshootingCategory || isChargingCategory || isPanelCategory
+  const categoryBackgroundImage = isTroubleshootingCategory
+    ? fondCardDepannageElectrique
+    : isPanelCategory
+      ? fondCardTableauElectrique
+      : fondCardBorne
 
   return (
     <motion.div
