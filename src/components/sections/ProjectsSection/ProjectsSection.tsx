@@ -69,7 +69,7 @@ function PricingCategoryCard({
       <Card
         className={cn(
           'relative flex h-auto flex-col overflow-hidden rounded-xl shadow-none lg:h-[39rem]',
-          hasBackgroundImage ? 'border-white/20 text-white' : 'border-border/80',
+          hasBackgroundImage ? 'border-[#ccb783]/60 bg-[#f6efe1]/85 text-slate-900' : 'border-border/80',
         )}
       >
         {hasBackgroundImage ? (
@@ -78,35 +78,29 @@ function PricingCategoryCard({
               src={categoryBackgroundImage}
               alt=""
               aria-hidden="true"
-              className="absolute inset-0 h-full w-full scale-110 object-cover blur-[2px] brightness-75"
+              className="absolute inset-0 h-full w-full scale-[1.04] object-cover blur-[1.5px] brightness-90"
             />
-            <img
-              src={categoryBackgroundImage}
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full scale-[0.9] object-contain"
-            />
-            <div className="absolute inset-0 bg-slate-950/40" />
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/45 to-slate-950/65" />
+            <div className="absolute inset-0 bg-[#f5ecdc]/72" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#f5ecdc]/78 via-[#f5ecdc]/70 to-[#f5ecdc]/82" />
           </div>
         ) : null}
 
         <div
           className={cn(
             'relative z-10 border-b px-5 py-4',
-            hasBackgroundImage ? 'border-white/15 bg-slate-950/50 backdrop-blur-[1px]' : 'border-border bg-muted/20',
+            hasBackgroundImage ? 'border-[#b8a97e]/45 bg-[#f5ecdc]/82 backdrop-blur-[2px]' : 'border-border bg-muted/20',
           )}
         >
           <h3
             className={cn(
               'font-heading text-xl font-semibold',
-              hasBackgroundImage ? 'text-white' : 'text-foreground',
+              hasBackgroundImage ? 'text-slate-900' : 'text-foreground',
             )}
           >
             {category.title}
           </h3>
           {category.subtitle ? (
-            <p className={cn('mt-1 text-sm', hasBackgroundImage ? 'text-white/80' : 'text-muted-foreground')}>
+            <p className={cn('mt-1 text-sm', hasBackgroundImage ? 'text-slate-700' : 'text-muted-foreground')}>
               {category.subtitle}
             </p>
           ) : null}
@@ -116,7 +110,7 @@ function PricingCategoryCard({
           <div
             className={cn(
               'relative z-10 grid border-b',
-              hasBackgroundImage ? 'border-white/15 bg-slate-900/45 backdrop-blur-sm' : 'border-border bg-muted/30',
+              hasBackgroundImage ? 'border-[#b8a97e]/45 bg-slate-800/18 backdrop-blur-sm' : 'border-border bg-muted/30',
               category.offers.length === 2 ? 'grid-cols-2' : 'grid-cols-3',
             )}
           >
@@ -129,13 +123,13 @@ function PricingCategoryCard({
                   onClick={() => setActiveIndex(index)}
                   className={cn(
                     'border-r px-4 py-3 text-center text-base font-semibold transition-colors last:border-r-0',
-                    hasBackgroundImage ? 'border-white/15' : 'border-border',
+                    hasBackgroundImage ? 'border-[#b8a97e]/45' : 'border-border',
                     isActive
                       ? hasBackgroundImage
-                        ? 'bg-white/18 text-white shadow-[inset_0_-2px_0_0_rgba(255,255,255,0.95)]'
+                        ? 'bg-[#c9a944] text-slate-950 shadow-[inset_0_-2px_0_0_rgba(20,20,20,0.35)]'
                         : 'bg-card text-foreground shadow-[inset_0_-2px_0_0_hsl(var(--foreground))]'
                       : hasBackgroundImage
-                        ? 'text-white/80 hover:bg-white/12'
+                        ? 'text-slate-800 hover:bg-white/20'
                         : 'text-muted-foreground hover:bg-muted/50',
                   )}
                   aria-label={`${locale === 'fr' ? 'Offre' : 'Offer'} ${offer.tier}`}
@@ -153,7 +147,7 @@ function PricingCategoryCard({
               <p
                 className={cn(
                   'text-xs font-semibold uppercase tracking-[0.08em]',
-                  hasBackgroundImage ? 'text-white/75' : 'text-muted-foreground',
+                  hasBackgroundImage ? 'text-slate-700' : 'text-muted-foreground',
                 )}
               >
                 {activeOffer.tier}
@@ -163,7 +157,7 @@ function PricingCategoryCard({
             <h4
               className={cn(
                 'mt-1 font-heading text-xl font-semibold uppercase tracking-tight',
-                hasBackgroundImage ? 'text-white' : 'text-foreground',
+                hasBackgroundImage ? 'text-slate-900' : 'text-foreground',
               )}
             >
               {activeOffer.title}
@@ -171,7 +165,7 @@ function PricingCategoryCard({
             <p
               className={cn(
                 'mt-1 font-heading text-3xl font-semibold',
-                hasBackgroundImage ? 'text-white' : 'text-foreground',
+                hasBackgroundImage ? 'text-slate-950' : 'text-foreground',
               )}
             >
               {activeOffer.price}
@@ -179,7 +173,7 @@ function PricingCategoryCard({
             <p
               className={cn(
                 'mt-4 text-base leading-relaxed',
-                hasBackgroundImage ? 'text-white/95' : 'text-muted-foreground',
+                hasBackgroundImage ? 'text-slate-700' : 'text-muted-foreground',
               )}
             >
               {activeOffer.summary}
@@ -188,7 +182,7 @@ function PricingCategoryCard({
             <div
               className={cn(
                 'mt-4 flex flex-wrap gap-4 text-sm font-semibold',
-                hasBackgroundImage ? 'text-white' : 'text-foreground/80',
+                hasBackgroundImage ? 'text-slate-900' : 'text-foreground/80',
               )}
             >
               <span className="inline-flex items-center gap-1.5">
@@ -207,10 +201,10 @@ function PricingCategoryCard({
                   key={`${activeOffer.id}-${detail}`}
                   className={cn(
                     'flex items-start gap-2.5 text-sm',
-                    hasBackgroundImage ? 'text-white/95' : 'text-muted-foreground',
+                    hasBackgroundImage ? 'text-slate-800' : 'text-muted-foreground',
                   )}
                 >
-                  <Check className={cn('mt-0.5 h-4 w-4 shrink-0', hasBackgroundImage ? 'text-white' : 'text-foreground')} />
+                  <Check className={cn('mt-0.5 h-4 w-4 shrink-0', hasBackgroundImage ? 'text-slate-900' : 'text-foreground')} />
                   <span>{detail}</span>
                 </li>
               ))}
@@ -220,7 +214,7 @@ function PricingCategoryCard({
               <p
                 className={cn(
                   'mt-4 text-xs font-medium uppercase tracking-[0.06em]',
-                  hasBackgroundImage ? 'text-white/80' : 'text-foreground/70',
+                  hasBackgroundImage ? 'text-slate-800' : 'text-foreground/70',
                 )}
               >
                 {category.footerNote}
@@ -230,7 +224,12 @@ function PricingCategoryCard({
 
           <Button
             asChild
-            className="mt-6 h-11 w-full rounded-lg bg-foreground text-background shadow-none hover:bg-foreground/90"
+            className={cn(
+              'mt-6 h-11 w-full rounded-lg shadow-none',
+              hasBackgroundImage
+                ? 'bg-[#c9a944] text-slate-950 hover:bg-[#b99633]'
+                : 'bg-foreground text-background hover:bg-foreground/90',
+            )}
           >
             <Link to="/contact">{continueLabel}</Link>
           </Button>
