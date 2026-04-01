@@ -80,15 +80,15 @@ function PricingCategoryCard({
               aria-hidden="true"
               className="absolute inset-0 h-full w-full scale-[1.03] object-cover blur-[2.5px] brightness-80"
             />
-            <div className="absolute inset-0 bg-[#f5ecdc]/52" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#f5ecdc]/62 via-[#f5ecdc]/48 to-[#f5ecdc]/64" />
+            <div className="absolute inset-0 bg-[#f5ecdc]/58" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#f5ecdc]/68 via-[#f5ecdc]/54 to-[#f5ecdc]/70" />
           </div>
         ) : null}
 
         <div
           className={cn(
             'relative z-10 border-b px-5 py-4',
-            hasBackgroundImage ? 'border-[#b8a97e]/60 bg-[#f5ecdc]/72 backdrop-blur-[2px]' : 'border-border bg-muted/20',
+            hasBackgroundImage ? 'border-[#b8a97e]/60 bg-[#f5ecdc]/82 backdrop-blur-[2px]' : 'border-border bg-muted/20',
           )}
         >
           <h3
@@ -110,7 +110,7 @@ function PricingCategoryCard({
           <div
             className={cn(
               'relative z-10 grid border-b',
-              hasBackgroundImage ? 'border-[#b8a97e]/60 bg-[#f5ecdc]/68 backdrop-blur-[2px]' : 'border-border bg-muted/30',
+              hasBackgroundImage ? 'border-[#b8a97e]/60 bg-[#f5ecdc]/78 backdrop-blur-[2px]' : 'border-border bg-muted/30',
               category.offers.length === 2 ? 'grid-cols-2' : 'grid-cols-3',
             )}
           >
@@ -144,7 +144,7 @@ function PricingCategoryCard({
         <CardContent
           className={cn(
             'relative z-10 flex h-full flex-col p-5',
-            hasBackgroundImage ? 'bg-[#f5ecdc]/58 backdrop-blur-[1px]' : '',
+            hasBackgroundImage ? 'bg-[#f5ecdc]/74 backdrop-blur-[2px]' : '',
           )}
         >
           <div className="flex-1">
