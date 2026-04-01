@@ -93,14 +93,14 @@ function PricingCategoryCard({
         >
           <h3
             className={cn(
-              'font-heading text-xl font-semibold',
+              'font-heading text-[1.75rem] font-semibold leading-tight',
               hasBackgroundImage ? 'text-black' : 'text-foreground',
             )}
           >
             {category.title}
           </h3>
           {category.subtitle ? (
-            <p className={cn('mt-1 text-sm', hasBackgroundImage ? 'text-black/90' : 'text-muted-foreground')}>
+            <p className={cn('mt-1 text-base', hasBackgroundImage ? 'text-black/90' : 'text-muted-foreground')}>
               {category.subtitle}
             </p>
           ) : null}
@@ -122,7 +122,7 @@ function PricingCategoryCard({
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   className={cn(
-                    'border-r px-4 py-3 text-center text-base font-semibold transition-colors last:border-r-0',
+                    'border-r px-4 py-3 text-center text-lg font-semibold transition-colors last:border-r-0',
                     hasBackgroundImage ? 'border-[#b8a97e]/55' : 'border-border',
                     isActive
                       ? hasBackgroundImage
@@ -161,7 +161,7 @@ function PricingCategoryCard({
 
             <h4
               className={cn(
-                'mt-1 font-heading text-xl font-semibold uppercase tracking-tight',
+                'mt-1 font-heading text-[1.9rem] font-semibold uppercase tracking-tight leading-tight',
                 hasBackgroundImage ? 'text-black' : 'text-foreground',
               )}
             >
@@ -169,7 +169,7 @@ function PricingCategoryCard({
             </h4>
             <p
               className={cn(
-                'mt-1 font-heading text-3xl font-semibold',
+                'mt-2 font-heading text-[3.2rem] font-semibold leading-tight',
                 hasBackgroundImage ? 'text-black' : 'text-foreground',
               )}
             >
@@ -177,7 +177,7 @@ function PricingCategoryCard({
             </p>
             <p
               className={cn(
-                'mt-4 text-base font-semibold leading-relaxed',
+                'mt-4 text-[1.45rem] font-semibold leading-relaxed',
                 hasBackgroundImage ? 'text-black/95' : 'text-muted-foreground',
               )}
             >
@@ -186,7 +186,7 @@ function PricingCategoryCard({
 
             <div
               className={cn(
-                'mt-4 flex flex-wrap gap-4 text-sm font-semibold',
+                'mt-5 flex flex-wrap gap-4 text-lg font-semibold',
                 hasBackgroundImage ? 'text-black' : 'text-foreground/80',
               )}
             >
@@ -205,11 +205,11 @@ function PricingCategoryCard({
                 <li
                   key={`${activeOffer.id}-${detail}`}
                   className={cn(
-                    'flex items-start gap-2.5 text-sm font-semibold',
+                    'flex items-start gap-2.5 text-[1.2rem] font-semibold leading-relaxed',
                     hasBackgroundImage ? 'text-black/95' : 'text-muted-foreground',
                   )}
                 >
-                  <Check className={cn('mt-0.5 h-4 w-4 shrink-0', hasBackgroundImage ? 'text-black' : 'text-foreground')} />
+                  <Check className={cn('mt-1 h-[18px] w-[18px] shrink-0', hasBackgroundImage ? 'text-black' : 'text-foreground')} />
                   <span>{detail}</span>
                 </li>
               ))}
@@ -218,7 +218,7 @@ function PricingCategoryCard({
             {category.footerNote ? (
               <p
                 className={cn(
-                  'mt-4 text-xs font-semibold uppercase tracking-[0.06em]',
+                  'mt-4 text-base font-semibold uppercase tracking-[0.06em]',
                   hasBackgroundImage ? 'text-black/90' : 'text-foreground/70',
                 )}
               >
@@ -230,7 +230,7 @@ function PricingCategoryCard({
           <Button
             asChild
             className={cn(
-              'mt-6 h-11 w-full rounded-lg shadow-none',
+              'mt-6 h-12 w-full rounded-lg text-xl font-semibold shadow-none',
               hasBackgroundImage
                 ? 'bg-[#c9a944] text-slate-950 hover:bg-[#b99633]'
                 : 'bg-foreground text-background hover:bg-foreground/90',
