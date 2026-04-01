@@ -69,7 +69,7 @@ function PricingCategoryCard({
       <Card
         className={cn(
           'relative flex h-auto flex-col overflow-hidden rounded-xl shadow-none lg:h-[39rem]',
-          hasBackgroundImage ? 'border-[#ccb783]/60 bg-[#f6efe1]/85 text-slate-900' : 'border-border/80',
+          hasBackgroundImage ? 'border-[#b39a5a]/70 bg-[#f6efe1]/92 text-slate-900' : 'border-border/80',
         )}
       >
         {hasBackgroundImage ? (
@@ -78,17 +78,17 @@ function PricingCategoryCard({
               src={categoryBackgroundImage}
               alt=""
               aria-hidden="true"
-              className="absolute inset-0 h-full w-full scale-[1.04] object-cover blur-[1.5px] brightness-90"
+              className="absolute inset-0 h-full w-full scale-[1.03] object-cover blur-[1.5px] brightness-85"
             />
-            <div className="absolute inset-0 bg-[#f5ecdc]/72" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#f5ecdc]/78 via-[#f5ecdc]/70 to-[#f5ecdc]/82" />
+            <div className="absolute inset-0 bg-[#f5ecdc]/88" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#f5ecdc]/92 via-[#f5ecdc]/86 to-[#f5ecdc]/94" />
           </div>
         ) : null}
 
         <div
           className={cn(
             'relative z-10 border-b px-5 py-4',
-            hasBackgroundImage ? 'border-[#b8a97e]/45 bg-[#f5ecdc]/82 backdrop-blur-[2px]' : 'border-border bg-muted/20',
+            hasBackgroundImage ? 'border-[#b8a97e]/55 bg-[#f5ecdc]/94 backdrop-blur-[2px]' : 'border-border bg-muted/20',
           )}
         >
           <h3
@@ -110,7 +110,7 @@ function PricingCategoryCard({
           <div
             className={cn(
               'relative z-10 grid border-b',
-              hasBackgroundImage ? 'border-[#b8a97e]/45 bg-slate-800/18 backdrop-blur-sm' : 'border-border bg-muted/30',
+              hasBackgroundImage ? 'border-[#b8a97e]/55 bg-[#f5ecdc]/90 backdrop-blur-sm' : 'border-border bg-muted/30',
               category.offers.length === 2 ? 'grid-cols-2' : 'grid-cols-3',
             )}
           >
@@ -123,13 +123,13 @@ function PricingCategoryCard({
                   onClick={() => setActiveIndex(index)}
                   className={cn(
                     'border-r px-4 py-3 text-center text-base font-semibold transition-colors last:border-r-0',
-                    hasBackgroundImage ? 'border-[#b8a97e]/45' : 'border-border',
+                    hasBackgroundImage ? 'border-[#b8a97e]/55' : 'border-border',
                     isActive
                       ? hasBackgroundImage
                         ? 'bg-[#c9a944] text-slate-950 shadow-[inset_0_-2px_0_0_rgba(20,20,20,0.35)]'
                         : 'bg-card text-foreground shadow-[inset_0_-2px_0_0_hsl(var(--foreground))]'
                       : hasBackgroundImage
-                        ? 'text-slate-800 hover:bg-white/20'
+                        ? 'text-slate-800 hover:bg-[#efe2bf]/70'
                         : 'text-muted-foreground hover:bg-muted/50',
                   )}
                   aria-label={`${locale === 'fr' ? 'Offre' : 'Offer'} ${offer.tier}`}
@@ -141,13 +141,18 @@ function PricingCategoryCard({
           </div>
         ) : null}
 
-        <CardContent className="relative z-10 flex h-full flex-col p-5">
+        <CardContent
+          className={cn(
+            'relative z-10 flex h-full flex-col p-5',
+            hasBackgroundImage ? 'bg-[#f5ecdc]/86' : '',
+          )}
+        >
           <div className="flex-1">
             {!hasTabs ? (
               <p
                 className={cn(
                   'text-xs font-semibold uppercase tracking-[0.08em]',
-                  hasBackgroundImage ? 'text-slate-700' : 'text-muted-foreground',
+                  hasBackgroundImage ? 'text-slate-800' : 'text-muted-foreground',
                 )}
               >
                 {activeOffer.tier}
@@ -173,7 +178,7 @@ function PricingCategoryCard({
             <p
               className={cn(
                 'mt-4 text-base leading-relaxed',
-                hasBackgroundImage ? 'text-slate-700' : 'text-muted-foreground',
+                hasBackgroundImage ? 'text-slate-800' : 'text-muted-foreground',
               )}
             >
               {activeOffer.summary}
@@ -201,7 +206,7 @@ function PricingCategoryCard({
                   key={`${activeOffer.id}-${detail}`}
                   className={cn(
                     'flex items-start gap-2.5 text-sm',
-                    hasBackgroundImage ? 'text-slate-800' : 'text-muted-foreground',
+                    hasBackgroundImage ? 'text-slate-900' : 'text-muted-foreground',
                   )}
                 >
                   <Check className={cn('mt-0.5 h-4 w-4 shrink-0', hasBackgroundImage ? 'text-slate-900' : 'text-foreground')} />
