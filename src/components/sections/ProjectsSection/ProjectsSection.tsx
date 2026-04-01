@@ -94,13 +94,13 @@ function PricingCategoryCard({
           <h3
             className={cn(
               'font-heading text-xl font-semibold',
-              hasBackgroundImage ? 'text-slate-900' : 'text-foreground',
+              hasBackgroundImage ? 'text-black' : 'text-foreground',
             )}
           >
             {category.title}
           </h3>
           {category.subtitle ? (
-            <p className={cn('mt-1 text-sm', hasBackgroundImage ? 'text-slate-700' : 'text-muted-foreground')}>
+            <p className={cn('mt-1 text-sm', hasBackgroundImage ? 'text-black/90' : 'text-muted-foreground')}>
               {category.subtitle}
             </p>
           ) : null}
@@ -129,7 +129,7 @@ function PricingCategoryCard({
                         ? 'bg-[#c9a944] text-slate-950 shadow-[inset_0_-2px_0_0_rgba(20,20,20,0.35)]'
                         : 'bg-card text-foreground shadow-[inset_0_-2px_0_0_hsl(var(--foreground))]'
                       : hasBackgroundImage
-                        ? 'text-slate-800 hover:bg-[#efe2bf]/70'
+                        ? 'text-black hover:bg-[#efe2bf]/70'
                         : 'text-muted-foreground hover:bg-muted/50',
                   )}
                   aria-label={`${locale === 'fr' ? 'Offre' : 'Offer'} ${offer.tier}`}
@@ -152,7 +152,7 @@ function PricingCategoryCard({
               <p
                 className={cn(
                   'text-xs font-semibold uppercase tracking-[0.08em]',
-                  hasBackgroundImage ? 'text-slate-800' : 'text-muted-foreground',
+                  hasBackgroundImage ? 'text-black/90' : 'text-muted-foreground',
                 )}
               >
                 {activeOffer.tier}
@@ -162,7 +162,7 @@ function PricingCategoryCard({
             <h4
               className={cn(
                 'mt-1 font-heading text-xl font-semibold uppercase tracking-tight',
-                hasBackgroundImage ? 'text-slate-900' : 'text-foreground',
+                hasBackgroundImage ? 'text-black' : 'text-foreground',
               )}
             >
               {activeOffer.title}
@@ -170,7 +170,7 @@ function PricingCategoryCard({
             <p
               className={cn(
                 'mt-1 font-heading text-3xl font-semibold',
-                hasBackgroundImage ? 'text-slate-950' : 'text-foreground',
+                hasBackgroundImage ? 'text-black' : 'text-foreground',
               )}
             >
               {activeOffer.price}
@@ -178,7 +178,7 @@ function PricingCategoryCard({
             <p
               className={cn(
                 'mt-4 text-base font-semibold leading-relaxed',
-                hasBackgroundImage ? 'text-slate-800' : 'text-muted-foreground',
+                hasBackgroundImage ? 'text-black/95' : 'text-muted-foreground',
               )}
             >
               {activeOffer.summary}
@@ -187,7 +187,7 @@ function PricingCategoryCard({
             <div
               className={cn(
                 'mt-4 flex flex-wrap gap-4 text-sm font-semibold',
-                hasBackgroundImage ? 'text-slate-900' : 'text-foreground/80',
+                hasBackgroundImage ? 'text-black' : 'text-foreground/80',
               )}
             >
               <span className="inline-flex items-center gap-1.5">
@@ -206,10 +206,10 @@ function PricingCategoryCard({
                   key={`${activeOffer.id}-${detail}`}
                   className={cn(
                     'flex items-start gap-2.5 text-sm font-semibold',
-                    hasBackgroundImage ? 'text-slate-900' : 'text-muted-foreground',
+                    hasBackgroundImage ? 'text-black/95' : 'text-muted-foreground',
                   )}
                 >
-                  <Check className={cn('mt-0.5 h-4 w-4 shrink-0', hasBackgroundImage ? 'text-slate-900' : 'text-foreground')} />
+                  <Check className={cn('mt-0.5 h-4 w-4 shrink-0', hasBackgroundImage ? 'text-black' : 'text-foreground')} />
                   <span>{detail}</span>
                 </li>
               ))}
@@ -219,7 +219,7 @@ function PricingCategoryCard({
               <p
                 className={cn(
                   'mt-4 text-xs font-semibold uppercase tracking-[0.06em]',
-                  hasBackgroundImage ? 'text-slate-800' : 'text-foreground/70',
+                  hasBackgroundImage ? 'text-black/90' : 'text-foreground/70',
                 )}
               >
                 {category.footerNote}
