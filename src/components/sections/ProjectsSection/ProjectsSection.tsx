@@ -69,7 +69,7 @@ function PricingCategoryCard({
       <Card
         className={cn(
           'relative flex h-auto flex-col overflow-hidden rounded-xl shadow-none lg:h-[39rem]',
-          hasBackgroundImage ? 'border-[#b39a5a]/70 bg-[#f6efe1]/92 text-slate-900' : 'border-border/80',
+          hasBackgroundImage ? 'border-[#b39a5a]/70 text-slate-900' : 'border-border/80',
         )}
       >
         {hasBackgroundImage ? (
@@ -78,17 +78,17 @@ function PricingCategoryCard({
               src={categoryBackgroundImage}
               alt=""
               aria-hidden="true"
-              className="absolute inset-0 h-full w-full scale-[1.03] object-cover blur-[3px] brightness-80"
+              className="absolute inset-0 h-full w-full scale-[1.05] object-cover blur-[2px] brightness-[0.7]"
             />
-            <div className="absolute inset-0 bg-[#f5ecdc]/46" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#f5ecdc]/58 via-[#f5ecdc]/44 to-[#f5ecdc]/60" />
+            <div className="absolute inset-0 bg-white/22" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/16 to-white/34" />
           </div>
         ) : null}
 
         <div
           className={cn(
             'relative z-10 border-b px-5 py-4',
-            hasBackgroundImage ? 'border-[#b8a97e]/60 bg-[#f5ecdc]/86 backdrop-blur-[2px]' : 'border-border bg-muted/20',
+            hasBackgroundImage ? 'border-white/35 bg-white/56 backdrop-blur-[3px]' : 'border-border bg-muted/20',
           )}
         >
           <h3
@@ -110,7 +110,7 @@ function PricingCategoryCard({
           <div
             className={cn(
               'relative z-10 grid border-b',
-              hasBackgroundImage ? 'border-[#b8a97e]/60 bg-[#f5ecdc]/80 backdrop-blur-[2px]' : 'border-border bg-muted/30',
+              hasBackgroundImage ? 'border-white/35 bg-slate-900/28 backdrop-blur-[2px]' : 'border-border bg-muted/30',
               category.offers.length === 2 ? 'grid-cols-2' : 'grid-cols-3',
             )}
           >
@@ -123,13 +123,13 @@ function PricingCategoryCard({
                   onClick={() => setActiveIndex(index)}
                   className={cn(
                     'border-r px-4 py-3 text-center text-base font-semibold transition-colors last:border-r-0',
-                    hasBackgroundImage ? 'border-[#b8a97e]/55' : 'border-border',
+                    hasBackgroundImage ? 'border-white/30' : 'border-border',
                     isActive
                       ? hasBackgroundImage
-                        ? 'bg-[#c9a944] text-slate-950 shadow-[inset_0_-2px_0_0_rgba(20,20,20,0.35)]'
+                        ? 'bg-[#c9a944] text-white shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.3)]'
                         : 'bg-card text-foreground shadow-[inset_0_-2px_0_0_hsl(var(--foreground))]'
                       : hasBackgroundImage
-                        ? 'text-black hover:bg-[#efe2bf]/70'
+                        ? 'text-white/95 hover:bg-white/16'
                         : 'text-muted-foreground hover:bg-muted/50',
                   )}
                   aria-label={`${locale === 'fr' ? 'Offre' : 'Offer'} ${offer.tier}`}
@@ -145,7 +145,7 @@ function PricingCategoryCard({
           className={cn(
             'relative z-10 flex h-full flex-col p-5',
             hasBackgroundImage
-              ? 'bg-[linear-gradient(90deg,rgba(245,236,220,0.9)_0%,rgba(245,236,220,0.88)_62%,rgba(245,236,220,0.5)_100%)] backdrop-blur-[2px]'
+              ? 'bg-[linear-gradient(90deg,rgba(255,255,255,0.74)_0%,rgba(255,255,255,0.66)_62%,rgba(255,255,255,0.46)_100%)] backdrop-blur-[2px]'
               : '',
           )}
         >
@@ -234,7 +234,7 @@ function PricingCategoryCard({
             className={cn(
               'mt-6 h-11 w-full rounded-lg shadow-none',
               hasBackgroundImage
-                ? 'bg-[#c9a944] text-slate-950 hover:bg-[#b99633]'
+                ? 'bg-[#c9a944] text-white hover:bg-[#b99633]'
                 : 'bg-foreground text-background hover:bg-foreground/90',
             )}
           >
