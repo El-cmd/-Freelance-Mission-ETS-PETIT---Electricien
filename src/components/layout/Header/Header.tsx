@@ -1,4 +1,4 @@
-import { Menu, Phone } from 'lucide-react'
+import { BadgeEuro, Home, Mail, Menu, Phone, UserRound, Wrench } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 
 import logo from '@/assets/logo.webp'
@@ -20,6 +20,13 @@ export function Header() {
   const navItems = getNavItems(locale)
   const siteConfig = getSiteConfig(locale)
   const copy = getUiCopy(locale)
+  const navIcons = {
+    '/': Home,
+    '/services': Wrench,
+    '/projects': BadgeEuro,
+    '/about': UserRound,
+    '/contact': Mail,
+  } as const
 
   return (
     <header className="sticky top-0 z-40 bg-[#081a42]">
@@ -141,9 +148,13 @@ export function Header() {
                     <SheetClose asChild key={item.path}>
                       <NavLink
                         to={item.path}
-                        className="rounded-2xl border border-white/15 bg-white/6 px-4 py-4 text-base font-medium text-white/95 transition-colors hover:bg-white/12 active:scale-[0.99]"
+                        className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/6 px-4 py-4 text-base font-medium text-white/95 transition-colors hover:bg-white/12 active:scale-[0.99]"
                       >
-                        {item.label}
+                        {(() => {
+                          const Icon = navIcons[item.path as keyof typeof navIcons] ?? Home
+                          return <Icon className="h-5 w-5 shrink-0 text-[#f7c600]" aria-hidden="true" />
+                        })()}
+                        <span>{item.label}</span>
                       </NavLink>
                     </SheetClose>
                   ))}
