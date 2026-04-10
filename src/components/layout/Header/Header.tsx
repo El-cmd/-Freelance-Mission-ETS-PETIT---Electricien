@@ -116,25 +116,25 @@ export function Header() {
 
               <div className="mt-4 grid gap-4">
                 <div className="grid grid-cols-2 gap-2">
-                    <Button
-                      size="sm"
-                      variant={locale === 'fr' ? 'default' : 'outline'}
-                      onClick={() => setLocale('fr')}
-                      aria-label="Basculer en français"
-                      className="h-11 w-full border-white/20 p-0 text-base text-white shadow-none hover:bg-white/10 hover:text-white"
-                    >
-                      🇫🇷
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant={locale === 'en' ? 'default' : 'outline'}
-                      onClick={() => setLocale('en')}
-                      aria-label="Switch to English"
-                      className="h-11 w-full border-white/20 p-0 text-base text-white shadow-none hover:bg-white/10 hover:text-white"
-                    >
-                      🇬🇧
-                    </Button>
-                  </div>
+                  <Button
+                    size="sm"
+                    variant={locale === 'fr' ? 'default' : 'outline'}
+                    onClick={() => setLocale('fr')}
+                    aria-label="Basculer en français"
+                    className="h-11 w-full border-[#f7c600] bg-[#f7c600] p-0 text-base text-[#081a42] shadow-none hover:bg-[#ffd84a] hover:text-[#081a42]"
+                  >
+                    🇫🇷
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant={locale === 'en' ? 'default' : 'outline'}
+                    onClick={() => setLocale('en')}
+                    aria-label="Switch to English"
+                    className="h-11 w-full border-[#f7c600] bg-[#f7c600] p-0 text-base text-[#081a42] shadow-none hover:bg-[#ffd84a] hover:text-[#081a42]"
+                  >
+                    🇬🇧
+                  </Button>
+                </div>
 
                 <nav className="grid gap-2" aria-label={copy.mainNavigationAria}>
                   {navItems.map((item) => (
@@ -151,7 +151,7 @@ export function Header() {
               </div>
 
               <div className="mt-auto pt-6">
-                <Button asChild className="h-14 w-full rounded-2xl bg-primary text-base text-primary-foreground hover:brightness-[1.03]">
+                <Button asChild className="h-14 w-full rounded-2xl bg-[#f7c600] text-base text-[#081a42] hover:bg-[#ffd84a]">
                   <a href={siteConfig.phoneHref}>
                     <Phone className="mr-2 h-5 w-5" />
                     {copy.callNow}
