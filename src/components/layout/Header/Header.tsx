@@ -95,44 +95,69 @@ export function Header() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="h-[100dvh] w-screen max-w-none overflow-y-auto border-0 rounded-none p-5 pt-[calc(env(safe-area-inset-top)+1.25rem)] sm:p-6"
+            className="h-[100dvh] w-screen max-w-none overflow-y-auto rounded-none border-0 bg-[linear-gradient(180deg,#f7f9fd_0%,#eef3fb_100%)] p-5 pt-[calc(env(safe-area-inset-top)+1.25rem)] sm:p-6"
           >
             <div className="flex h-full flex-col">
               <SheetHeader className="pr-10">
-                <SheetTitle className="text-2xl">{copy.menuTitle}</SheetTitle>
-                <SheetDescription className="text-base">{copy.menuDescription}</SheetDescription>
+                <SheetTitle className="sr-only">{copy.menuTitle}</SheetTitle>
+                <div className="rounded-[1.6rem] border border-white/15 bg-[linear-gradient(135deg,#081a42_0%,#0f2b66_55%,#153b8a_100%)] p-4 text-white shadow-[0_14px_32px_rgba(8,26,66,0.22)]">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15">
+                      <img
+                        src={logo}
+                        alt=""
+                        aria-hidden="true"
+                        width={371}
+                        height={122}
+                        className="h-9 w-auto object-contain"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-lg font-semibold tracking-tight">{copy.menuDescription}</p>
+                      <p className="mt-1 text-sm text-white/75">
+                        {locale === 'fr'
+                          ? 'Accès direct aux pages du site'
+                          : 'Quick access to the site pages'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <SheetDescription className="sr-only">{copy.menuDescription}</SheetDescription>
               </SheetHeader>
 
-              <div className="mt-8 grid gap-3">
-                <div className="grid grid-cols-2 gap-2">
-                  <Button
-                    size="sm"
-                    variant={locale === 'fr' ? 'default' : 'outline'}
-                    onClick={() => setLocale('fr')}
-                    aria-label="Basculer en français"
-                    className="h-11 w-full p-0 text-base"
-                  >
-                    🇫🇷
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={locale === 'en' ? 'default' : 'outline'}
-                    onClick={() => setLocale('en')}
-                    aria-label="Switch to English"
-                    className="h-11 w-full p-0 text-base"
-                  >
-                    🇬🇧
-                  </Button>
+              <div className="mt-6 grid gap-3">
+                <div className="rounded-[1.4rem] border border-[#081a42]/10 bg-white/75 p-3 shadow-[0_10px_24px_rgba(8,26,66,0.06)] backdrop-blur-sm">
+                  <div className="grid grid-cols-2 gap-2">
+                    <Button
+                      size="sm"
+                      variant={locale === 'fr' ? 'default' : 'outline'}
+                      onClick={() => setLocale('fr')}
+                      aria-label="Basculer en français"
+                      className="h-11 w-full p-0 text-base shadow-none"
+                    >
+                      🇫🇷
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant={locale === 'en' ? 'default' : 'outline'}
+                      onClick={() => setLocale('en')}
+                      aria-label="Switch to English"
+                      className="h-11 w-full p-0 text-base shadow-none"
+                    >
+                      🇬🇧
+                    </Button>
+                  </div>
                 </div>
 
-                <nav className="mt-2 grid gap-1" aria-label={copy.mainNavigationAria}>
+                <nav className="grid gap-2" aria-label={copy.mainNavigationAria}>
                   {navItems.map((item) => (
                     <SheetClose asChild key={item.path}>
                       <NavLink
                         to={item.path}
-                        className="rounded-2xl border border-border bg-white px-4 py-4 text-base font-semibold text-foreground transition-colors hover:bg-muted active:scale-[0.99]"
+                        className="group relative overflow-hidden rounded-[1.25rem] border border-[#081a42]/10 bg-white px-4 py-4 text-base font-semibold text-[#081a42] shadow-[0_8px_18px_rgba(8,26,66,0.05)] transition-all hover:-translate-y-px hover:border-[#f7c600]/35 hover:bg-[#f7c600]/10 active:scale-[0.99]"
                       >
-                        {item.label}
+                        <span className="absolute inset-y-0 left-0 w-1.5 bg-[linear-gradient(180deg,#f7c600_0%,#081a42_100%)]" />
+                        <span className="pl-2">{item.label}</span>
                       </NavLink>
                     </SheetClose>
                   ))}
@@ -140,15 +165,17 @@ export function Header() {
               </div>
 
               <div className="mt-auto pt-6">
-                <Button
-                  asChild
-                  className="h-14 w-full rounded-2xl text-base shadow-[0_14px_28px_rgba(247,198,0,0.24)]"
-                >
-                  <a href={siteConfig.phoneHref}>
-                    <Phone className="mr-2 h-5 w-5" />
-                    {copy.callNow}
-                  </a>
-                </Button>
+                <div className="rounded-[1.4rem] border border-[#f7c600]/25 bg-[linear-gradient(135deg,#f7c600_0%,#ffd84a_100%)] p-3 shadow-[0_14px_28px_rgba(247,198,0,0.22)]">
+                  <Button
+                    asChild
+                    className="h-14 w-full rounded-[1.1rem] border border-[#081a42]/10 bg-[#081a42] text-base text-white shadow-none hover:bg-[#10275f]"
+                  >
+                    <a href={siteConfig.phoneHref}>
+                      <Phone className="mr-2 h-5 w-5" />
+                      {copy.callNow}
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </SheetContent>
