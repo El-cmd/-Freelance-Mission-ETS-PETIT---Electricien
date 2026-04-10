@@ -93,50 +93,63 @@ export function Header() {
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[86vw] max-w-xs">
-            <SheetHeader>
-              <SheetTitle>{copy.menuTitle}</SheetTitle>
-              <SheetDescription>{copy.menuDescription}</SheetDescription>
-            </SheetHeader>
-            <div className="mt-8 grid gap-2">
-              <div className="mb-3 grid grid-cols-2 gap-2">
-                <Button
-                  size="sm"
-                  variant={locale === 'fr' ? 'default' : 'outline'}
-                  onClick={() => setLocale('fr')}
-                  aria-label="Basculer en français"
-                  className="h-8 w-full p-0 text-sm"
-                >
-                  🇫🇷
-                </Button>
-                <Button
-                  size="sm"
-                  variant={locale === 'en' ? 'default' : 'outline'}
-                  onClick={() => setLocale('en')}
-                  aria-label="Switch to English"
-                  className="h-8 w-full p-0 text-sm"
-                >
-                  🇬🇧
-                </Button>
-              </div>
-              {navItems.map((item) => (
-                <SheetClose asChild key={item.path}>
-                  <NavLink
-                    to={item.path}
-                    className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
+          <SheetContent
+            side="right"
+            className="h-[100dvh] w-screen max-w-none overflow-y-auto border-0 rounded-none p-5 pt-[calc(env(safe-area-inset-top)+1.25rem)] sm:p-6"
+          >
+            <div className="flex h-full flex-col">
+              <SheetHeader className="pr-10">
+                <SheetTitle className="text-2xl">{copy.menuTitle}</SheetTitle>
+                <SheetDescription className="text-base">{copy.menuDescription}</SheetDescription>
+              </SheetHeader>
+
+              <div className="mt-8 grid gap-3">
+                <div className="grid grid-cols-2 gap-2">
+                  <Button
+                    size="sm"
+                    variant={locale === 'fr' ? 'default' : 'outline'}
+                    onClick={() => setLocale('fr')}
+                    aria-label="Basculer en français"
+                    className="h-11 w-full p-0 text-base"
                   >
-                    {item.label}
-                  </NavLink>
-                </SheetClose>
-              ))}
-              <SheetClose asChild>
-                <Button asChild className="mt-3 w-full">
+                    🇫🇷
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant={locale === 'en' ? 'default' : 'outline'}
+                    onClick={() => setLocale('en')}
+                    aria-label="Switch to English"
+                    className="h-11 w-full p-0 text-base"
+                  >
+                    🇬🇧
+                  </Button>
+                </div>
+
+                <nav className="mt-2 grid gap-1" aria-label={copy.mainNavigationAria}>
+                  {navItems.map((item) => (
+                    <SheetClose asChild key={item.path}>
+                      <NavLink
+                        to={item.path}
+                        className="rounded-2xl border border-border bg-white px-4 py-4 text-base font-semibold text-foreground transition-colors hover:bg-muted active:scale-[0.99]"
+                      >
+                        {item.label}
+                      </NavLink>
+                    </SheetClose>
+                  ))}
+                </nav>
+              </div>
+
+              <div className="mt-auto pt-6">
+                <Button
+                  asChild
+                  className="h-14 w-full rounded-2xl text-base shadow-[0_14px_28px_rgba(247,198,0,0.24)]"
+                >
                   <a href={siteConfig.phoneHref}>
-                    <Phone className="mr-2 h-4 w-4" />
+                    <Phone className="mr-2 h-5 w-5" />
                     {copy.callNow}
                   </a>
                 </Button>
-              </SheetClose>
+              </div>
             </div>
           </SheetContent>
         </Sheet>
