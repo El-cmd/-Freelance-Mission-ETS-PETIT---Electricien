@@ -95,7 +95,7 @@ export function Header() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="h-[100dvh] w-screen max-w-none overflow-y-auto rounded-none border-0 bg-background p-5 pt-[calc(env(safe-area-inset-top)+1.25rem)] sm:p-6"
+            className="h-[100dvh] w-screen max-w-none overflow-y-auto rounded-none border-0 bg-[#081a42] p-5 pt-[calc(env(safe-area-inset-top)+1.25rem)] text-white sm:p-6"
           >
             <div className="flex h-full flex-col">
               <SheetHeader className="pr-10">
@@ -110,14 +110,7 @@ export function Header() {
                     decoding="async"
                     className="h-10 w-auto object-contain"
                   />
-                  <div className="min-w-0">
-                    <p className="font-heading text-lg font-semibold text-foreground">
-                      {copy.menuDescription}
-                    </p>
-                    <SheetDescription className="mt-1 text-sm">
-                      {locale === 'fr' ? 'Accès rapide aux pages du site' : 'Quick access to site pages'}
-                    </SheetDescription>
-                  </div>
+                  <SheetDescription className="sr-only">{copy.menuDescription}</SheetDescription>
                 </div>
               </SheetHeader>
 
@@ -128,7 +121,7 @@ export function Header() {
                       variant={locale === 'fr' ? 'default' : 'outline'}
                       onClick={() => setLocale('fr')}
                       aria-label="Basculer en français"
-                      className="h-11 w-full p-0 text-base"
+                      className="h-11 w-full border-white/20 p-0 text-base text-white shadow-none hover:bg-white/10 hover:text-white"
                     >
                       🇫🇷
                     </Button>
@@ -137,7 +130,7 @@ export function Header() {
                       variant={locale === 'en' ? 'default' : 'outline'}
                       onClick={() => setLocale('en')}
                       aria-label="Switch to English"
-                      className="h-11 w-full p-0 text-base"
+                      className="h-11 w-full border-white/20 p-0 text-base text-white shadow-none hover:bg-white/10 hover:text-white"
                     >
                       🇬🇧
                     </Button>
@@ -148,7 +141,7 @@ export function Header() {
                     <SheetClose asChild key={item.path}>
                       <NavLink
                         to={item.path}
-                        className="rounded-2xl border border-border bg-card px-4 py-4 text-base font-medium text-foreground transition-colors hover:bg-muted active:scale-[0.99]"
+                        className="rounded-2xl border border-white/15 bg-white/6 px-4 py-4 text-base font-medium text-white/95 transition-colors hover:bg-white/12 active:scale-[0.99]"
                       >
                         {item.label}
                       </NavLink>
@@ -158,7 +151,7 @@ export function Header() {
               </div>
 
               <div className="mt-auto pt-6">
-                <Button asChild className="h-14 w-full rounded-2xl text-base">
+                <Button asChild className="h-14 w-full rounded-2xl bg-primary text-base text-primary-foreground hover:brightness-[1.03]">
                   <a href={siteConfig.phoneHref}>
                     <Phone className="mr-2 h-5 w-5" />
                     {copy.callNow}
