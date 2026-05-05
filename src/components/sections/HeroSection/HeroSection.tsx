@@ -9,7 +9,6 @@ import partnerLegrand from '@/assets/partner-legrand.webp'
 import partnerSchneider from '@/assets/partner-schneider.webp'
 import { getSiteConfig, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 
 export function HeroSection() {
@@ -83,14 +82,6 @@ export function HeroSection() {
           className="max-w-none"
         >
           <div className="text-left lg:max-w-[1180px]">
-            <Badge
-              variant="secondary"
-              className="mb-5 border-border bg-white/78 px-4 py-1.5 text-[13px] font-semibold tracking-[0.08em] text-[#081a42] backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-[12px]"
-            >
-              <Zap className="mr-2 h-4 w-4 text-primary sm:h-4 sm:w-4" />
-              {copy.heroBadge}
-            </Badge>
-
             <h1
               className="font-heading text-balance text-[2.75rem] font-bold leading-[1.02] tracking-tight text-[#081a42] sm:text-6xl lg:text-[4.75rem]"
               style={{ textShadow: titleBlueStroke }}
