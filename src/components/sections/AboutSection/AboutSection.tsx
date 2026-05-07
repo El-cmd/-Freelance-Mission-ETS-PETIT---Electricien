@@ -3,6 +3,7 @@ import { CheckCircle2 } from 'lucide-react'
 import labelProfessionnelGaz from '@/assets/label-professionnel-du-gaz.webp'
 import labelRgeQualibat from '@/assets/label-rge-qualibat.webp'
 import labelRgeQualipac from '@/assets/label-rge-qualipac.webp'
+import googleAvisLogo from '@/assets/google-avis.jpg'
 import logoAlloVoisins from '@/assets/logo-allovoisins-baseline.svg'
 import logo from '@/assets/logo.webp'
 import {
@@ -34,7 +35,6 @@ export function AboutSection() {
         ]
   const labelsTitle = locale === 'fr' ? 'Nos labels' : 'Our labels'
   const testimonialsTitle = locale === 'fr' ? 'Avis clients' : 'Client reviews'
-  const reviewsSourceLabel = locale === 'fr' ? 'Voir le profil AlloVoisins' : 'View AlloVoisins profile'
 
   return (
     <Section
@@ -89,21 +89,38 @@ export function AboutSection() {
         <h3 className="font-heading text-xl font-semibold text-foreground sm:text-2xl">
           {testimonialsTitle}
         </h3>
-        <a
-          href="https://www.allovoisins.com/p/quentinpetit-28"
-          target="_blank"
-          rel="noreferrer"
-          className="mt-3 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-foreground shadow-[0_16px_30px_rgba(8,26,66,0.08)] transition-transform duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_18px_34px_rgba(8,26,66,0.14)]"
-        >
-          <img
-            src={logoAlloVoisins}
-            alt="AlloVoisins"
-            loading="lazy"
-            decoding="async"
-            className="h-5 w-auto object-contain sm:h-6"
-          />
-          <span>{reviewsSourceLabel}</span>
-        </a>
+        <div className="mt-3 flex flex-wrap items-center gap-3">
+          <a
+            href="https://www.allovoisins.com/p/quentinpetit-28"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Voir le profil AlloVoisins"
+            className="inline-flex h-12 items-center rounded-full border border-slate-200 bg-white px-4 shadow-[0_16px_30px_rgba(8,26,66,0.08)] transition-transform duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_18px_34px_rgba(8,26,66,0.14)]"
+          >
+            <img
+              src={logoAlloVoisins}
+              alt="AlloVoisins"
+              loading="lazy"
+              decoding="async"
+              className="h-5 w-auto object-contain sm:h-6"
+            />
+          </a>
+          <a
+            href="https://share.google/NakEPS4fyz7yl2r5A"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Voir les avis Google"
+            className="inline-flex h-12 items-center rounded-full border border-slate-200 bg-white px-4 shadow-[0_16px_30px_rgba(8,26,66,0.08)] transition-transform duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_18px_34px_rgba(8,26,66,0.14)]"
+          >
+            <img
+              src={googleAvisLogo}
+              alt="Google Avis"
+              loading="lazy"
+              decoding="async"
+              className="h-7 w-auto object-contain"
+            />
+          </a>
+        </div>
         <TestimonialsSection />
       </div>
 
