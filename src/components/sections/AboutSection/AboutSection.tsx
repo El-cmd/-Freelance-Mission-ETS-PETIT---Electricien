@@ -42,7 +42,7 @@ export function AboutSection() {
       className="bg-background"
     >
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-        <Card>
+        <Card className="border-[#081a42]/10 bg-[linear-gradient(180deg,rgba(8,26,66,0.04),rgba(255,255,255,0.96)_24%)] shadow-[0_18px_36px_rgba(8,26,66,0.10)]">
           <CardContent className="p-6 sm:p-8">
             <div className="mb-6 inline-flex rounded-[1.2rem] bg-[#081a42] px-4 py-3 shadow-[0_16px_30px_rgba(8,26,66,0.18)] sm:px-5 sm:py-4">
               <div className="flex items-center">
@@ -65,7 +65,7 @@ export function AboutSection() {
               {aboutPoints.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm sm:text-base">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                  <span>{item}</span>
+                  <span className="text-[#081a42]">{item}</span>
                 </li>
               ))}
             </ul>
@@ -74,24 +74,27 @@ export function AboutSection() {
 
         <div className="grid gap-4">
           {aboutStats.map((stat) => (
-            <Card key={stat.label}>
+            <Card
+              key={stat.label}
+              className="border-[#081a42]/12 bg-[#081a42] text-white shadow-[0_18px_34px_rgba(8,26,66,0.18)]"
+            >
               <CardContent className="p-6">
-                <p className="font-heading text-3xl font-semibold text-foreground">{stat.value}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{stat.label}</p>
+                <p className="font-heading text-3xl font-semibold text-primary">{stat.value}</p>
+                <p className="mt-2 text-sm text-white/78">{stat.label}</p>
               </CardContent>
             </Card>
           ))}
         </div>
       </div>
 
-      <Card className="mt-6">
+      <Card className="mt-6 border-[#081a42]/10 bg-[linear-gradient(180deg,rgba(8,26,66,0.05),rgba(255,255,255,0.96)_26%)] shadow-[0_18px_36px_rgba(8,26,66,0.10)]">
         <CardContent className="p-6 sm:p-8">
-          <h3 className="font-heading text-xl font-semibold text-foreground sm:text-2xl">{labelsTitle}</h3>
+          <h3 className="font-heading text-xl font-semibold text-[#081a42] sm:text-2xl">{labelsTitle}</h3>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
             {labels.map((item) => (
               <div
                 key={item.alt}
-                className="rounded-xl bg-white/65 p-2 sm:p-3"
+                className="rounded-xl border border-[#081a42]/10 bg-white/85 p-2 shadow-[0_10px_24px_rgba(8,26,66,0.08)] sm:p-3"
               >
                 <img
                   src={item.src}
@@ -107,7 +110,7 @@ export function AboutSection() {
       </Card>
 
       <div className="mt-6">
-        <h3 className="font-heading text-xl font-semibold text-foreground sm:text-2xl">
+        <h3 className="font-heading text-xl font-semibold text-[#081a42] sm:text-2xl">
           {testimonialsTitle}
         </h3>
         <TestimonialsSection />
