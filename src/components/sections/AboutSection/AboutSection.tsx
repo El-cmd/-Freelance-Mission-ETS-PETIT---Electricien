@@ -44,7 +44,7 @@ export function AboutSection() {
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <Card>
           <CardContent className="p-6 sm:p-8">
-            <div className="mb-6 rounded-[1.35rem] bg-[#081a42] p-4 shadow-[0_16px_30px_rgba(8,26,66,0.18)] sm:p-5">
+            <div className="mb-6 inline-flex rounded-[1.2rem] bg-[#081a42] px-4 py-3 shadow-[0_16px_30px_rgba(8,26,66,0.18)] sm:px-5 sm:py-4">
               <div className="flex items-center">
                 <img
                   src={logo}
