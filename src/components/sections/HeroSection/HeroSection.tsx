@@ -89,7 +89,7 @@ export function HeroSection() {
               {heroTitleNode}
             </h1>
 
-            <div className="relative mt-5 max-w-4xl overflow-hidden rounded-[1.35rem] border border-white/25 bg-[#081a42] p-3 shadow-[0_14px_26px_rgba(8,26,66,0.3)] sm:mt-6 sm:rounded-[1.6rem] sm:p-6 sm:shadow-[0_18px_34px_rgba(8,26,66,0.34)]">
+            <div className="relative mt-7 max-w-4xl overflow-hidden rounded-[1.35rem] border border-white/25 bg-[#081a42] p-3 shadow-[0_14px_26px_rgba(8,26,66,0.3)] sm:mt-8 sm:rounded-[1.6rem] sm:p-6 sm:shadow-[0_18px_34px_rgba(8,26,66,0.34)]">
               <div className="pointer-events-none absolute inset-0 rounded-[1.35rem] ring-1 ring-white/12 sm:rounded-[1.6rem]" />
 
               <div className="relative flex items-start gap-2.5 sm:gap-4">
@@ -114,7 +114,7 @@ export function HeroSection() {
                 <Button
                   asChild
                   variant="outline"
-                  className="h-10 rounded-full border-white/55 bg-white text-[#081a42] shadow-[0_8px_16px_rgba(255,255,255,0.2)] hover:bg-white/90 sm:h-11"
+                  className="h-10 rounded-full border-primary/70 bg-primary text-primary-foreground shadow-[0_8px_16px_rgba(247,198,0,0.25)] hover:brightness-[1.02] sm:h-11 sm:border-white/55 sm:bg-white sm:text-[#081a42] sm:shadow-[0_8px_16px_rgba(255,255,255,0.2)] sm:hover:bg-white/90"
                 >
                   <Link to="/contact">
                     {copy.requestQuote}
@@ -124,7 +124,7 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="mt-14 lg:mt-16">
+            <div className="mt-16 lg:mt-16">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.08em] text-[#081a42]">
                 {partnersLabel}
               </p>
