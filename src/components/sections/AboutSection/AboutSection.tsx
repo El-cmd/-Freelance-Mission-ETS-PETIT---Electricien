@@ -73,7 +73,7 @@ export function AboutSection() {
           </CardContent>
         </Card>
 
-        <div className="grid gap-4">
+        <div className="hidden gap-4 sm:grid">
           {aboutStats.map((stat) => (
             <Card key={stat.label}>
               <CardContent className="p-6">
