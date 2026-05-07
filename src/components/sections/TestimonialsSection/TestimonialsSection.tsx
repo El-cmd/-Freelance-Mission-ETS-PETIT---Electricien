@@ -144,7 +144,7 @@ export function TestimonialsSection() {
               className="w-[82vw] max-w-[19rem] shrink-0 snap-start sm:w-[19rem] lg:w-[16.5rem] lg:max-w-[16.5rem]"
             >
               <Card
-                className={`border-[#081a42]/8 bg-white/88 backdrop-blur-sm ${
+                className={`border-[#081a42]/8 bg-white ${
                   isExpanded ? 'min-h-[23.5rem]' : 'h-[23.5rem]'
                 }`}
               >
