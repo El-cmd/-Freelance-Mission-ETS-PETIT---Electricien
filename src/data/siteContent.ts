@@ -375,9 +375,8 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionProjectsTitle: 'Nos tarifs',
     sectionProjectsSubtitle:
       'Des prix clairs pour les interventions courantes. Un devis précis est confirmé avant travaux.',
-    sectionAboutTitle: 'À propos d ETS PETIT',
-    sectionAboutSubtitle:
-      'Entreprise de proximité à Hem, orientée qualité d exécution, sécurité et transparence.',
+    sectionAboutTitle: 'À propos',
+    sectionAboutSubtitle: '',
     sectionContactTitle: 'Contact',
     sectionContactSubtitle:
       'Besoin d une intervention ou d un devis ? Réponse rapide par téléphone ou email.',
@@ -426,9 +425,8 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionProjectsTitle: 'Our pricing',
     sectionProjectsSubtitle:
       'Clear pricing for common interventions. A precise quote is always confirmed before work starts.',
-    sectionAboutTitle: 'About ETS PETIT',
-    sectionAboutSubtitle:
-      'A local business in Hem focused on quality execution, safety, and transparency.',
+    sectionAboutTitle: 'About',
+    sectionAboutSubtitle: '',
     sectionContactTitle: 'Contact',
     sectionContactSubtitle:
       'Need an intervention or a quote? Fast response by phone or email.',
