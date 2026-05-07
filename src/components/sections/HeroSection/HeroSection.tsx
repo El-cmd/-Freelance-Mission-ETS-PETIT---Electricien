@@ -104,7 +104,7 @@ export function HeroSection() {
               <div className="relative mt-3 grid gap-2.5 sm:mt-5 sm:grid-cols-2 sm:gap-3">
                 <Button
                   asChild
-                  className="h-10 rounded-full bg-primary text-primary-foreground shadow-[0_8px_16px_rgba(247,198,0,0.25)] hover:brightness-[1.02] sm:h-11"
+                  className="hidden h-10 rounded-full bg-primary text-primary-foreground shadow-[0_8px_16px_rgba(247,198,0,0.25)] hover:brightness-[1.02] sm:inline-flex sm:h-11"
                 >
                   <a href={siteConfig.phoneHref}>
                     <Phone className="mr-2 h-4 w-4" />
