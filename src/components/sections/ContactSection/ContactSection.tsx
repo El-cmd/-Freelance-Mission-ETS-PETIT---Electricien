@@ -88,6 +88,15 @@ export function ContactSection() {
             <p className="rounded-md bg-muted px-3 py-2 text-xs">
               {copy.contactOpeningHoursLabel}: {siteConfig.openingHours}
             </p>
+            <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+              <iframe
+                title="Carte Google Maps de Hem"
+                src="https://www.google.com/maps?q=Hem,+France&z=13&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-64 w-full border-0"
+              />
+            </div>
           </CardContent>
         </Card>
 
