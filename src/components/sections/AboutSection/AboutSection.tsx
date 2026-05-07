@@ -39,7 +39,6 @@ export function AboutSection() {
       id="about"
       title={copy.sectionAboutTitle}
       subtitle={copy.sectionAboutSubtitle}
-      className="bg-background"
     >
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <Card>
