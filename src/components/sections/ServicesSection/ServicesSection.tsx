@@ -44,6 +44,9 @@ export function ServicesSection() {
       afterAlt: locale === 'fr' ? 'Prises et câblage après intervention' : 'Sockets and wiring after intervention',
     },
   } as const
+  const servicesWithImages = services.filter(
+    (service) => compareByServiceId[service.id as keyof typeof compareByServiceId],
+  )
 
   return (
     <Section
@@ -52,7 +55,7 @@ export function ServicesSection() {
       subtitle={copy.sectionServicesSubtitle}
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service, index) => (
+        {servicesWithImages.map((service, index) => (
           <motion.div
             key={service.id}
             initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
