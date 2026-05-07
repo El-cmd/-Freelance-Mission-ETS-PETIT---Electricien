@@ -33,6 +33,8 @@ export function AboutSection() {
         ]
   const labelsTitle = locale === 'fr' ? 'Nos labels' : 'Our labels'
   const testimonialsTitle = locale === 'fr' ? 'Avis clients' : 'Client reviews'
+  const reviewsSourceLabel =
+    locale === 'fr' ? 'Avis issus du profil AlloVoisins' : 'Reviews from the AlloVoisins profile'
 
   return (
     <Section
@@ -83,6 +85,23 @@ export function AboutSection() {
         </div>
       </div>
 
+      <div className="mt-6">
+        <h3 className="font-heading text-xl font-semibold text-foreground sm:text-2xl">
+          {testimonialsTitle}
+        </h3>
+        <p className="mt-2 text-sm text-muted-foreground">
+          <a
+            href="https://www.allovoisins.com/p/quentinpetit-28"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-foreground underline underline-offset-4 hover:text-primary"
+          >
+            {reviewsSourceLabel}
+          </a>
+        </p>
+        <TestimonialsSection />
+      </div>
+
       <Card className="mt-6">
         <CardContent className="p-6 sm:p-8">
           <h3 className="font-heading text-xl font-semibold text-foreground sm:text-2xl">{labelsTitle}</h3>
@@ -104,13 +123,6 @@ export function AboutSection() {
           </div>
         </CardContent>
       </Card>
-
-      <div className="mt-6">
-        <h3 className="font-heading text-xl font-semibold text-foreground sm:text-2xl">
-          {testimonialsTitle}
-        </h3>
-        <TestimonialsSection />
-      </div>
     </Section>
   )
 }
