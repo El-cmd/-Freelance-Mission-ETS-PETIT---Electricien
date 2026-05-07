@@ -44,16 +44,18 @@ export function AboutSection() {
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <Card>
           <CardContent className="p-6 sm:p-8">
-            <div className="mb-5 flex items-center">
-              <img
-                src={logo}
-                alt="Logo ETS PETIT"
-                width={371}
-                height={122}
-                loading="lazy"
-                decoding="async"
-                className="h-10 w-auto rounded-lg object-contain sm:h-12"
-              />
+            <div className="mb-6 rounded-[1.35rem] bg-[#081a42] p-4 shadow-[0_16px_30px_rgba(8,26,66,0.18)] sm:p-5">
+              <div className="flex items-center">
+                <img
+                  src={logo}
+                  alt="Logo ETS PETIT"
+                  width={371}
+                  height={122}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-10 w-auto rounded-lg object-contain sm:h-12"
+                />
+              </div>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
               {copy.aboutDescription}
