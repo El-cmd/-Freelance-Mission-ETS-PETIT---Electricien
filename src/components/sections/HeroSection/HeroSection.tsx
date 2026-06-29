@@ -134,6 +134,16 @@ export function HeroSection() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="h-10 rounded-full border-white/80 bg-white text-[#081a42] shadow-[0_8px_16px_rgba(255,255,255,0.18)] hover:bg-white/90 hover:text-[#081a42] sm:hidden"
+                >
+                  <Link to="/projects">
+                    {locale === 'fr' ? 'Voir tarif' : 'View pricing'}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </div>
             </div>
 
