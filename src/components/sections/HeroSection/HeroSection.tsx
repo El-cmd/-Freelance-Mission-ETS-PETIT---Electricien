@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
 import electricianPanelBg from '@/assets/electrician-panel-bg.webp'
+import logo from '@/assets/logo.webp'
 import partnerHager from '@/assets/partner-hager.webp'
 import partnerLegrand from '@/assets/partner-legrand.webp'
 import partnerSchneider from '@/assets/partner-schneider.webp'
@@ -19,26 +20,38 @@ export function HeroSection() {
   const partnersLabel = locale === 'fr' ? 'Nos partenaires' : 'Our partners'
   const titleBlueStroke =
     '1px 0 0 #f7c600, -1px 0 0 #f7c600, 0 1px 0 #f7c600, 0 -1px 0 #f7c600, 0 8px 24px rgba(8,26,66,0.18)'
-  const titleYellowStroke =
-    '1px 0 0 #081a42, -1px 0 0 #081a42, 0 1px 0 #081a42, 0 -1px 0 #081a42, 0 8px 18px rgba(8,26,66,0.22)'
   const heroTitleNode =
     locale === 'fr' ? (
       <>
-        Quentin{' '}
-        <span className="text-primary" style={{ textShadow: titleYellowStroke }}>
-          Petit
+        Avec{' '}
+        <span className="mx-1 inline-flex translate-y-[0.08em] items-center rounded-xl bg-[#081a42] px-2 py-1 align-baseline shadow-[0_10px_24px_rgba(8,26,66,0.28)] sm:mx-2 sm:rounded-2xl sm:px-3 sm:py-1.5">
+          <img
+            src={logo}
+            alt="ETS PETIT"
+            width={371}
+            height={122}
+            loading="eager"
+            decoding="async"
+            className="h-[0.82em] w-auto object-contain"
+          />
         </span>{' '}
-        - votre{' '}
-        <span className="text-primary" style={{ textShadow: titleYellowStroke }}>
-          électricien
-        </span>{' '}
-        de confiance.
+        votre électricien de confiance près de chez vous !
       </>
     ) : (
       <>
-        {copy.heroTitleStart}
-        <span className="text-[#081a42]">{copy.heroTitleHighlight}</span>
-        {copy.heroTitleEnd}
+        With{' '}
+        <span className="mx-1 inline-flex translate-y-[0.08em] items-center rounded-xl bg-[#081a42] px-2 py-1 align-baseline shadow-[0_10px_24px_rgba(8,26,66,0.28)] sm:mx-2 sm:rounded-2xl sm:px-3 sm:py-1.5">
+          <img
+            src={logo}
+            alt="ETS PETIT"
+            width={371}
+            height={122}
+            loading="eager"
+            decoding="async"
+            className="h-[0.82em] w-auto object-contain"
+          />
+        </span>{' '}
+        your trusted electrician near you!
       </>
     )
   const heroDescriptionNode: ReactNode =

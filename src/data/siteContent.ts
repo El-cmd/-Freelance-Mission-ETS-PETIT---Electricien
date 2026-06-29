@@ -51,9 +51,6 @@ type UiCopy = {
   sectionContactTitle: string
   sectionContactSubtitle: string
   heroBadge: string
-  heroTitleStart: string
-  heroTitleHighlight: string
-  heroTitleEnd: string
   heroDescription: string
   aboutCardSubtitle: string
   aboutDescription: string
@@ -381,9 +378,6 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionContactSubtitle:
       'Besoin d une intervention ou d un devis ? Réponse rapide par téléphone ou email.',
     heroBadge: 'Électricien local à Hem et métropole lilloise',
-    heroTitleStart: 'Quentin Petit -',
-    heroTitleHighlight: ' votre électricien de confiance',
-    heroTitleEnd: '.',
     heroDescription:
       'ETS PETIT accompagne particuliers et professionnels pour le dépannage, la rénovation, les tableaux électriques et la mise en sécurité.',
     aboutCardSubtitle: 'Électricien à Hem',
@@ -431,9 +425,6 @@ const uiCopy: Record<Locale, UiCopy> = {
     sectionContactSubtitle:
       'Need an intervention or a quote? Fast response by phone or email.',
     heroBadge: 'Local electrician in Hem and Lille metropolitan area',
-    heroTitleStart: 'Quentin Petit -',
-    heroTitleHighlight: ' your trusted electrician',
-    heroTitleEnd: ' in Hem and the Lille metropolitan area.',
     heroDescription:
       'ETS PETIT supports homeowners and professionals for troubleshooting, renovation, electrical panels, and safety upgrades.',
     aboutCardSubtitle: 'Electrician in Hem',
