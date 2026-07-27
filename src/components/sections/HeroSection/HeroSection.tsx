@@ -1,12 +1,12 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Phone, Zap } from 'lucide-react'
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 
 import electricianPanelBg from '@/assets/electrician-panel-bg.webp'
-import logo from '@/assets/logo.webp'
 import partnerHager from '@/assets/partner-hager.webp'
 import partnerLegrand from '@/assets/partner-legrand.webp'
+import partnerNord from '@/assets/partner-nord.webp'
+import partnerRegionHdf from '@/assets/partner-region-hdf.webp'
 import partnerSchneider from '@/assets/partner-schneider.webp'
 import { getSiteConfig, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
@@ -20,40 +20,8 @@ export function HeroSection() {
   const partnersLabel = locale === 'fr' ? 'Nos partenaires' : 'Our partners'
   const titleBlueStroke =
     '1px 0 0 #f7c600, -1px 0 0 #f7c600, 0 1px 0 #f7c600, 0 -1px 0 #f7c600, 0 8px 24px rgba(8,26,66,0.18)'
-  const heroTitleNode =
-    locale === 'fr' ? (
-      <>
-        Avec{' '}
-        <span className="mx-1 inline-flex translate-y-[0.08em] items-center rounded-xl bg-[#081a42] px-2 py-1 align-baseline shadow-[0_10px_24px_rgba(8,26,66,0.28)] sm:mx-2 sm:rounded-2xl sm:px-3 sm:py-1.5">
-          <img
-            src={logo}
-            alt="ETS PETIT"
-            width={371}
-            height={122}
-            loading="eager"
-            decoding="async"
-            className="h-[0.82em] w-auto object-contain"
-          />
-        </span>{' '}
-        votre électricien de confiance près de chez vous !
-      </>
-    ) : (
-      <>
-        With{' '}
-        <span className="mx-1 inline-flex translate-y-[0.08em] items-center rounded-xl bg-[#081a42] px-2 py-1 align-baseline shadow-[0_10px_24px_rgba(8,26,66,0.28)] sm:mx-2 sm:rounded-2xl sm:px-3 sm:py-1.5">
-          <img
-            src={logo}
-            alt="ETS PETIT"
-            width={371}
-            height={122}
-            loading="eager"
-            decoding="async"
-            className="h-[0.82em] w-auto object-contain"
-          />
-        </span>{' '}
-        your trusted electrician near you!
-      </>
-    )
+  const heroTitle = locale === 'fr' ? 'Votre électricien de confiance' : 'Your trusted electrician'
+  const locationLabel = locale === 'fr' ? 'Région lilloise' : 'Lille metropolitan area'
   const heroDescriptionNode: ReactNode =
     locale === 'fr' ? (
       <>
@@ -66,9 +34,30 @@ export function HeroSection() {
       copy.heroDescription
     )
   const partnerLogos = [
-    { name: 'Hager', image: partnerHager, width: 533, height: 178 },
-    { name: 'Schneider Electric', image: partnerSchneider, width: 250, height: 76 },
-    { name: 'Legrand', image: partnerLegrand, width: 1200, height: 300 },
+    {
+      name: 'Hager',
+      image: partnerHager,
+      width: 533,
+      height: 178,
+      containerClassName: '',
+      imageClassName: 'max-h-11',
+    },
+    {
+      name: 'Schneider Electric',
+      image: partnerSchneider,
+      width: 250,
+      height: 76,
+      containerClassName: '',
+      imageClassName: 'max-h-11',
+    },
+    {
+      name: 'Legrand',
+      image: partnerLegrand,
+      width: 1200,
+      height: 300,
+      containerClassName: '',
+      imageClassName: 'max-h-11',
+    },
   ]
 
   return (
@@ -99,10 +88,49 @@ export function HeroSection() {
               className="font-heading text-balance text-[2.75rem] font-bold leading-[1.02] tracking-tight text-[#081a42] sm:text-6xl lg:text-[4.75rem]"
               style={{ textShadow: titleBlueStroke }}
             >
-              {heroTitleNode}
+              {heroTitle}
             </h1>
 
-            <div className="relative mt-7 max-w-4xl overflow-hidden rounded-[1.35rem] border border-white/25 bg-[#081a42] p-3 shadow-[0_14px_26px_rgba(8,26,66,0.3)] sm:mt-8 sm:rounded-[1.6rem] sm:p-6 sm:shadow-[0_18px_34px_rgba(8,26,66,0.34)]">
+            <div className="mt-4 inline-flex items-center gap-2 text-base font-semibold text-[#081a42] drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)] sm:mt-5 sm:gap-2.5 sm:text-lg">
+              <span className="text-xl leading-none sm:text-2xl" aria-hidden="true">
+                📍
+              </span>
+              <span>Hem</span>
+              <span className="text-primary" aria-hidden="true">
+                •
+              </span>
+              <span>{locationLabel}</span>
+            </div>
+
+            <div
+              className="mt-4 flex flex-wrap items-center gap-3 sm:mt-5"
+              aria-label={locale === 'fr' ? 'Partenaires institutionnels' : 'Institutional partners'}
+            >
+              <div className="flex h-14 items-center overflow-hidden rounded-xl border border-white/45 bg-white/95 p-1.5 shadow-[0_10px_24px_rgba(8,26,66,0.16)] sm:h-16 sm:p-2">
+                <img
+                  src={partnerRegionHdf}
+                  alt="Région Hauts-de-France"
+                  width={900}
+                  height={200}
+                  loading="eager"
+                  decoding="async"
+                  className="h-10 w-auto rounded-md object-contain sm:h-12"
+                />
+              </div>
+              <div className="flex h-14 items-center rounded-xl border border-white/20 bg-[#081a42] px-4 py-2 shadow-[0_10px_24px_rgba(8,26,66,0.22)] sm:h-16 sm:px-5">
+                <img
+                  src={partnerNord}
+                  alt="Département du Nord"
+                  width={700}
+                  height={281}
+                  loading="eager"
+                  decoding="async"
+                  className="h-8 w-auto object-contain sm:h-9"
+                />
+              </div>
+            </div>
+
+            <div className="relative mt-6 max-w-4xl overflow-hidden rounded-[1.35rem] border border-white/25 bg-[#081a42] p-3 shadow-[0_14px_26px_rgba(8,26,66,0.3)] sm:mt-7 sm:rounded-[1.6rem] sm:p-6 sm:shadow-[0_18px_34px_rgba(8,26,66,0.34)]">
               <div className="pointer-events-none absolute inset-0 rounded-[1.35rem] ring-1 ring-white/12 sm:rounded-[1.6rem]" />
 
               <div className="relative flex items-start gap-2.5 sm:gap-4">
@@ -129,20 +157,20 @@ export function HeroSection() {
                   variant="outline"
                   className="h-10 rounded-full border-primary/70 bg-primary text-primary-foreground shadow-[0_8px_16px_rgba(247,198,0,0.25)] hover:brightness-[1.02] sm:h-11 sm:border-white/55 sm:bg-white sm:text-[#081a42] sm:shadow-[0_8px_16px_rgba(255,255,255,0.2)] sm:hover:bg-white/90"
                 >
-                  <Link to="/contact">
+                  <a href="/contact">
                     {copy.requestQuote}
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  </a>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
                   className="h-10 rounded-full border-white/80 bg-white text-[#081a42] shadow-[0_8px_16px_rgba(255,255,255,0.18)] hover:bg-white/90 hover:text-[#081a42] sm:hidden"
                 >
-                  <Link to="/projects">
+                  <a href="/projects">
                     {locale === 'fr' ? 'Voir tarif' : 'View pricing'}
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </div>
@@ -156,7 +184,7 @@ export function HeroSection() {
                   {[...partnerLogos, ...partnerLogos].map((partner, index) => (
                     <div
                       key={`${partner.name}-${index}`}
-                      className="flex h-16 w-[210px] items-center justify-center"
+                      className={`flex h-16 w-[210px] items-center justify-center ${partner.containerClassName}`}
                     >
                       <img
                         src={partner.image}
@@ -165,7 +193,7 @@ export function HeroSection() {
                         height={partner.height}
                         loading="lazy"
                         decoding="async"
-                        className="max-h-11 w-auto object-contain grayscale-[0.05]"
+                        className={`${partner.imageClassName} w-auto max-w-full object-contain`}
                       />
                     </div>
                   ))}

@@ -1,5 +1,3 @@
-import type { LucideIcon } from 'lucide-react'
-
 export type SiteConfig = {
   name: string
   legalName: string
@@ -17,21 +15,6 @@ export type SiteConfig = {
 export type NavItem = {
   label: string
   path: string
-}
-
-export type ServiceItem = {
-  id: string
-  title: string
-  description: string
-  icon: LucideIcon
-}
-
-export type ProjectItem = {
-  id: string
-  title: string
-  image: string
-  alt: string
-  category: string
 }
 
 export type AboutStat = {

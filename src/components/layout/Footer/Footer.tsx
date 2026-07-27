@@ -1,5 +1,4 @@
 import { Clock3, Mail, MapPin, Phone, ShieldCheck, Zap } from 'lucide-react'
-import { Link } from 'react-router-dom'
 
 import { getSiteConfig, getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
@@ -29,12 +28,11 @@ export function Footer() {
         ]
   const areas =
     locale === 'fr'
-      ? ['Hem', "Villeneuve-d'Ascq", 'Wasquehal', 'Marcq-en-Baroeul', 'Croix', 'Métropole lilloise']
-      : ['Hem', "Villeneuve-d'Ascq", 'Wasquehal', 'Marcq-en-Baroeul', 'Croix', 'Lille metropolitan area']
+      ? ['Hem', 'Région lilloise']
+      : ['Hem', 'Lille metropolitan area']
   const contactTitle = locale === 'fr' ? 'Contact' : 'Contact'
   const servicesTitle = locale === 'fr' ? 'Nos services' : 'Our services'
   const zonesTitle = locale === 'fr' ? "Zones d'intervention" : 'Service areas'
-  const openingHours = locale === 'fr' ? 'Lun-Ven 08h-18h' : 'Mon-Fri 08:00-18:00'
   const insuranceLabel = locale === 'fr' ? 'Assurance garantie décennale' : '10-year liability insurance'
   const legalTitle = locale === 'fr' ? 'Informations légales' : 'Legal information'
   const legalLinks =
@@ -83,7 +81,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Clock3 className="h-4 w-4 shrink-0 text-primary" />
-                <span>{openingHours}</span>
+                <span>{siteConfig.openingHours}</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <ShieldCheck className="h-4 w-4 shrink-0 text-primary" />
@@ -121,9 +119,9 @@ export function Footer() {
             <ul className="space-y-2 text-xs text-white/85">
               {legalLinks.map((item) => (
                 <li key={item.to}>
-                  <Link to={item.to} className="hover:text-primary">
+                  <a href={item.to} className="hover:text-primary">
                     {item.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

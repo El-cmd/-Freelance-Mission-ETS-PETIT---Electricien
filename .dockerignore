@@ -1,0 +1,16 @@
+.git
+.github
+.idea
+.vscode
+node_modules
+dist
+dist-ssr
+assets
+logs
+*.log
+*.local
+.env
+.env.*
+!.env.example
+README.md
+AGENT.md

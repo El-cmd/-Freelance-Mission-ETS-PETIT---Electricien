@@ -1,0 +1,59 @@
+name: ets-petit
+
+services:
+  ets-petit:
+    container_name: ets-petit
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    image: ets-petit:local
+    depends_on:
+      contact-api:
+        condition: service_healthy
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - proxy
+      - backend
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  contact-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: contact-api
+    image: ets-petit-contact-api:local
+    restart: unless-stopped
+    environment:
+      ALLOWED_ORIGINS: "${ALLOWED_ORIGINS:-}"
+      CONTACT_FROM: "${CONTACT_FROM:-}"
+      CONTACT_TO: "${CONTACT_TO:-}"
+      SMTP_HOST: "${SMTP_HOST:-}"
+      SMTP_PASSWORD: "${SMTP_PASSWORD:-}"
+      SMTP_PORT: "${SMTP_PORT:-587}"
+      SMTP_SECURE: "${SMTP_SECURE:-false}"
+      SMTP_USER: "${SMTP_USER:-}"
+    networks:
+      - backend
+    read_only: true
+    tmpfs:
+      - /tmp:size=8m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+networks:
+  proxy:
+    external: true
+    name: proxy
+  backend:
+    internal: true

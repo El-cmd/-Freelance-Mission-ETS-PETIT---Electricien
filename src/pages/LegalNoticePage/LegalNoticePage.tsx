@@ -28,7 +28,9 @@ export function LegalNoticePage() {
           </p>
           <p>
             <span className="font-semibold text-foreground">{locale === 'fr' ? 'Hébergeur :' : 'Hosting provider:'}</span>{' '}
-            GitHub Pages ({siteConfig.websiteUrl}).
+            {locale === 'fr'
+              ? `Serveur privé virtuel pour ${siteConfig.websiteUrl}. Les coordonnées légales de l’hébergeur doivent être complétées avant la mise en ligne.`
+              : `Virtual private server for ${siteConfig.websiteUrl}. The hosting provider’s legal details must be completed before publication.`}
           </p>
           <p>
             {locale === 'fr'

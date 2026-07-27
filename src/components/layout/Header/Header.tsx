@@ -1,5 +1,4 @@
 import { BadgeEuro, Home, Mail, Menu, Phone, UserRound, Wrench } from 'lucide-react'
-import { Link, NavLink } from 'react-router-dom'
 
 import logo from '@/assets/logo.webp'
 import { getNavItems, getSiteConfig, getUiCopy } from '@/data/siteContent'
@@ -20,6 +19,7 @@ export function Header() {
   const navItems = getNavItems(locale)
   const siteConfig = getSiteConfig(locale)
   const copy = getUiCopy(locale)
+  const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
   const navIcons = {
     '/': Home,
     '/services': Wrench,
@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 bg-[#081a42]">
       <div className="flex h-16 items-center px-3 sm:px-5 lg:px-7">
-        <Link to="/" className="flex items-center" aria-label={copy.homeLinkAria}>
+        <a href="/" className="flex items-center" aria-label={copy.homeLinkAria}>
           <img
             src={logo}
             alt="Logo ETS PETIT"
@@ -42,23 +42,22 @@ export function Header() {
             fetchPriority="high"
             className="h-8 w-auto rounded-md object-contain sm:h-10"
           />
-        </Link>
+        </a>
 
         <nav className="hidden flex-1 items-center justify-center gap-6 md:flex" aria-label={copy.mainNavigationAria}>
           {navItems.map((item) => (
-            <NavLink
+            <a
               key={item.path}
-              to={item.path}
-              className={({ isActive }) =>
-                `rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-                  isActive
+              href={item.path}
+              aria-current={currentPath === item.path ? 'page' : undefined}
+              className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                  currentPath === item.path
                     ? 'border-white/20 bg-white/10 text-white'
                     : 'border-transparent text-white/80 hover:border-white/20 hover:text-white'
-                }`
-              }
+                }`}
             >
               {item.label}
-            </NavLink>
+            </a>
           ))}
         </nav>
 
@@ -146,8 +145,9 @@ export function Header() {
                 <nav className="grid gap-2" aria-label={copy.mainNavigationAria}>
                   {navItems.map((item) => (
                     <SheetClose asChild key={item.path}>
-                      <NavLink
-                        to={item.path}
+                      <a
+                        href={item.path}
+                        aria-current={currentPath === item.path ? 'page' : undefined}
                         className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/6 px-4 py-4 text-base font-medium text-white/95 transition-colors hover:bg-white/12 active:scale-[0.99]"
                       >
                         {(() => {
@@ -155,7 +155,7 @@ export function Header() {
                           return <Icon className="h-5 w-5 shrink-0 text-[#f7c600]" aria-hidden="true" />
                         })()}
                         <span>{item.label}</span>
-                      </NavLink>
+                      </a>
                     </SheetClose>
                   ))}
                 </nav>

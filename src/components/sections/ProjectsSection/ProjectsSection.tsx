@@ -1,7 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Check, Clock3, RefreshCcw } from 'lucide-react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import fondCardBorne from '@/assets/fond-card-borne.webp'
 import fondCardDepannageElectrique from '@/assets/fond-card-depannage-electrique.webp'
@@ -238,7 +237,7 @@ function PricingCategoryCard({
                 : 'bg-foreground text-background hover:bg-foreground/90',
             )}
           >
-            <Link to="/contact">{continueLabel}</Link>
+            <a href="/contact">{continueLabel}</a>
           </Button>
         </CardContent>
       </Card>
@@ -296,7 +295,7 @@ export function ProjectsSection() {
           {
             id: 'borne',
             title: 'Installation borne de recharge',
-            subtitle: 'Hauts-de-France',
+            subtitle: 'Hem et région lilloise',
             offers: [
               {
                 id: 'pack-eco',
@@ -349,7 +348,7 @@ export function ProjectsSection() {
           {
             id: 'tableau',
             title: 'Remplacement tableau électrique',
-            subtitle: 'Nord / Hauts-de-France',
+            subtitle: 'Hem et région lilloise',
             footerNote: 'Norme NF C 15-100 sur chaque offre',
             offers: [
               {
@@ -441,7 +440,7 @@ export function ProjectsSection() {
           {
             id: 'charging',
             title: 'EV charging station installation',
-            subtitle: 'Hauts-de-France',
+            subtitle: 'Hem and the Lille metropolitan area',
             offers: [
               {
                 id: 'eco-pack',
@@ -493,7 +492,7 @@ export function ProjectsSection() {
           {
             id: 'panel',
             title: 'Electrical panel replacement',
-            subtitle: 'North / Hauts-de-France',
+            subtitle: 'Hem and the Lille metropolitan area',
             footerNote: 'NF C 15-100 compliance on every offer',
             offers: [
               {

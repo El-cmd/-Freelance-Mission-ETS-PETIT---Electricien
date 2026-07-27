@@ -1,28 +1,35 @@
-import { Outlet, Route, Routes } from 'react-router-dom'
+import { lazy, type ReactNode, Suspense } from 'react'
 
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { MobileCallBar } from '@/components/layout/MobileCallBar'
-import { getSiteConfig, getUiCopy } from '@/data/siteContent'
+import { getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
-import { buildLocalBusinessJsonLd } from '@/lib/seo'
-import { AboutPage } from '@/pages/AboutPage'
-import { ContactPage } from '@/pages/ContactPage'
-import { HomePage } from '@/pages/HomePage'
-import { LegalNoticePage } from '@/pages/LegalNoticePage'
-import { PrivacyPolicyPage } from '@/pages/PrivacyPolicyPage'
-import { ProjectsPage } from '@/pages/ProjectsPage'
-import { ServicesPage } from '@/pages/ServicesPage'
-import { TermsPage } from '@/pages/TermsPage'
+import { SeoManager } from '@/components/layout/SeoManager'
 
-function SiteLayout() {
+const HomePage = lazy(() => import('@/pages/HomePage').then(({ HomePage: Page }) => ({ default: Page })))
+const ServicesPage = lazy(() => import('@/pages/ServicesPage').then(({ ServicesPage: Page }) => ({ default: Page })))
+const ProjectsPage = lazy(() => import('@/pages/ProjectsPage').then(({ ProjectsPage: Page }) => ({ default: Page })))
+const AboutPage = lazy(() => import('@/pages/AboutPage').then(({ AboutPage: Page }) => ({ default: Page })))
+const ContactPage = lazy(() => import('@/pages/ContactPage').then(({ ContactPage: Page }) => ({ default: Page })))
+const LegalNoticePage = lazy(() =>
+  import('@/pages/LegalNoticePage').then(({ LegalNoticePage: Page }) => ({ default: Page })),
+)
+const PrivacyPolicyPage = lazy(() =>
+  import('@/pages/PrivacyPolicyPage').then(({ PrivacyPolicyPage: Page }) => ({ default: Page })),
+)
+const TermsPage = lazy(() => import('@/pages/TermsPage').then(({ TermsPage: Page }) => ({ default: Page })))
+const NotFoundPage = lazy(() =>
+  import('@/pages/NotFoundPage').then(({ NotFoundPage: Page }) => ({ default: Page })),
+)
+
+function SiteLayout({ children }: { children: ReactNode }) {
   const { locale } = useLocale()
-  const siteConfig = getSiteConfig(locale)
   const copy = getUiCopy(locale)
-  const localBusinessJson = buildLocalBusinessJsonLd(siteConfig)
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SeoManager />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-3 focus:py-2"
@@ -31,32 +38,43 @@ function SiteLayout() {
       </a>
       <Header />
       <main id="main-content" className="flex min-h-0 flex-1 flex-col">
-        <Outlet />
+        <Suspense
+          fallback={
+            <div className="container flex min-h-[40vh] items-center justify-center py-16 text-sm text-muted-foreground">
+              {locale === 'fr' ? 'Chargement…' : 'Loading…'}
+            </div>
+          }
+        >
+          {children}
+        </Suspense>
       </main>
       <Footer />
       <MobileCallBar />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJson) }}
-      />
     </div>
   )
 }
 
 function App() {
+  const pathname =
+    window.location.pathname === '/index.html'
+      ? '/'
+      : window.location.pathname.replace(/\/+$/, '') || '/'
+
+  const pageByPath: Record<string, ReactNode> = {
+    '/': <HomePage />,
+    '/services': <ServicesPage />,
+    '/projects': <ProjectsPage />,
+    '/about': <AboutPage />,
+    '/contact': <ContactPage />,
+    '/mentions-legales': <LegalNoticePage />,
+    '/politique-confidentialite': <PrivacyPolicyPage />,
+    '/conditions-utilisation': <TermsPage />,
+  }
+
   return (
-    <Routes>
-      <Route element={<SiteLayout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/mentions-legales" element={<LegalNoticePage />} />
-        <Route path="/politique-confidentialite" element={<PrivacyPolicyPage />} />
-        <Route path="/conditions-utilisation" element={<TermsPage />} />
-      </Route>
-    </Routes>
+    <SiteLayout>
+      {pageByPath[pathname] ?? <NotFoundPage />}
+    </SiteLayout>
   )
 }
 

@@ -1,34 +1,5 @@
-import {
-  Bolt,
-  Cable,
-  ClipboardCheck,
-  Drill,
-  Flashlight,
-  ShieldCheck,
-  Timer,
-  Wrench,
-} from 'lucide-react'
-
-import project01 from '@/assets/images/project-01.webp'
-import project02 from '@/assets/images/project-02.webp'
-import project03 from '@/assets/images/project-03.webp'
-import project04 from '@/assets/images/project-04.webp'
-import project05 from '@/assets/images/project-05.webp'
-import project06 from '@/assets/images/project-06.webp'
-import project07 from '@/assets/images/project-07.webp'
-import project08 from '@/assets/images/project-08.webp'
-import project09 from '@/assets/images/project-09.webp'
-import project10 from '@/assets/images/project-10.webp'
-import project11 from '@/assets/images/project-11.webp'
-import project12 from '@/assets/images/project-12.webp'
 import type { Locale } from '@/i18n/locale'
-import type {
-  AboutStat,
-  NavItem,
-  ProjectItem,
-  ServiceItem,
-  SiteConfig,
-} from '@/types/site'
+import type { AboutStat, NavItem, SiteConfig } from '@/types/site'
 
 type LocalizedString = Record<Locale, string>
 
@@ -69,8 +40,6 @@ type UiCopy = {
   formEmailPlaceholder: string
   formMessagePlaceholder: string
   formSubmitLabel: string
-  mailtoSubjectPrefix: string
-  mailtoMessageLabel: string
   directCallLabel: string
   footerSubtitle: string
 }
@@ -90,13 +59,13 @@ const baseSiteConfig: Omit<SiteConfig, 'addressLine' | 'interventionZone' | 'ope
 
 const localizedBusinessInfo = {
   fr: {
-    addressLine: 'Hem et environs',
-    interventionZone: 'Hem, Tourcoing, Croix, Wasquehal, Lille Métropole',
-    openingHours: 'Lundi au samedi, 8h00 - 19h00',
+    addressLine: 'Hem, région lilloise',
+    interventionZone: 'Hem et région lilloise',
+    openingHours: 'Lundi au samedi, 8h00 – 19h00',
   },
   en: {
-    addressLine: 'Hem and surrounding area',
-    interventionZone: 'Hem, Tourcoing, Croix, Wasquehal, Lille metropolitan area',
+    addressLine: 'Hem, Lille metropolitan area',
+    interventionZone: 'Hem and the Lille metropolitan area',
     openingHours: 'Monday to Saturday, 8:00 AM - 7:00 PM',
   },
 } satisfies Record<Locale, Pick<SiteConfig, 'addressLine' | 'interventionZone' | 'openingHours'>>
@@ -107,213 +76,6 @@ const navItemsRaw: Array<{ path: string; label: LocalizedString }> = [
   { path: '/projects', label: { fr: 'Nos tarifs', en: 'Our pricing' } },
   { path: '/about', label: { fr: 'À propos', en: 'About' } },
   { path: '/contact', label: { fr: 'Contact', en: 'Contact' } },
-]
-
-const trustHighlightsRaw = [
-  {
-    icon: ShieldCheck,
-    text: {
-      fr: 'Interventions soignées et sécurisées',
-      en: 'Careful and safe interventions',
-    },
-  },
-  {
-    icon: Timer,
-    text: {
-      fr: 'Réponse rapide sur Hem et alentours',
-      en: 'Fast response in Hem and nearby areas',
-    },
-  },
-  {
-    icon: ClipboardCheck,
-    text: {
-      fr: 'Devis clair avant travaux',
-      en: 'Clear quote before any work',
-    },
-  },
-]
-
-const servicesRaw = [
-  {
-    id: 'depannage',
-    title: { fr: 'Dépannage électrique', en: 'Electrical troubleshooting' },
-    description: {
-      fr: 'Recherche de panne, remise en service rapide et sécurisation immédiate.',
-      en: 'Fault diagnosis, quick restoration, and immediate safety measures.',
-    },
-    icon: Wrench,
-  },
-  {
-    id: 'tableau',
-    title: { fr: 'Tableau électrique', en: 'Electrical panel' },
-    description: {
-      fr: 'Remplacement et mise aux normes de tableau pour une installation fiable.',
-      en: 'Panel replacement and compliance upgrade for a reliable installation.',
-    },
-    icon: Bolt,
-  },
-  {
-    id: 'renovation',
-    title: { fr: 'Rénovation installation', en: 'Electrical renovation' },
-    description: {
-      fr: 'Reprise complète ou partielle du réseau électrique en logement ancien.',
-      en: 'Full or partial rewiring for older homes and apartments.',
-    },
-    icon: Drill,
-  },
-  {
-    id: 'mise-securite',
-    title: { fr: 'Mise en sécurité', en: 'Safety upgrades' },
-    description: {
-      fr: 'Corrections ciblées des points à risque pour protéger occupants et biens.',
-      en: 'Targeted risk corrections to protect occupants and property.',
-    },
-    icon: ShieldCheck,
-  },
-  {
-    id: 'eclairage',
-    title: { fr: 'Éclairage intérieur/extérieur', en: 'Indoor/outdoor lighting' },
-    description: {
-      fr: 'Pose de luminaires, éclairage LED et optimisation du confort visuel.',
-      en: 'Fixture installation, LED lighting, and visual comfort optimization.',
-    },
-    icon: Flashlight,
-  },
-  {
-    id: 'prises-cablage',
-    title: { fr: 'Prises & câblage', en: 'Sockets & wiring' },
-    description: {
-      fr: 'Ajout de prises, circuits dédiés et câblage propre pour vos équipements.',
-      en: 'New sockets, dedicated circuits, and clean wiring for your equipment.',
-    },
-    icon: Cable,
-  },
-]
-
-const projectsRaw = [
-  {
-    id: 'project-01',
-    image: project01,
-    title: {
-      fr: 'Mise en conformité appartement',
-      en: 'Apartment compliance upgrade',
-    },
-    alt: {
-      fr: 'Tableau électrique modernisé dans un appartement à Hem',
-      en: 'Modernized electrical panel in an apartment in Hem',
-    },
-    category: { fr: 'Mise en conformité', en: 'Compliance' },
-  },
-  {
-    id: 'project-02',
-    image: project02,
-    title: { fr: 'Rénovation circuit cuisine', en: 'Kitchen circuit renovation' },
-    alt: {
-      fr: 'Travaux de câblage électrique dans une cuisine rénovée',
-      en: 'Electrical wiring work in a renovated kitchen',
-    },
-    category: { fr: 'Rénovation', en: 'Renovation' },
-  },
-  {
-    id: 'project-03',
-    image: project03,
-    title: { fr: 'Création lignes dédiées', en: 'Dedicated line installation' },
-    alt: {
-      fr: 'Nouvelles lignes dédiées pour équipements électroménagers',
-      en: 'New dedicated lines for household appliances',
-    },
-    category: { fr: 'Installation', en: 'Installation' },
-  },
-  {
-    id: 'project-04',
-    image: project04,
-    title: { fr: 'Tableau neuf maison', en: 'New home panel' },
-    alt: {
-      fr: 'Nouveau tableau électrique installé dans une maison',
-      en: 'New electrical panel installed in a house',
-    },
-    category: { fr: 'Tableau électrique', en: 'Electrical panel' },
-  },
-  {
-    id: 'project-05',
-    image: project05,
-    title: { fr: 'Remise en service après panne', en: 'Power restoration after outage' },
-    alt: {
-      fr: 'Dépannage électrique et remise en service d un logement',
-      en: 'Electrical repair and service restoration in a home',
-    },
-    category: { fr: 'Dépannage', en: 'Troubleshooting' },
-  },
-  {
-    id: 'project-06',
-    image: project06,
-    title: { fr: 'Réfection colonnes montantes', en: 'Riser upgrade work' },
-    alt: {
-      fr: 'Intervention sur colonnes montantes en copropriété',
-      en: 'Intervention on electrical risers in a shared building',
-    },
-    category: { fr: 'Rénovation', en: 'Renovation' },
-  },
-  {
-    id: 'project-07',
-    image: project07,
-    title: { fr: 'Éclairage couloir et palier', en: 'Corridor and landing lighting' },
-    alt: {
-      fr: 'Installation d éclairage LED dans des parties communes',
-      en: 'LED lighting installation in common areas',
-    },
-    category: { fr: 'Éclairage', en: 'Lighting' },
-  },
-  {
-    id: 'project-08',
-    image: project08,
-    title: { fr: 'Protection différentielle', en: 'RCD protection upgrade' },
-    alt: {
-      fr: 'Ajout de protections différentielles sur une installation existante',
-      en: 'Added residual current protection on an existing installation',
-    },
-    category: { fr: 'Sécurité', en: 'Safety' },
-  },
-  {
-    id: 'project-09',
-    image: project09,
-    title: { fr: 'Réseau prise bureau', en: 'Office socket network' },
-    alt: {
-      fr: 'Création de prises électriques pour espace bureau',
-      en: 'New electrical sockets for an office space',
-    },
-    category: { fr: 'Prises & câblage', en: 'Sockets & wiring' },
-  },
-  {
-    id: 'project-10',
-    image: project10,
-    title: { fr: 'Reprise câblage cave', en: 'Basement rewiring' },
-    alt: {
-      fr: 'Remise en état du câblage électrique dans une cave',
-      en: 'Electrical wiring restoration in a basement',
-    },
-    category: { fr: 'Rénovation', en: 'Renovation' },
-  },
-  {
-    id: 'project-11',
-    image: project11,
-    title: { fr: 'Mise à la terre complète', en: 'Full grounding system' },
-    alt: {
-      fr: 'Travaux de mise à la terre pour sécurisation de maison',
-      en: 'Grounding work to improve home safety',
-    },
-    category: { fr: 'Mise en sécurité', en: 'Safety upgrade' },
-  },
-  {
-    id: 'project-12',
-    image: project12,
-    title: { fr: 'Éclairage extérieur façade', en: 'Exterior facade lighting' },
-    alt: {
-      fr: 'Pose d éclairage extérieur pour façade résidentielle',
-      en: 'Exterior lighting installation for a residential facade',
-    },
-    category: { fr: 'Éclairage', en: 'Lighting' },
-  },
 ]
 
 const aboutStatsRaw = [
@@ -397,11 +159,9 @@ const uiCopy: Record<Locale, UiCopy> = {
     formPhonePlaceholder: '06 00 00 00 00',
     formEmailPlaceholder: 'vous@email.fr',
     formMessagePlaceholder: 'Décris brièvement ton besoin (panne, rénovation, tableau...)',
-    formSubmitLabel: 'Envoyer par email',
-    mailtoSubjectPrefix: 'Demande de devis',
-    mailtoMessageLabel: 'Message',
+    formSubmitLabel: 'Envoyer la demande',
     directCallLabel: 'Appel direct',
-    footerSubtitle: 'Électricien à Hem',
+    footerSubtitle: 'Électricien à Hem et dans la région lilloise',
   },
   en: {
     skipToContent: 'Skip to main content',
@@ -444,11 +204,9 @@ const uiCopy: Record<Locale, UiCopy> = {
     formPhonePlaceholder: '+33 6 00 00 00 00',
     formEmailPlaceholder: 'you@email.com',
     formMessagePlaceholder: 'Briefly describe your need (outage, renovation, panel...)',
-    formSubmitLabel: 'Send by email',
-    mailtoSubjectPrefix: 'Quote request',
-    mailtoMessageLabel: 'Message',
+    formSubmitLabel: 'Send request',
     directCallLabel: 'Direct call',
-    footerSubtitle: 'Electrician in Hem',
+    footerSubtitle: 'Electrician in Hem and the Lille metropolitan area',
   },
 }
 
@@ -467,32 +225,6 @@ export function getNavItems(locale: Locale): NavItem[] {
   return navItemsRaw.map((item) => ({
     path: item.path,
     label: t(locale, item.label),
-  }))
-}
-
-export function getTrustHighlights(locale: Locale) {
-  return trustHighlightsRaw.map((item) => ({
-    icon: item.icon,
-    text: t(locale, item.text),
-  }))
-}
-
-export function getServices(locale: Locale): ServiceItem[] {
-  return servicesRaw.map((item) => ({
-    id: item.id,
-    title: t(locale, item.title),
-    description: t(locale, item.description),
-    icon: item.icon,
-  }))
-}
-
-export function getProjects(locale: Locale): ProjectItem[] {
-  return projectsRaw.map((item) => ({
-    id: item.id,
-    image: item.image,
-    title: t(locale, item.title),
-    alt: t(locale, item.alt),
-    category: t(locale, item.category),
   }))
 }
 
