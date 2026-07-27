@@ -1,10 +1,16 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Check, Clock3, RefreshCcw } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import fondCardBorne from '@/assets/fond-card-borne.webp'
 import fondCardDepannageElectrique from '@/assets/fond-card-depannage-electrique.webp'
 import fondCardTableauElectrique from '@/assets/fond-card-tableau-electrique.webp'
+import {
+  defaultPricingValues,
+  formatPricingValue,
+  isPricingValues,
+  type PricingValues,
+} from '@/data/pricing'
 import { getUiCopy } from '@/data/siteContent'
 import { useLocale } from '@/i18n/locale'
 import { cn } from '@/lib/utils'
@@ -249,6 +255,40 @@ export function ProjectsSection() {
   const { locale } = useLocale()
   const copy = getUiCopy(locale)
   const shouldReduceMotion = useReducedMotion()
+  const [pricingValues, setPricingValues] = useState<PricingValues>(defaultPricingValues)
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    async function loadPricing() {
+      try {
+        const response = await fetch('/api/pricing', {
+          cache: 'no-store',
+          signal: controller.signal,
+        })
+        if (!response.ok) {
+          return
+        }
+
+        const payload: unknown = await response.json()
+        if (
+          payload &&
+          typeof payload === 'object' &&
+          'values' in payload &&
+          isPricingValues(payload.values)
+        ) {
+          setPricingValues(payload.values)
+        }
+      } catch (error) {
+        if (!(error instanceof DOMException && error.name === 'AbortError')) {
+          console.error('Impossible de charger les tarifs actualisés.', error)
+        }
+      }
+    }
+
+    void loadPricing()
+    return () => controller.abort()
+  }, [])
 
   const categories: PricingCategory[] =
     locale === 'fr'
@@ -262,7 +302,7 @@ export function ProjectsSection() {
                 id: 'depannage-semaine',
                 tier: 'Semaine',
                 title: 'Forfait 1 heure',
-                price: '50 € + 40 € déplacement',
+                price: formatPricingValue('depannage-semaine', 'travel', pricingValues, locale),
                 summary:
                   'Déplacement + première heure de dépannage incluse pour une intervention rapide.',
                 delivery: 'Intervention rapide',
@@ -278,7 +318,7 @@ export function ProjectsSection() {
                 id: 'depannage-weekend',
                 tier: 'Week-end',
                 title: 'Intervention week-end',
-                price: '80 € + 40 € déplacement',
+                price: formatPricingValue('depannage-weekend', 'travel', pricingValues, locale),
                 summary:
                   'Intervention ponctuelle le week-end avec diagnostic sur place et sécurisation si nécessaire.',
                 delivery: 'Intervention rapide',
@@ -301,7 +341,7 @@ export function ProjectsSection() {
                 id: 'pack-eco',
                 tier: 'Basique',
                 title: 'Pack Éco',
-                price: 'À partir de 450 € TTC',
+                price: formatPricingValue('pack-eco', 'from', pricingValues, locale),
                 summary: "Prise renforcée Green'up pour petits rouleurs et hybrides rechargeables.",
                 delivery: 'Pose planifiée',
                 revisions: 'Réglages inclus',
@@ -316,7 +356,7 @@ export function ProjectsSection() {
                 id: 'pack-confort',
                 tier: 'Standard',
                 title: 'Pack Confort',
-                price: 'À partir de 1 290 € TTC',
+                price: formatPricingValue('pack-confort', 'from', pricingValues, locale),
                 summary: 'Borne Wallbox 7,4 kW, la solution standard pour véhicule 100% électrique.',
                 delivery: 'Pose certifiée IRVE',
                 revisions: 'Paramétrage inclus',
@@ -331,7 +371,7 @@ export function ProjectsSection() {
                 id: 'pack-performance',
                 tier: 'Premium',
                 title: 'Pack Performance',
-                price: 'À partir de 1 650 € TTC',
+                price: formatPricingValue('pack-performance', 'from', pricingValues, locale),
                 summary:
                   'Borne triphasée 11 kW / 22 kW pour entreprises ou besoins de recharge rapide.',
                 delivery: 'Installation renforcée',
@@ -355,7 +395,7 @@ export function ProjectsSection() {
                 id: 'panel-basic',
                 tier: 'Basique',
                 title: 'Studio / T1',
-                price: '700 € - 1 100 €',
+                price: formatPricingValue('panel-basic', 'range', pricingValues, locale),
                 summary: '1 à 2 rangées (6-12 circuits).',
                 delivery: 'Pose planifiée',
                 revisions: 'Validation avant travaux',
@@ -370,7 +410,7 @@ export function ProjectsSection() {
                 id: 'panel-standard',
                 tier: 'Standard',
                 title: 'Appartement / Maison T2-T3',
-                price: '1 100 € - 1 600 €',
+                price: formatPricingValue('panel-standard', 'range', pricingValues, locale),
                 summary: '2 à 3 rangées (12-24 circuits).',
                 delivery: 'Pose planifiée',
                 revisions: 'Validation avant travaux',
@@ -385,7 +425,7 @@ export function ProjectsSection() {
                 id: 'panel-premium',
                 tier: 'Premium',
                 title: 'Maison familiale (T4+)',
-                price: '1 600 € - 2 300 €+',
+                price: formatPricingValue('panel-premium', 'range', pricingValues, locale),
                 summary: '3 à 4 rangées (24-36+ circuits).',
                 delivery: 'Pose planifiée',
                 revisions: 'Validation avant travaux',
@@ -406,10 +446,10 @@ export function ProjectsSection() {
             subtitle: 'One-time intervention',
             offers: [
               {
-                id: 'troubleshooting-weekday',
+                id: 'depannage-semaine',
                 tier: 'Weekdays',
                 title: '1-hour package',
-                price: '€50 + €40 travel fee',
+                price: formatPricingValue('depannage-semaine', 'travel', pricingValues, locale),
                 summary: 'Travel + first hour of troubleshooting included for a quick intervention.',
                 delivery: 'Fast intervention',
                 revisions: 'Quote before extra work',
@@ -421,10 +461,10 @@ export function ProjectsSection() {
                 ],
               },
               {
-                id: 'troubleshooting-weekend',
+                id: 'depannage-weekend',
                 tier: 'Weekend',
                 title: 'Weekend intervention',
-                price: '€80 + €40 travel fee',
+                price: formatPricingValue('depannage-weekend', 'travel', pricingValues, locale),
                 summary: 'Weekend intervention with on-site diagnosis and immediate safety actions when needed.',
                 delivery: 'Fast intervention',
                 revisions: 'Quote before extra work',
@@ -443,10 +483,10 @@ export function ProjectsSection() {
             subtitle: 'Hem and the Lille metropolitan area',
             offers: [
               {
-                id: 'eco-pack',
+                id: 'pack-eco',
                 tier: 'Basic',
                 title: 'Eco pack',
-                price: 'From €450 VAT incl.',
+                price: formatPricingValue('pack-eco', 'from', pricingValues, locale),
                 summary: "Green'up reinforced socket for low-mileage drivers and plug-in hybrids.",
                 delivery: 'Scheduled install',
                 revisions: 'Setup included',
@@ -458,10 +498,10 @@ export function ProjectsSection() {
                 ],
               },
               {
-                id: 'comfort-pack',
+                id: 'pack-confort',
                 tier: 'Standard',
                 title: 'Comfort pack',
-                price: 'From €1,290 VAT incl.',
+                price: formatPricingValue('pack-confort', 'from', pricingValues, locale),
                 summary: '7.4 kW Wallbox, standard setup for full electric vehicles.',
                 delivery: 'IRVE-certified install',
                 revisions: 'Setup included',
@@ -473,10 +513,10 @@ export function ProjectsSection() {
                 ],
               },
               {
-                id: 'performance-pack',
+                id: 'pack-performance',
                 tier: 'Premium',
                 title: 'Performance pack',
-                price: 'From €1,650 VAT incl.',
+                price: formatPricingValue('pack-performance', 'from', pricingValues, locale),
                 summary: 'Three-phase 11 kW / 22 kW charger for fast charging needs.',
                 delivery: 'Reinforced install',
                 revisions: 'Load balancing included',
@@ -499,7 +539,7 @@ export function ProjectsSection() {
                 id: 'panel-basic',
                 tier: 'Basic',
                 title: 'Studio / T1',
-                price: '€700 - €1,100',
+                price: formatPricingValue('panel-basic', 'range', pricingValues, locale),
                 summary: '1 to 2 rows (6-12 circuits).',
                 delivery: 'Scheduled install',
                 revisions: 'Validation before work',
@@ -514,7 +554,7 @@ export function ProjectsSection() {
                 id: 'panel-standard',
                 tier: 'Standard',
                 title: 'Apartment / House T2-T3',
-                price: '€1,100 - €1,600',
+                price: formatPricingValue('panel-standard', 'range', pricingValues, locale),
                 summary: '2 to 3 rows (12-24 circuits).',
                 delivery: 'Scheduled install',
                 revisions: 'Validation before work',
@@ -529,7 +569,7 @@ export function ProjectsSection() {
                 id: 'panel-premium',
                 tier: 'Premium',
                 title: 'Family house (T4+)',
-                price: '€1,600 - €2,300+',
+                price: formatPricingValue('panel-premium', 'range', pricingValues, locale),
                 summary: '3 to 4 rows (24-36+ circuits).',
                 delivery: 'Scheduled install',
                 revisions: 'Validation before work',

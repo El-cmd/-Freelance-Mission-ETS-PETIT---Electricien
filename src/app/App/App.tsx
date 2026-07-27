@@ -22,6 +22,9 @@ const TermsPage = lazy(() => import('@/pages/TermsPage').then(({ TermsPage: Page
 const NotFoundPage = lazy(() =>
   import('@/pages/NotFoundPage').then(({ NotFoundPage: Page }) => ({ default: Page })),
 )
+const AdminPage = lazy(() =>
+  import('@/pages/AdminPage').then(({ AdminPage: Page }) => ({ default: Page })),
+)
 
 function SiteLayout({ children }: { children: ReactNode }) {
   const { locale } = useLocale()
@@ -59,6 +62,20 @@ function App() {
     window.location.pathname === '/index.html'
       ? '/'
       : window.location.pathname.replace(/\/+$/, '') || '/'
+
+  if (pathname === '/admin') {
+    return (
+      <Suspense
+        fallback={
+          <div className="flex min-h-screen items-center justify-center bg-[#081a42] text-sm font-semibold text-white">
+            Chargement de l’administration…
+          </div>
+        }
+      >
+        <AdminPage />
+      </Suspense>
+    )
+  }
 
   const pageByPath: Record<string, ReactNode> = {
     '/': <HomePage />,

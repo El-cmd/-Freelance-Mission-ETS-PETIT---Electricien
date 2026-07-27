@@ -37,6 +37,7 @@ COPY server/package.json server/package-lock.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
 COPY --chown=node:node server/contact-api.mjs ./contact-api.mjs
+RUN mkdir -p /app/data && chown node:node /app/data
 
 USER node
 

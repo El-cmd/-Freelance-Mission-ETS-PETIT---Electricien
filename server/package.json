@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=22"
   },
+  "scripts": {
+    "admin:hash": "node generate-admin-password-hash.mjs"
+  },
   "dependencies": {
     "nodemailer": "^9.0.3"
   }

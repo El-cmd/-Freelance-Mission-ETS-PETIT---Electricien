@@ -12,6 +12,8 @@ services:
       contact-api:
         condition: service_healthy
     restart: unless-stopped
+    mem_limit: 64m
+    pids_limit: 32
     expose:
       - "80"
     networks:
@@ -32,7 +34,12 @@ services:
       target: contact-api
     image: ets-petit-contact-api:local
     restart: unless-stopped
+    mem_limit: 192m
+    pids_limit: 64
     environment:
+      ADMIN_EMAIL: "${ADMIN_EMAIL:-}"
+      ADMIN_PASSWORD_HASH: "${ADMIN_PASSWORD_HASH:-}"
+      ADMIN_SESSION_SECRET: "${ADMIN_SESSION_SECRET:-}"
       ALLOWED_ORIGINS: "${ALLOWED_ORIGINS:-}"
       CONTACT_FROM: "${CONTACT_FROM:-}"
       CONTACT_TO: "${CONTACT_TO:-}"
@@ -41,8 +48,11 @@ services:
       SMTP_PORT: "${SMTP_PORT:-587}"
       SMTP_SECURE: "${SMTP_SECURE:-false}"
       SMTP_USER: "${SMTP_USER:-}"
+      PRICING_DATA_FILE: "/app/data/pricing.json"
     networks:
       - backend
+    volumes:
+      - pricing-data:/app/data
     read_only: true
     tmpfs:
       - /tmp:size=8m,mode=1777
@@ -57,3 +67,7 @@ networks:
     name: proxy
   backend:
     internal: true
+
+volumes:
+  pricing-data:
+    name: ets-petit-pricing-data

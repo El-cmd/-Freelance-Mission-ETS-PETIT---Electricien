@@ -48,6 +48,35 @@ Variables indispensables au formulaire:
 Le formulaire reste volontairement indisponible si la configuration SMTP est
 absente. Les secrets ne doivent jamais être ajoutés au dépôt Git.
 
+### Administration des tarifs
+
+L'interface privée est disponible sur `https://ets-petit.fr/admin`. Elle permet
+de modifier uniquement les montants des offres. Les tarifs sont stockés dans le
+volume Docker persistant `ets-petit-pricing-data`: ils ne sont pas écrasés lors
+des déploiements et les 20 dernières versions sont sauvegardées dans le volume.
+
+Configurer l'adresse de connexion et les secrets dans le fichier `.env` du VPS:
+
+```bash
+read -rsp "Mot de passe administrateur : " ADMIN_PASSWORD
+echo
+export ADMIN_PASSWORD
+ADMIN_PASSWORD_HASH="$(npm run --silent admin:hash --prefix server)"
+unset ADMIN_PASSWORD
+
+printf '%s\n' "$ADMIN_PASSWORD_HASH"
+openssl rand -hex 32
+```
+
+Reporter l'empreinte obtenue dans `ADMIN_PASSWORD_HASH`, le secret aléatoire
+dans `ADMIN_SESSION_SECRET` et l'adresse autorisée dans `ADMIN_EMAIL`. Le mot de
+passe en clair ne doit jamais être enregistré dans le dépôt ou dans le fichier
+`.env`.
+
+L'API applique une validation stricte des montants, une limitation des
+tentatives de connexion, des sessions temporaires en cookie `HttpOnly` et une
+vérification de l'origine des requêtes.
+
 Construire et démarrer le service:
 
 ```bash

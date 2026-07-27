@@ -64,7 +64,7 @@ function renderPage(template, page) {
   const title = escapeHtml(page.title)
   const description = escapeHtml(page.description)
 
-  return template
+  const renderedPage = template
     .replace(/<title data-seo="title">.*?<\/title>/, `<title data-seo="title">${title}</title>`)
     .replace(
       /(<meta data-seo="description" name="description" content=")[^"]*(" \/>)/,
@@ -94,6 +94,13 @@ function renderPage(template, page) {
       /(<meta data-seo="twitter-description" name="twitter:description" content=")[^"]*(" \/>)/,
       `$1${description}$2`,
     )
+
+  return page.noindex
+    ? renderedPage.replace(
+        '</head>',
+        '    <meta name="robots" content="noindex, nofollow, noarchive" />\n  </head>',
+      )
+    : renderedPage
 }
 
 const template = await fs.readFile(path.join(distDir, 'index.html'), 'utf8')
@@ -103,6 +110,15 @@ for (const page of pages) {
   await fs.mkdir(outputDir, { recursive: true })
   await fs.writeFile(path.join(outputDir, 'index.html'), renderPage(template, page))
 }
+
+const adminPage = renderPage(template, {
+  path: '/admin',
+  title: 'Administration des tarifs | ETS PETIT',
+  description: 'Espace privé de gestion des tarifs ETS PETIT.',
+  noindex: true,
+})
+await fs.mkdir(path.join(distDir, 'admin'), { recursive: true })
+await fs.writeFile(path.join(distDir, 'admin', 'index.html'), adminPage)
 
 const notFoundPage = renderPage(template, {
   path: '/404',
