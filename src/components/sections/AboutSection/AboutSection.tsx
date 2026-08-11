@@ -1,8 +1,5 @@
 import { CheckCircle2 } from 'lucide-react'
 
-import labelProfessionnelGaz from '@/assets/label-professionnel-du-gaz.webp'
-import labelRgeQualibat from '@/assets/label-rge-qualibat.webp'
-import labelRgeQualipac from '@/assets/label-rge-qualipac.webp'
 import googleAvisLogo from '@/assets/google-avis.jpg'
 import logoAlloVoisins from '@/assets/logo-allovoisins-baseline.svg'
 import logo from '@/assets/logo.webp'
@@ -21,19 +18,6 @@ export function AboutSection() {
   const aboutPoints = getAboutPoints(locale)
   const aboutStats = getAboutStats(locale)
   const copy = getUiCopy(locale)
-  const labels =
-    locale === 'fr'
-      ? [
-          { src: labelRgeQualibat, alt: 'Label RGE Qualibat' },
-          { src: labelRgeQualipac, alt: 'Label RGE QualiPAC' },
-          { src: labelProfessionnelGaz, alt: 'Label Professionnel du Gaz' },
-        ]
-      : [
-          { src: labelRgeQualibat, alt: 'RGE Qualibat label' },
-          { src: labelRgeQualipac, alt: 'RGE QualiPAC label' },
-          { src: labelProfessionnelGaz, alt: 'Gas professional label' },
-        ]
-  const labelsTitle = locale === 'fr' ? 'Nos labels' : 'Our labels'
   const testimonialsTitle = locale === 'fr' ? 'Avis clients' : 'Client reviews'
 
   return (
@@ -124,27 +108,6 @@ export function AboutSection() {
         <TestimonialsSection />
       </div>
 
-      <Card className="mt-6">
-        <CardContent className="p-6 sm:p-8">
-          <h3 className="font-heading text-xl font-semibold text-foreground sm:text-2xl">{labelsTitle}</h3>
-          <div className="mt-5 grid gap-4 sm:grid-cols-3">
-            {labels.map((item) => (
-              <div
-                key={item.alt}
-                className="rounded-xl bg-white/65 p-2 sm:p-3"
-              >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-14 w-full object-contain sm:h-16"
-                />
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
     </Section>
   )
 }
